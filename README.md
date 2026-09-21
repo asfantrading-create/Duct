@@ -45,13 +45,13 @@ In a plain browser (no Electron) the renderer runs against a localStorage mock s
 ## الإصدار والتحديثات التلقائية / Release & auto-update
 
 1. Update `version` in `package.json` and write notes in `RELEASE_NOTES.md` (AR/EN).
-2. Commit, then tag and push: `git tag v1.0.1 && git push origin v1.0.1`.
-3. GitHub Actions (`.github/workflows/release.yml`) builds the installer on Windows, runs the tests and publishes a GitHub Release containing `ASFAN-Duct-Digital-Twin-Setup.exe`, `latest.yml` and the `.blockmap`.
+2. Merge to `main`, then either push a tag (`git tag v1.0.1 && git push origin v1.0.1`) or open **Actions → Build Windows installer & publish release → Run workflow** with *Publish* ticked.
+3. GitHub Actions (`.github/workflows/release.yml`) builds the installer on Windows, runs the tests and publishes a GitHub Release in `duct-releases` containing `ASFAN-Duct-Digital-Twin-Setup.exe`, `latest.yml` and the `.blockmap`.
 4. Installed copies check GitHub Releases at start-up and every 6 hours; users see “update available”, download in the background and restart to install (electron-updater).
 
-**Customer download link (fixed):** `https://github.com/asfantrading-create/Duct/releases/latest/download/ASFAN-Duct-Digital-Twin-Setup.exe`
+**Customer download link (fixed):** `https://github.com/asfantrading-create/duct-releases/releases/latest/download/ASFAN-Duct-Digital-Twin-Setup.exe`
 
-> ⚠️ The link and the in-app updater work anonymously only when the repository holding the releases is **public**. Either make this repo public, or create a public releases-only repo (e.g. `asfantrading-create/duct-releases`), set `publish.repo` in `electron-builder.yml` and add a `RELEASES_TOKEN` secret (PAT with `repo` scope). See `docs/RELEASING.md`.
+> Installers are published to the separate **public** repository `asfantrading-create/duct-releases` (the source code in this repository stays private). The workflow needs a `RELEASES_TOKEN` secret (personal access token with `repo` scope) to upload there. See `docs/RELEASING.md`.
 
 Optional: add `WIN_CSC_LINK` / `WIN_CSC_PASSWORD` secrets with a code-signing certificate to remove the Windows SmartScreen warning.
 

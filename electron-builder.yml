@@ -21,7 +21,7 @@ win:
       arch: [x64]
   icon: build/icon.ico
   # Fixed artifact name so the customer download link never changes:
-  # https://github.com/asfantrading-create/Duct/releases/latest/download/ASFAN-Duct-Digital-Twin-Setup.exe
+  # https://github.com/asfantrading-create/duct-releases/releases/latest/download/ASFAN-Duct-Digital-Twin-Setup.exe
   artifactName: ASFAN-Duct-Digital-Twin-Setup.${ext}
   verifyUpdateCodeSignature: false
   requestedExecutionLevel: asInvoker
@@ -43,8 +43,11 @@ nsis:
   artifactName: ASFAN-Duct-Digital-Twin-Setup.${ext}
 releaseInfo:
   releaseNotesFile: RELEASE_NOTES.md
+# Installers, latest.yml and blockmaps are published to a separate PUBLIC repository so that customers can
+# download and auto-update while this source repository stays private. The workflow authenticates with the
+# RELEASES_TOKEN secret (a personal access token with `repo` scope).
 publish:
   provider: github
   owner: asfantrading-create
-  repo: Duct
+  repo: duct-releases
   releaseType: release
