@@ -36,7 +36,8 @@ An educational Windows application by **ASFAN Trading Co.** — a digital twin o
 npm install
 npm run dev            # bundles the renderer and starts Electron (F12 = DevTools)
 npm run test:unit      # node --test (license, physics, store, classroom, sims, quiz, data)
-node test/e2e/smoke.mjs   # headless-Chromium UI smoke test (uses the browser mock API; needs Chromium)
+node test/e2e/smoke.mjs                      # headless-Chromium UI smoke test (browser mock API)
+xvfb-run -a node test/e2e/electron-smoke.mjs  # real Electron end-to-end test (Linux: needs xvfb)
 ```
 
 In a plain browser (no Electron) the renderer runs against a localStorage mock so the UI can be developed and tested quickly.
