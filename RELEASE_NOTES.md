@@ -1,3 +1,13 @@
+## الإصدار 1.0.1
+
+- نقل قناة التحديث التلقائي والتحميل إلى مستودع النشر العام `duct-releases` مع إبقاء الكود المصدري خاصاً.
+- إصلاح حالة فشل شكلية في خط البناء عند امتلاء مخزن Actions.
+
+## Version 1.0.1
+
+- Downloads and the auto-update feed now come from the public `duct-releases` repository while the source stays private.
+- Fixed a cosmetic build failure when the Actions artifact storage is full.
+
 ## الإصدار 1.0.0 — الإصدار الأول
 
 - التوأم الرقمي لمصنع تصنيع مجاري الهواء (Duct) بنموذج ثلاثي الأبعاد ومحاكاة خط الإنتاج والمؤشرات (OEE، الإنتاجية، الهدر، الطاقة).
