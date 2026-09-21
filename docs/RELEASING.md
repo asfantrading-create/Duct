@@ -22,7 +22,7 @@ https://github.com/asfantrading-create/duct-releases/releases/latest/download/AS
 - `asfantrading-create/duct-releases` **عام**: لا يحوي كوداً، فقط ملفات الإصدارات (`.exe`, `latest.yml`, `.blockmap`). يقرأ منه العملاء والمحدّث التلقائي.
 
 ### الإعداد لمرة واحدة
-1. أنشئ المستودع العام `duct-releases` من GitHub → **New repository** مع تفعيل **Add a README file** (لا يمكن إنشاء إصدارات في مستودع فارغ تماماً).
+1. مستودع النشر `duct-releases`: يُنشئه خط البناء تلقائياً (عاماً مع README) إن لم يكن موجوداً، ويضيف أول التزام إن كان فارغاً (السكربت `scripts/prepare-release-repo.mjs`). يمكنك أيضاً إنشاؤه يدوياً مع تفعيل **Add a README file**.
 2. أنشئ Personal Access Token (classic) بصلاحية `repo` من **Settings → Developer settings → Personal access tokens → Tokens (classic)**.
 3. في مستودع الكود `Duct`: **Settings → Secrets and variables → Actions → New repository secret** باسم `RELEASES_TOKEN` وقيمته الرمز.
 4. `publish.repo` في `electron-builder.yml` مضبوط على `duct-releases`.
