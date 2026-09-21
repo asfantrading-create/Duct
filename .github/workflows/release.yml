@@ -65,10 +65,16 @@ jobs:
         if: ${{ !(startsWith(github.ref, 'refs/tags/v') || inputs.publish) }}
         run: npx electron-builder --win nsis --publish never
 
+      # Keeps a copy of the installer as a workflow artifact for manual (non-publishing) builds only.
+      # Publishing runs already have their files on the GitHub Release, and Actions artifact storage
+      # is quota-limited on private repositories, so this step must never fail a release build.
       - uses: actions/upload-artifact@v4
+        if: ${{ !(startsWith(github.ref, 'refs/tags/v') || inputs.publish) }}
+        continue-on-error: true
         with:
           name: windows-installer
           if-no-files-found: error
+          retention-days: 7
           path: |
             release/*.exe
             release/*.yml
