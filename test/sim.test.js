@@ -58,3 +58,9 @@ test('lessons and data integrity', () => {
   assert.ok(CITIES.length >= 24); for (const c of CITIES) assert.ok(c.cooling_db_0_4 > 25 && c.cooling_db_0_4 < 52, c.id);
   assert.equal(isModuleLicensed({ modules: ['LEARN'] }, 'LEARN'), true); assert.equal(isModuleLicensed({ modules: ['LEARN'] }, 'DESIGN_LAB'), false); assert.equal(isModuleLicensed({}, 'DESIGN_LAB'), true); assert.equal(isModuleLicensed(null, 'LEARN'), false);
 });
+
+test('seeded exams are identical for every student; unseeded differ', () => {
+  const a = QB.buildExam({ count: 10, seed: 777 }); const b = QB.buildExam({ count: 10, seed: 777 });
+  assert.deepEqual(a.map((q) => [q.id, q.answer, q.params]), b.map((q) => [q.id, q.answer, q.params]));
+  const c = QB.buildExam({ count: 10, seed: 778 }); assert.notDeepEqual(a.map((q) => q.id), c.map((q) => q.id));
+});

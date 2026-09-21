@@ -1,7 +1,7 @@
 {
   "name": "asfan-duct-digital-twin",
   "productName": "ASFAN Duct Digital Twin",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Educational Digital Twin simulator for HVAC duct factories and duct systems (ASFAN)",
   "author": {
     "name": "ASFAN Trading Co.",

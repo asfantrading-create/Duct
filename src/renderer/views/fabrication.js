@@ -96,7 +96,7 @@ function qc(panel, ctx) {
 /** Shared A4 report wrapper with ASFAN branding. */
 export function reportHtml(title, bodyHtml, ctx, { landscape = false } = {}) {
   const rtl = (ctx.state.settings.lang || 'ar') === 'ar'; const company = (ctx.state.info && ctx.state.info.company) || {};
-  const logo = document.querySelector('img[src$="logo.png"]'); let logoData = 'assets/logo.png';
+  const logo = document.getElementById('logo-print') || document.querySelector('img[src$="logo.png"]'); let logoData = 'assets/logo.png';
   try { const c = document.createElement('canvas'); c.width = logo.naturalWidth; c.height = logo.naturalHeight; c.getContext('2d').drawImage(logo, 0, 0); logoData = c.toDataURL('image/png'); } catch (_) {}
   return `<!doctype html><html lang="${rtl ? 'ar' : 'en'}" dir="${rtl ? 'rtl' : 'ltr'}"><head><meta charset="utf-8"><title>${esc(title)}</title><style>
   body{font-family:'Segoe UI',Tahoma,Arial,sans-serif;font-size:12px;color:#111;margin:24px}header{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #6d5ce7;padding-bottom:10px;margin-bottom:14px}header img{height:40px}h1{font-size:18px;margin:0}h2{font-size:14px;margin:14px 0 6px;color:#6d5ce7}table{width:100%;border-collapse:collapse;margin:8px 0}th,td{border:1px solid #cbd5e1;padding:5px 7px;text-align:start;font-size:11px}th{background:#f1f5f9}footer{margin-top:18px;border-top:1px solid #cbd5e1;padding-top:8px;font-size:10px;color:#555;display:flex;justify-content:space-between}.kpis{display:flex;gap:10px;flex-wrap:wrap}.kpi{border:1px solid #cbd5e1;border-radius:6px;padding:6px 10px;min-width:120px}.kpi b{display:block;font-size:15px}.muted{color:#666}@page{size:A4 ${landscape ? 'landscape' : 'portrait'};margin:14mm}

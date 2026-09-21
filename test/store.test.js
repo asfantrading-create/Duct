@@ -55,3 +55,16 @@ test('classroom mirror, readShared and merge', () => {
   const imported = cb.importFiles([list[0].sourceFile]); assert.equal(imported.length, 1);
   assert.equal(new Classroom(new Store(tmp())).status().configured, false);
 });
+
+test('assignments: create, update, remove and classroom mirroring', () => {
+  const shared = tmp(); const a = new Store(tmp()); a.setSettings({ classroomFolder: shared }); const ca = new Classroom(a);
+  const asg = a.createAssignment({ title: 'Midterm', moduleIds: ['LEARN', 'DESIGN_LAB'], count: 12, minutes: 25, passPct: 60, maxDifficulty: 2, dueDate: '2027-01-31', classCode: 'ab12cd', createdBy: 'Dr. X' });
+  assert.ok(asg.seed > 0); assert.equal(asg.classCode, 'AB12CD'); assert.equal(asg.count, 12); assert.equal(asg.active, true);
+  assert.equal(ca.mirrorAssignments(a.listAssignments()), true);
+  const b = new Store(tmp()); b.setSettings({ classroomFolder: shared }); const cb = new Classroom(b);
+  const shared1 = cb.readSharedAssignments(); assert.equal(shared1.length, 1); assert.equal(shared1[0].title, 'Midterm'); assert.equal(shared1[0].seed, asg.seed);
+  a.updateAssignment(asg.id, { active: false }); ca.mirrorAssignments(a.listAssignments());
+  const merged = Classroom.mergeAssignments(cb.readSharedAssignments(), b.listAssignments()); assert.equal(merged.length, 1); assert.equal(merged[0].active, false);
+  a.removeAssignment(asg.id); assert.equal(a.listAssignments().length, 0);
+  assert.equal(new Store(tmp()).createAssignment({ title: 'x', count: 999 }).count, 60);
+});

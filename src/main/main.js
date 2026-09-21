@@ -89,7 +89,7 @@ function registerIpc() {
   // settings
   ipcMain.handle('settings:get', () => store.getSettings());
   ipcMain.handle('settings:set', (_e, patch) => {
-    const allowed = ['lang', 'units', 'theme', 'classroomFolder', 'autoDownloadUpdates', 'city', 'lastCheckedUpdate'];
+    const allowed = ['lang', 'units', 'theme', 'classroomFolder', 'autoDownloadUpdates', 'city', 'lastCheckedUpdate', 'uiZoom', 'tourDone'];
     const clean = {}; for (const k of allowed) if (patch && k in patch) clean[k] = patch[k];
     const s = store.setSettings(clean);
     if ('autoDownloadUpdates' in clean) updater.setAutoDownload(clean.autoDownloadUpdates);
@@ -116,6 +116,13 @@ function registerIpc() {
     return Classroom.merge(shared, local);
   });
 
+  // assigned exams
+  const allAssignments = () => Classroom.mergeAssignments(classroom.readSharedAssignments(), store.listAssignments().map((a) => ({ ...a, source: 'local' })));
+  ipcMain.handle('assignments:list', () => allAssignments());
+  ipcMain.handle('assignments:create', (_e, data) => { const a = store.createAssignment(data || {}); classroom.mirrorAssignments(store.listAssignments()); return a; });
+  ipcMain.handle('assignments:update', (_e, id, patch) => { const a = store.updateAssignment(id, patch || {}); classroom.mirrorAssignments(store.listAssignments()); return a; });
+  ipcMain.handle('assignments:remove', (_e, id) => { store.removeAssignment(id); classroom.mirrorAssignments(store.listAssignments()); return true; });
+
   // results
   ipcMain.handle('results:get', (_e, profileId) => store.getResults(profileId));
   ipcMain.handle('results:saveAttempt', (_e, profileId, attempt) => { const out = store.saveAttempt(profileId, attempt || {}); classroom.mirror(out.results); return out; });
@@ -128,7 +135,7 @@ function registerIpc() {
     const { canceled, filePaths } = await dialog.showOpenDialog(mainWindow, { properties: ['openDirectory', 'createDirectory'] });
     if (canceled || !filePaths[0]) return classroom.status();
     store.setSettings({ classroomFolder: filePaths[0] });
-    classroom.mirrorAll();
+    classroom.mirrorAll(); classroom.mirrorAssignments(store.listAssignments());
     return classroom.status();
   });
   ipcMain.handle('classroom:setFolder', (_e, folder) => { store.setSettings({ classroomFolder: folder || null }); if (folder) classroom.mirrorAll(); return classroom.status(); });

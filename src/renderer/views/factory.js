@@ -7,6 +7,7 @@ import FACTORIES from '../../shared/data/factories.json';
 import { COUNTRY_LABELS } from '../../shared/data/factory-labels.js';
 import { createFactoryScene } from '../three/factory-scene.js';
 import { reportHtml } from './fabrication.js';
+import { showHelp } from '../help.js';
 
 let scene = null, timer = null, sim = null, view = null;
 export default {
@@ -23,7 +24,8 @@ export default {
     scene = createFactoryScene(sceneEl, { lang, labels: stationLabels, onSelect: (id) => { state.selected = id; scene.highlight(id); renderHotspot(); } });
     const hud = h('div', { class: 'scene-hud' }); const hotspot = h('div', { class: 'hotspot-info hidden' });
     sceneEl.append(h('div', { class: 'scene-overlay' }, hud, h('div', { class: 'scene-hud small' }, tr('اسحب للتدوير · عجلة الفأرة للتقريب · انقر محطة لعرض تفاصيلها', 'Drag to orbit · wheel to zoom · click a station for details'))),
-      h('div', { class: 'scene-tabs' }, ['overview', 'line', 'assembly', 'dispatch', 'top'].map((v) => h('button', { class: 'btn sm', onClick: () => scene.setView(v) }, { overview: tr('عام', 'Overview'), line: tr('خط القطع', 'Cutting line'), assembly: tr('التجميع', 'Assembly'), dispatch: tr('الشحن', 'Dispatch'), top: tr('من الأعلى', 'Top') }[v]))), hotspot);
+      h('div', { class: 'scene-tabs' }, ['overview', 'line', 'assembly', 'dispatch', 'inside', 'top'].map((v) => h('button', { class: 'btn sm', onClick: () => scene.setView(v) }, { overview: tr('عام', 'Overview'), line: tr('خط القطع', 'Cutting line'), assembly: tr('التجميع', 'Assembly'), dispatch: tr('الشحن', 'Dispatch'), inside: tr('من الداخل', 'Inside'), top: tr('من الأعلى', 'Top') }[v])),
+        h('button', { class: 'btn sm', title: tr('إظهار/إخفاء السقف', 'Show/hide roof'), onClick: () => scene.toggleRoof() }, icon('layers', 14), tr('السقف', 'Roof'))), hotspot);
 
     // ---- panel: scenario
     const cityLabel = (c) => `${tr(c.city_ar, c.city_en)} (${c.country_code})`;
@@ -55,6 +57,7 @@ export default {
 
     panel.append(
       h('div', { class: 'row between' }, h('h3', { style: { margin: 0 } }, icon('factory', 18), ' ', t('nav_factory')), h('div', { class: 'row' }, playBtn, speedSel, h('button', { class: 'btn sm', title: tr('إعادة', 'Reset'), onClick: reset }, icon('refresh', 14)))),
+      h('div', { class: 'alert info small', style: { alignItems: 'center' } }, icon('info', 16), h('div', { style: { flex: 1 } }, tr('١ اختر السيناريو  ٢ اضغط تشغيل  ٣ غيّر المتغيرات وراقب OEE  ٤ انقر محطة في المشهد  ٥ احفظ الجلسة', '1 Pick a scenario  2 Press Run  3 Move the controls and watch OEE  4 Click a station in the scene  5 Save the session')), h('button', { class: 'btn sm', onClick: () => showHelp('factory') }, tr('شرح', 'Help'))),
       h('div', { class: 'card' }, h('h4', null, tr('السيناريو', 'Scenario')), field(tr('المصنع (من الدليل)', 'Factory (from directory)'), factorySel), field(tr('المدينة / المناخ', 'City / climate'), citySel), scenarioInfo),
       h('div', { class: 'card' }, h('h4', null, tr('مؤشرات الأداء الحية', 'Live KPIs')), kpis, h('div', { class: 'tiny muted', style: { marginTop: '6px' } }, tr('الإنتاج التراكمي', 'Cumulative output')), spark, h('div', { class: 'tiny muted' }, 'OEE'), spark2),
       h('div', { class: 'card' }, h('h4', null, tr('التحكم', 'Controls')), controls, h('h4', { style: { marginTop: '10px' } }, tr('القطعة النموذجية', 'Typical piece')), pieceForm),

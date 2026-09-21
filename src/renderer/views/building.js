@@ -5,6 +5,7 @@ import * as E from '../../shared/engineering.js';
 import { CITIES, cityById, ambientAt } from '../../shared/data/climate.js';
 import { createBuildingScene } from '../three/building-scene.js';
 import { reportHtml } from './fabrication.js';
+import { showHelp } from '../help.js';
 
 let scene = null, timer = null, view = null;
 export default {
@@ -47,6 +48,7 @@ export default {
     const kpis = h('div', { class: 'grid cols-2' }); const alarms = h('div', { class: 'stack' }); const terminals = h('div'); const segTable = h('div'); const spark = h('canvas', { class: 'sparkline' }); const spark2 = h('canvas', { class: 'sparkline' });
     panel.append(
       h('div', { class: 'row between' }, h('h3', { style: { margin: 0 } }, icon('building', 18), ' ', t('nav_building')), h('div', { class: 'row' }, liveBtn, speedSel)),
+      h('div', { class: 'alert info small', style: { alignItems: 'center' } }, icon('info', 16), h('div', { style: { flex: 1 } }, tr('١ اختر المدينة  ٢ غيّر المروحة والدامبرات والفلتر  ٣ جرّب الموازنة التلقائية وحقن عطل  ٤ انقر دكتاً لقراءة حساساته  ٥ احفظ الجلسة', '1 Pick the city  2 Change fan, dampers and filter  3 Try auto-balance and inject a fault  4 Click a duct to read its sensors  5 Save the session')), h('button', { class: 'btn sm', onClick: () => showHelp('building') }, tr('شرح', 'Help'))),
       h('div', { class: 'card' }, h('h4', null, tr('المناخ والموقع', 'Climate & site')), field(tr('المدينة (مناخ التصميم)', 'City (design climate)'), citySel), hourSlider),
       h('div', { class: 'card' }, h('h4', null, tr('مؤشرات حية', 'Live readings')), kpis, h('div', { class: 'tiny muted', style: { marginTop: '6px' } }, tr('الضغط الاستاتيكي الرئيسي (باسكال)', 'Main static pressure (Pa)')), spark, h('div', { class: 'tiny muted' }, tr('قدرة المروحة (كW)', 'Fan power (kW)')), spark2),
       h('div', { class: 'card' }, h('h4', null, tr('التنبيهات', 'Alarms')), alarms),
