@@ -165,6 +165,9 @@ The ductwork is built from real components: rectangular sections with TDF flange
 - **اختبار مكلَّف**: أنشأه المشرف وحدد عدد أسئلته ووقته ودرجة نجاحه. يظهر في أعلى الصفحة بعنوانه؛ اضغط **ابدأ** لتأديته. جميع الطلاب يحصلون على الأسئلة نفسها.
 - **اختبار ذاتي**: تختار أنت الوحدات وعدد الأسئلة والوقت للتدريب.
 
+## للمشرف: كيف أنشئ اختباراً مكلَّفاً؟
+من القائمة الجانبية **لوحة المشرف** ← تبويب **الاختبارات المكلَّفة** ← **اختبار مكلَّف جديد** ← حدّد العنوان والوحدات وعدد الأسئلة والوقت ودرجة النجاح وتاريخ الإغلاق ← **إنشاء ونشر**. يظهر الاختبار فوراً لكل الطلاب في صفحة الاختبارات مع زر «ابدأ»، وتتابع من أنجزه ودرجاته من التبويب نفسه، وتفتح إجابات أي طالب من تبويب الطلاب ← التفاصيل.
+
 ## أثناء الاختبار
 الأسئلة اختيار من متعدد أو صح/خطأ أو حسابية تكتب فيها رقماً. يمكنك التنقل بين الأسئلة قبل التسليم. المؤقت في الأعلى.
 
@@ -173,6 +176,9 @@ The ductwork is built from real components: rectangular sections with TDF flange
     en: `## Two kinds of exams
 - **Assigned exam**: created by your supervisor with a fixed number of questions, time and pass mark. It appears at the top with its title; press **Start**. All students get the same questions.
 - **Self-test**: you choose modules, question count and time for practice.
+
+## For the supervisor: how do I create an assigned exam?
+Sidebar **Supervisor Dashboard** → **Assigned exams** tab → **New assigned exam** → set title, modules, number of questions, time, pass mark and closing date → **Create & publish**. The exam appears immediately for every student on their Assessments page with a Start button; you track who took it and their scores in the same tab, and open any student's answers from Students → Details.
 
 ## During the exam
 Questions are multiple choice, true/false or numeric. You can move between questions before submitting. The timer is at the top.
