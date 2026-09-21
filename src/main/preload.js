@@ -62,6 +62,7 @@ contextBridge.exposeInMainWorld('duct', {
     csv: (payload) => invoke('export:csv', payload),
     json: (payload) => invoke('export:json', payload),
     pdf: (payload) => invoke('export:pdf', payload),
+    png: (payload) => invoke('export:png', payload),
     defaultDir: () => invoke('export:defaultDir'),
   },
   updates: {

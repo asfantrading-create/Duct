@@ -47,7 +47,7 @@ const FLOW = {
 export default {
   render(container, ctx) {
     container.appendChild(pageHead(t('nav_guide'), tr('شرح البرنامج خطوة بخطوة، ثم شرح كل شاشة', 'The program step by step, then every screen')));
-    const routes = ['home', 'learn', 'design', 'factory', 'building', 'fabrication', 'assessment', 'directory', ...(isSupervisorSession() ? ['supervisor'] : []), 'settings'];
+    const routes = ['home', 'learn', 'gallery', 'design', 'factory', 'building', 'fabrication', 'assessment', 'directory', ...(isSupervisorSession() ? ['supervisor'] : []), 'settings'];
     const nav = h('div', { class: 'lesson-nav' }); const body = h('div', { class: 'lesson-body' });
     let current = 'flow';
     const items = [{ id: 'flow', title: { ar: 'كيف يعمل البرنامج', en: 'How it works' } }].concat(routes.map((r) => ({ id: r, title: HELP[r].title })));

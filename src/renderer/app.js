@@ -17,14 +17,16 @@ import supervisor from './views/supervisor.js';
 import settings from './views/settings.js';
 import about from './views/about.js';
 import guide from './views/guide.js';
+import gallery from './views/gallery.js';
 import { showHelp } from './help.js';
 
-const VIEWS = { activation, profiles, home, learn, design, factory, building, fabrication, assessment, directory, supervisor, settings, about, guide };
-const ROUTE_MODULE = { learn: 'LEARN', design: 'DESIGN_LAB', factory: 'FACTORY_TWIN', building: 'BUILDING_TWIN', fabrication: 'FABRICATION_QC', assessment: 'ASSESSMENT' };
+const VIEWS = { activation, profiles, home, learn, design, factory, building, fabrication, assessment, directory, supervisor, settings, about, guide, gallery };
+const ROUTE_MODULE = { learn: 'LEARN', gallery: 'LEARN', design: 'DESIGN_LAB', factory: 'FACTORY_TWIN', building: 'BUILDING_TWIN', fabrication: 'FABRICATION_QC', assessment: 'ASSESSMENT' };
 const NAV = [
   { section: 'nav_modules' },
   { route: 'home', icon: 'home', label: 'nav_home' },
   { route: 'learn', icon: 'book', label: 'nav_learn' },
+  { route: 'gallery', icon: 'layers', label: 'nav_gallery' },
   { route: 'design', icon: 'ruler', label: 'nav_design' },
   { route: 'factory', icon: 'factory', label: 'nav_factory' },
   { route: 'building', icon: 'building', label: 'nav_building' },
@@ -183,7 +185,7 @@ export async function navigate(route, params = {}) {
     console.error(e);
     mainEl.appendChild(h('div', { class: 'alert crit' }, icon('alert'), h('div', null, h('strong', null, t('error')), h('div', { class: 'small mono' }, String(e && e.message)))));
   }
-  if (route === 'factory' || route === 'building') mainEl.classList.add('flush');
+  if (route === 'factory' || route === 'building' || route === 'gallery') mainEl.classList.add('flush');
 }
 
 async function boot() {

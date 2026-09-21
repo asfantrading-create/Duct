@@ -6,6 +6,7 @@ import { CITIES, cityById, ambientAt } from '../../shared/data/climate.js';
 import FACTORIES from '../../shared/data/factories.json';
 import { COUNTRY_LABELS } from '../../shared/data/factory-labels.js';
 import { createFactoryScene } from '../three/factory-scene.js';
+import { savePng } from '../three/common.js';
 import { reportHtml } from './fabrication.js';
 import { showHelp } from '../help.js';
 
@@ -21,11 +22,14 @@ export default {
 
     const sceneEl = h('div', { class: 'scene' }); const panel = h('div', { class: 'panel' });
     container.appendChild(h('div', { class: 'twin' }, sceneEl, panel));
-    scene = createFactoryScene(sceneEl, { lang, labels: stationLabels, onSelect: (id) => { state.selected = id; scene.highlight(id); renderHotspot(); } });
+    const words = { running: tr('يعمل', 'running'), idle: tr('خامل', 'idle'), down: tr('عطل', 'DOWN'), wip: 'WIP', util: tr('استغلال', 'util.') };
+    scene = createFactoryScene(sceneEl, { lang, labels: stationLabels, words, hour: 10, onSelect: (id) => { state.selected = id; scene.highlight(id); renderHotspot(); } });
+    scene.onQualityChange = (q) => toast(tr(`تم تخفيض جودة العرض تلقائياً إلى «${q === 'medium' ? 'متوسطة' : 'منخفضة'}» لسلاسة الحركة`, `Render quality lowered automatically to "${q}" for smooth motion`), 'info');
     const hud = h('div', { class: 'scene-hud' }); const hotspot = h('div', { class: 'hotspot-info hidden' });
     sceneEl.append(h('div', { class: 'scene-overlay' }, hud, h('div', { class: 'scene-hud small' }, tr('اسحب للتدوير · عجلة الفأرة للتقريب · انقر محطة لعرض تفاصيلها', 'Drag to orbit · wheel to zoom · click a station for details'))),
-      h('div', { class: 'scene-tabs' }, ['overview', 'line', 'assembly', 'dispatch', 'inside', 'top'].map((v) => h('button', { class: 'btn sm', onClick: () => scene.setView(v) }, { overview: tr('عام', 'Overview'), line: tr('خط القطع', 'Cutting line'), assembly: tr('التجميع', 'Assembly'), dispatch: tr('الشحن', 'Dispatch'), inside: tr('من الداخل', 'Inside'), top: tr('من الأعلى', 'Top') }[v])),
-        h('button', { class: 'btn sm', title: tr('إظهار/إخفاء السقف', 'Show/hide roof'), onClick: () => scene.toggleRoof() }, icon('layers', 14), tr('السقف', 'Roof'))), hotspot);
+      h('div', { class: 'scene-tabs' }, ['overview', 'site', 'gate', 'line', 'assembly', 'dispatch', 'inside', 'top'].map((v) => h('button', { class: 'btn sm', onClick: () => scene.setView(v) }, { overview: tr('عام', 'Overview'), site: tr('الموقع', 'Site'), gate: tr('البوابة', 'Gate'), line: tr('خط القطع', 'Cutting line'), assembly: tr('التجميع', 'Assembly'), dispatch: tr('الشحن', 'Dispatch'), inside: tr('من الداخل', 'Inside'), top: tr('من الأعلى', 'Top') }[v])),
+        h('button', { class: 'btn sm', title: tr('إظهار/إخفاء السقف', 'Show/hide roof'), onClick: () => scene.toggleRoof() }, icon('layers', 14), tr('السقف', 'Roof'))),
+      sceneTools(scene, ctx, { exterior: true, hour: 10, file: 'factory-twin' }), hotspot);
 
     // ---- panel: scenario
     const cityLabel = (c) => `${tr(c.city_ar, c.city_en)} (${c.country_code})`;
@@ -110,3 +114,18 @@ export default {
     renderKpis(sim.kpis());
   },
 };
+
+/** HUD tool column shared by the twins: labels, quality, auto-rotate, screenshot, (exterior shell), time of day. */
+export function sceneTools(scene, ctx, { exterior = false, hour = null, file = 'twin', onHour = null } = {}) {
+  const Q = { high: tr('عالية', 'High'), medium: tr('متوسطة', 'Medium'), low: tr('منخفضة', 'Low') }; const order = ['high', 'medium', 'low'];
+  const qBtn = h('button', { class: 'btn sm', title: tr('جودة العرض (الظلال، الإضاءة المحيطة، التنعيم)', 'Render quality (shadows, ambient occlusion, anti-aliasing)'), onClick: () => { const q = order[(order.indexOf(scene.getQuality()) + 1) % order.length]; scene.setQuality(q); qBtn.replaceChildren(icon('gauge', 14), `${tr('الجودة', 'Quality')}: ${Q[q]}`); } }, icon('gauge', 14), `${tr('الجودة', 'Quality')}: ${Q[scene.getQuality()]}`);
+  const items = [
+    h('button', { class: 'btn sm on', onClick: (e) => { const on = !e.currentTarget.classList.contains('on'); scene.setLabelsVisible(on); e.currentTarget.classList.toggle('on', on); } }, icon('layers', 14), tr('التسميات والقراءات', 'Labels & readings')),
+    qBtn,
+    h('button', { class: 'btn sm', onClick: (e) => { const on = !e.currentTarget.classList.contains('on'); scene.setAutoRotate(on); e.currentTarget.classList.toggle('on', on); } }, icon('refresh', 14), tr('دوران تلقائي', 'Auto-rotate')),
+    h('button', { class: 'btn sm', onClick: async () => { const r = await savePng(ctx.api, `${file}-${new Date().toISOString().slice(0, 10)}.png`, scene.screenshot()); if (r && r.ok) toast(`${t('exported')}: ${r.file}`, 'ok'); } }, icon('print', 14), tr('لقطة شاشة PNG', 'PNG screenshot')),
+  ];
+  if (exterior) items.push(h('button', { class: 'btn sm', title: tr('عرض المبنى من الخارج بجدران مصمتة أو مقطعاً يُظهر الداخل', 'Opaque exterior shell or cut-away showing the inside'), onClick: (e) => { const on = !e.currentTarget.classList.contains('on'); scene.setExterior(on); e.currentTarget.classList.toggle('on', on); } }, icon('building', 14), tr('الغلاف الخارجي', 'Exterior shell')));
+  if (hour !== null) { const val = h('span', { class: 'tiny' }, `${String(hour).padStart(2, '0')}:00`); const rng = h('input', { type: 'range', min: 5, max: 21, step: 0.5, value: hour, onInput: (e) => { const hv = parseFloat(e.target.value); scene.setHour(hv); val.textContent = `${String(Math.floor(hv)).padStart(2, '0')}:${hv % 1 ? '30' : '00'}`; if (onHour) onHour(hv); } }); items.push(h('div', { class: 'scene-hud tools-range' }, h('div', { class: 'row between' }, h('span', null, icon('sun', 12), ' ', tr('وقت اليوم (الإضاءة)', 'Time of day (lighting)')), val), rng)); }
+  return h('div', { class: 'scene-tools' }, ...items);
+}

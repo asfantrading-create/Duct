@@ -1,10 +1,14 @@
-// 3D digital twin of a rectangular-duct factory hall — daylight industrial visualisation with textured
-// concrete, sandwich-panel cladding, portal-frame steel structure, detailed machines, workers, racks, crane,
-// forklift and a delivery truck. Representative layout of a Gulf duct plant (60 × 32 m hall).
+// 3D digital twin of a rectangular-duct factory — a representative Gulf/Levant duct plant (60 × 32 m portal-frame hall)
+// on a real-looking site: arid terrain, asphalt yard, fence and gate, palms, cars, access road; analytic sky driven by
+// the hour of day with HDRI image-based lighting; textured concrete, sandwich-panel cladding, steel structure, detailed
+// machines, workers, racks, crane, forklift, delivery truck, fume stack with plume, and live callout labels per station.
 import { THREE, createBase, textSprite, updateSprite, mat, box, cylinder, contactShadow, worker } from './common.js';
+import { buildTerrain, buildSite, buildClouds, plume } from './terrain.js';
+import { straightRect } from './duct-parts.js';
 import * as TX from './textures.js';
 
 const HALL = { w: 60, d: 32, eave: 8, ridge: 10.5, bay: 6 };
+const PAD = { x: 58, z: 42 }; // paved site half-sizes (m)
 const STATION_LAYOUT = { // U-shaped production flow
   coil:       { pos: [-22, 0, -8],  size: [9, 3, 7] },
   cutting:    { pos: [-9, 0, -8.5], size: [13, 2.2, 6] },
@@ -45,29 +49,38 @@ function materials() {
   return M;
 }
 
-export function createFactoryScene(container, { onSelect = () => {}, lang = 'ar', labels = {} } = {}) {
-  const base = createBase(container, { camPos: [44, 30, 50], target: [0, 1, 0], sunPos: [35, 70, 40], shadowSize: 70 });
+/**
+ * @param labels  {stationId: name} shown in the callouts
+ * @param words   localized words for the live sub-line: { running, idle, down, wip, util }
+ */
+export function createFactoryScene(container, { onSelect = () => {}, lang = 'ar', labels = {}, words = {}, hour = 10 } = {}) {
+  const base = createBase(container, { camPos: [54, 30, 66], target: [0, 2, 2], sunPos: [35, 70, 40], shadowSize: 78, skyShader: true, hour, fog: true, fogDensity: 0.0008, quality: 'high' });
   const { scene, tickers } = base; const rtl = lang === 'ar'; const m = materials();
-  const pickables = []; const stationGroups = {}; const statusLights = {}; const wipStacks = {}; const labelSprites = {}; const rings = {};
+  const W = Object.assign({ running: 'running', idle: 'idle', down: 'DOWN', wip: 'WIP', util: 'util.' }, words);
+  const pickables = []; const stationGroups = {}; const statusLights = {}; const wipStacks = {}; const callouts = {}; const rings = {};
   const roofGroup = new THREE.Group(); scene.add(roofGroup);
 
-  buildSite(scene, m); buildHall(scene, roofGroup, m);
+  // ---- site: terrain, paved yard with fence/gate/road/palms/cars, then the hall on a concrete plinth
+  buildTerrain(scene, { padHalfX: PAD.x, padHalfZ: PAD.z, amplitude: 14, seed: 7 });
+  const sign = textSprite(HALL_SIGN_TEXT, { scale: 1.4, bg: 'rgba(43,75,140,0.95)', border: 'rgba(255,255,255,0.4)' });
+  buildSite(scene, { padHalfX: PAD.x, padHalfZ: PAD.z, signSprite: sign, palms: 16, cars: 7 });
+  const clouds = buildClouds(scene, { seed: 11, coverage: 0.45 }); tickers.push(clouds.tick);
+  scene.add(box(HALL.w + 4, 0.12, HALL.d + 4, new THREE.MeshStandardMaterial({ color: 0xb9b5ab, roughness: 0.95 }), [0, -0.061, 0]));
+  const shell = buildHall(scene, roofGroup, m);
 
   // ---- stations
   for (const [id, L] of Object.entries(STATION_LAYOUT)) {
     const g = new THREE.Group(); g.position.set(L.pos[0], 0, L.pos[2]); g.userData.pickId = id;
     // painted floor zone (grey epoxy) with yellow border
     const zone = new THREE.Mesh(new THREE.PlaneGeometry(L.size[0] + 1.6, L.size[2] + 1.6), new THREE.MeshStandardMaterial({ color: 0x8e949b, roughness: 0.85, metalness: 0 })); zone.rotation.x = -Math.PI / 2; zone.position.y = 0.012; zone.receiveShadow = true; g.add(zone);
-    const border = new THREE.Mesh(new THREE.RingGeometry(0.1, 0.11, 4), m.yellow); // placeholder replaced by line strips below
-    border.visible = false; g.add(border);
     for (const [sx, sz, w, d] of [[0, (L.size[2] + 1.6) / 2, L.size[0] + 1.6, 0.12], [0, -(L.size[2] + 1.6) / 2, L.size[0] + 1.6, 0.12], [(L.size[0] + 1.6) / 2, 0, 0.12, L.size[2] + 1.6], [-(L.size[0] + 1.6) / 2, 0, 0.12, L.size[2] + 1.6]]) { const s = new THREE.Mesh(new THREE.PlaneGeometry(w, d), new THREE.MeshStandardMaterial({ color: 0xf2c11b, roughness: 0.7 })); s.rotation.x = -Math.PI / 2; s.position.set(sx, 0.014, sz); g.add(s); }
     buildStation(id, L, g, m);
     // status beacon on a pole
     const px = -L.size[0] / 2 + 0.6, pz = -L.size[2] / 2 + 0.6;
     g.add(cylinder(0.04, L.size[1] + 1.4, m.steelGrey, [px, (L.size[1] + 1.4) / 2, pz]));
     const light = new THREE.Mesh(new THREE.SphereGeometry(0.22, 16, 16), new THREE.MeshStandardMaterial({ color: 0x22c55e, emissive: 0x22c55e, emissiveIntensity: 1.5 })); light.position.set(px, L.size[1] + 1.6, pz); g.add(light); statusLights[id] = light;
-    // signboard label
-    const lbl = textSprite(labels[id] || id, { rtl, scale: 1.05 }); lbl.position.set(0, L.size[1] + 2.9, 0); g.add(lbl); labelSprites[id] = lbl;
+    // live callout (screen-constant label with a stem down to the station)
+    const lift = 3.2 + (FLOW_PATH.indexOf(id) % 2) * 2.2; callouts[id] = base.addLabel(labels[id] || id, new THREE.Vector3(L.pos[0], L.size[1] + lift, L.pos[2]), { rtl, scale: 0.8, sub: '—', stemFrom: new THREE.Vector3(L.pos[0], L.size[1] + 0.5, L.pos[2]) });
     // WIP stack beside the station
     const stack = new THREE.Group(); stack.position.set(L.size[0] / 2 + 1.5, 0, 0); g.add(stack); wipStacks[id] = stack;
     // bottleneck ring
@@ -75,11 +88,18 @@ export function createFactoryScene(container, { onSelect = () => {}, lang = 'ar'
     scene.add(g); stationGroups[id] = g; pickables.push(g);
   }
 
+  // ---- fume-extraction stack from the plasma line through the roof, with a plume
+  const stackX = STATION_LAYOUT.cutting.pos[0] + 4.0, stackZ = STATION_LAYOUT.cutting.pos[2] - 1.2;
+  scene.add(cylinder(0.32, 4.7, m.galv, [stackX, 7.9 + 2.35, stackZ], [0, 0, 0], 28)); scene.add(cylinder(0.36, 0.25, m.galvDark, [stackX, 9.1, stackZ], [0, 0, 0], 28));
+  for (const [y, r] of [[12.5, 0.26], [12.75, 0.58]]) scene.add(cylinder(r, 0.1, m.galvDark, [stackX, y, stackZ], [0, 0, 0], 28));
+  for (let i = 0; i < 3; i++) scene.add(cylinder(0.015, 3.2, m.steelGrey, [stackX + Math.cos((i / 3) * Math.PI * 2) * 0.9, 10.2, stackZ + Math.sin((i / 3) * Math.PI * 2) * 0.9], [Math.sin((i / 3) * Math.PI * 2) * 0.5, 0, -Math.cos((i / 3) * Math.PI * 2) * 0.5], 6)); // guy wires
+  const smoke = plume(scene, [stackX, 12.8, stackZ], { count: 150, rise: 9, spread: 1.7, size: 1.0, opacity: 0.26, color: 0xe8edf3 }); tickers.push(smoke.tick);
+
   // ---- roller conveyor + moving pieces along the U flow
   const pathPts = FLOW_PATH.map((id) => { const L = STATION_LAYOUT[id]; return new THREE.Vector3(L.pos[0], 0.55, L.pos[2] + (L.pos[2] < 0 ? L.size[2] / 2 + 1.6 : -(L.size[2] / 2 + 1.6))); });
   const curve = new THREE.CatmullRomCurve3(pathPts, false, 'catmullrom', 0.08);
   buildConveyor(scene, curve, m);
-  const pieceGeo = new THREE.BoxGeometry(1.2, 0.5, 0.7); const pieces = [];
+  const pieces = [];
   for (let i = 0; i < 24; i++) { const p = ductPiece(1.2, 0.5, 0.7, m); p.userData.t = i / 24; scene.add(p); pieces.push(p); }
   let pieceSpeed = 0.012;
   tickers.push((dt) => { for (const p of pieces) { p.userData.t = (p.userData.t + dt * pieceSpeed) % 1; const pos = curve.getPointAt(p.userData.t); p.position.copy(pos); p.position.y = 0.85; const tan = curve.getTangentAt(p.userData.t); p.rotation.y = Math.atan2(tan.x, tan.z); p.visible = p.userData.t < 0.985; } });
@@ -89,12 +109,13 @@ export function createFactoryScene(container, { onSelect = () => {}, lang = 'ar'
   const forkCurve = new THREE.CatmullRomCurve3([new THREE.Vector3(-26, 0, 13.5), new THREE.Vector3(-2, 0, 13.5), new THREE.Vector3(27, 0, 12), new THREE.Vector3(27, 0, -13.5), new THREE.Vector3(-26, 0, -13.5), new THREE.Vector3(-28.5, 0, 0)], true); let forkT = 0;
   tickers.push((dt) => { forkT = (forkT + dt * 0.016) % 1; const p = forkCurve.getPointAt(forkT); fork.position.copy(p); const tan = forkCurve.getTangentAt(forkT); fork.rotation.y = Math.atan2(tan.x, tan.z) - Math.PI / 2; });
   const truckG = truck(m); truckG.position.set(-9, 0, 25.5); truckG.rotation.y = Math.PI / 2; scene.add(truckG);
+  const truck2 = truck(m); truck2.position.set(30, 0, 30); truck2.rotation.y = -Math.PI / 2 + 0.25; scene.add(truck2);
   // overhead crane travelling slowly along the hall
   const crane = overheadCrane(m); scene.add(crane); let craneT = 0;
   tickers.push((dt) => { craneT += dt * 0.05; crane.position.x = Math.sin(craneT) * 18; });
   // plasma torch flicker
   const torches = []; scene.traverse((o) => { if (o.userData.torch) torches.push(o); });
-  tickers.push((dt) => { for (const t of torches) t.material.emissiveIntensity = 1.2 + Math.random() * 1.6; });
+  tickers.push(() => { for (const t of torches) t.material.emissiveIntensity = 1.2 + Math.random() * 1.6; });
   // pulsing bottleneck ring
   let bottleneck = null; let pulse = 0;
   tickers.push((dt) => { pulse += dt * 3; for (const [id, ring] of Object.entries(rings)) ring.material.opacity = id === bottleneck ? 0.35 + 0.3 * Math.sin(pulse) : 0; });
@@ -103,8 +124,9 @@ export function createFactoryScene(container, { onSelect = () => {}, lang = 'ar'
   let hovered = null;
   base.renderer.domElement.addEventListener('click', (e) => { const id = base.pick(e, pickables); if (id) onSelect(id); });
   base.renderer.domElement.addEventListener('pointermove', (e) => { const id = base.pick(e, pickables); if (id !== hovered) { hovered = id; base.renderer.domElement.style.cursor = id ? 'pointer' : 'grab'; } });
-  const VIEWS = { overview: [[44, 30, 50], [0, 1, 0]], line: [[-24, 8, 6], [-6, 1.5, -8]], assembly: [[30, 9, 2], [18, 1.5, -3]], dispatch: [[-16, 9, 22], [-9, 1, 8]], top: [[0, 75, 0.1], [0, 0, 0]], inside: [[-27, 1.7, 2], [10, 2, -4]] };
+  const VIEWS = { overview: [[54, 30, 66], [0, 2, 2]], site: [[-105, 46, 128], [0, 0, 18]], gate: [[9, 2.2, 66], [-2, 5, 12]], line: [[-24, 8, 6], [-6, 1.5, -8]], assembly: [[30, 9, 2], [18, 1.5, -3]], dispatch: [[-16, 9, 22], [-9, 1, 8]], top: [[0, 95, 0.1], [0, 0, 0]], inside: [[-27, 1.7, 2], [10, 2, -4]] };
 
+  let lastLabels = labels;
   return {
     update(kpis) {
       pieceSpeed = 0.004 + 0.02 * Math.min(1.5, kpis.piecesPerHour / 15);
@@ -112,44 +134,51 @@ export function createFactoryScene(container, { onSelect = () => {}, lang = 'ar'
       for (const st of kpis.stations) {
         const light = statusLights[st.id]; if (light) { const c = st.status === 'down' ? 0xef4444 : st.status === 'running' ? 0x22c55e : 0xf59e0b; light.material.color.setHex(c); light.material.emissive.setHex(c); }
         const stack = wipStacks[st.id]; if (stack) { const want = Math.min(12, st.queue); while (stack.children.length < want) { const n = stack.children.length; const b = ductPiece(1.2, 0.5, 0.7, m); b.position.set((n % 2) * 1.35, 0.26 + Math.floor(n / 2) * 0.54, 0); stack.add(b); } while (stack.children.length > want) { const b = stack.children.pop(); stack.remove(b); } }
+        const c = callouts[st.id]; if (c) c.set(lastLabels[st.id] || st.id, `${W[st.status] || st.status} · ${W.wip} ${st.queue} · ${W.util} ${Math.round(st.utilization * 100)}%${st.id === bottleneck ? ' ⚠' : ''}`);
       }
     },
-    setLabels(newLabels, newLang) { for (const [id, sp] of Object.entries(labelSprites)) updateSprite(sp, newLabels[id] || id, { rtl: newLang === 'ar', scale: 1.05 }); },
+    setLabels(newLabels) { lastLabels = newLabels; for (const [id, c] of Object.entries(callouts)) c.set(newLabels[id] || id, '—'); },
     highlight(id) { for (const [sid, g] of Object.entries(stationGroups)) { const zone = g.children[0]; zone.material.color.setHex(sid === id ? 0x9b8cf0 : 0x8e949b); } },
     setView(name) { const v = VIEWS[name] || VIEWS.overview; base.flyTo(v[0], v[1]); },
     toggleRoof() { roofGroup.visible = !roofGroup.visible; return roofGroup.visible; },
+    /** Exterior shell: opaque walls & roof as seen from the yard (true) or cut-away that reveals the hall (false). */
+    setExterior(on) { for (const mt of shell.shellMats) { mt.side = on ? THREE.DoubleSide : THREE.BackSide; mt.needsUpdate = true; } shell.roofMat.opacity = on ? 1 : 0.92; shell.roofMat.transparent = !on; shell.roofMat.side = on ? THREE.DoubleSide : THREE.BackSide; shell.roofMat.needsUpdate = true; if (on) roofGroup.visible = true; return on; },
+    setHour: base.setHour, setLabelsVisible: base.setLabelsVisible, setQuality: base.setQuality, getQuality: base.getQuality, setAutoRotate: base.setAutoRotate, screenshot: base.screenshot,
+    set onQualityChange(fn) { base.onQualityChange = fn; },
     dispose: base.dispose,
   };
 }
 
-// ------------------------------------------------------------------ site & hall
-function buildSite(scene, m) {
-  const asphalt = new THREE.Mesh(new THREE.PlaneGeometry(220, 220), new THREE.MeshStandardMaterial({ color: 0x9d9a92, roughness: 1, metalness: 0 })); asphalt.rotation.x = -Math.PI / 2; asphalt.position.y = -0.03; asphalt.receiveShadow = true; scene.add(asphalt);
-  // yard: parking bays, kerbs, some trees
-  for (let i = 0; i < 6; i++) { const l = new THREE.Mesh(new THREE.PlaneGeometry(0.15, 5.5), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.8 })); l.rotation.x = -Math.PI / 2; l.position.set(-40 + i * 3, -0.02, 27); scene.add(l); }
-  const kerb = box(70, 0.15, 0.3, m.concreteBlock, [0, 0.05, 30.5]); scene.add(kerb);
-  for (const [x, z] of [[-36, 24], [-36, -22], [36, 24], [36, -22], [-42, 0], [42, 0]]) { scene.add(cylinder(0.18, 3, new THREE.MeshStandardMaterial({ color: 0x6b4a2b, roughness: 0.9 }), [x, 1.5, z], [0, 0, 0], 8)); const crown = new THREE.Mesh(new THREE.SphereGeometry(2.4, 12, 10), new THREE.MeshStandardMaterial({ color: 0x4f7a3a, roughness: 0.95 })); crown.position.set(x, 4.6, z); crown.castShadow = true; scene.add(crown); }
-}
+// ------------------------------------------------------------------ hall
 function buildHall(scene, roofGroup, m) {
-  const { w, d, eave, ridge } = HALL;
+  const { w, d, eave, ridge } = HALL; const shellMats = [];
   const floor = new THREE.Mesh(new THREE.PlaneGeometry(w + 4, d + 4), new THREE.MeshStandardMaterial({ map: TX.concreteFloor(16, 9), roughness: 0.9, metalness: 0.02 })); floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
   // yellow walkway lines and pedestrian zebra
   for (const z of [-3.2, 3.2]) { const l = new THREE.Mesh(new THREE.PlaneGeometry(w - 4, 0.12), new THREE.MeshStandardMaterial({ color: 0xf2c11b, roughness: 0.7 })); l.rotation.x = -Math.PI / 2; l.position.set(0, 0.011, z); scene.add(l); }
   for (let i = 0; i < 8; i++) { const zb = new THREE.Mesh(new THREE.PlaneGeometry(0.5, 6.2), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.8 })); zb.rotation.x = -Math.PI / 2; zb.position.set(-27 + i * 1.0, 0.011, 0); scene.add(zb); }
-  // walls (sandwich panels) rendered back-side so the camera always looks into the hall
+  // walls (sandwich panels) rendered back-side so the camera looks into the hall; setExterior() makes them double-sided
   const wallMat = new THREE.MeshStandardMaterial({ map: TX.wallPanels(15, 2), roughness: 0.6, metalness: 0.15, side: THREE.BackSide });
-  const wallMatShort = new THREE.MeshStandardMaterial({ map: TX.wallPanels(8, 2), roughness: 0.6, metalness: 0.15, side: THREE.BackSide });
+  const wallMatShort = new THREE.MeshStandardMaterial({ map: TX.wallPanels(8, 2), roughness: 0.6, metalness: 0.15, side: THREE.BackSide }); shellMats.push(wallMat, wallMatShort);
   const long = new THREE.PlaneGeometry(w, eave), short = new THREE.PlaneGeometry(d, eave);
-  for (const [geo, mt, x, z, ry] of [[long, wallMat, 0, -d / 2, 0], [long, wallMat, 0, d / 2, Math.PI], [short, wallMatShort, -w / 2, 0, Math.PI / 2], [short, wallMatShort, w / 2, 0, -Math.PI / 2]]) { const wall = new THREE.Mesh(geo, mt); wall.position.set(x, eave / 2, z); wall.rotation.y = ry; wall.receiveShadow = true; scene.add(wall); }
+  for (const [geo, mt, x, z, ry] of [[long, wallMat, 0, -d / 2, 0], [long, wallMat, 0, d / 2, Math.PI], [short, wallMatShort, -w / 2, 0, Math.PI / 2], [short, wallMatShort, w / 2, 0, -Math.PI / 2]]) { const wall = new THREE.Mesh(geo, mt); wall.position.set(x, eave / 2, z); wall.rotation.y = ry; wall.receiveShadow = true; wall.castShadow = true; scene.add(wall); }
   // gable triangles
   const gableShape = new THREE.Shape(); gableShape.moveTo(-d / 2, eave); gableShape.lineTo(0, ridge); gableShape.lineTo(d / 2, eave); gableShape.closePath();
-  for (const [x, ry] of [[-w / 2, Math.PI / 2], [w / 2, -Math.PI / 2]]) { const gable = new THREE.Mesh(new THREE.ShapeGeometry(gableShape), new THREE.MeshStandardMaterial({ color: 0xdfe3e6, roughness: 0.6, side: THREE.BackSide })); gable.position.x = x; gable.rotation.y = ry; scene.add(gable); }
-  // blue accent band + company signage on the long wall
-  const band = new THREE.Mesh(new THREE.PlaneGeometry(w, 0.6), new THREE.MeshStandardMaterial({ color: 0x2b4b8c, roughness: 0.5, side: THREE.BackSide })); band.position.set(0, 6.3, -d / 2 - 0.02); scene.add(band);
-  // window band on the office side and roller-shutter doors on the dispatch side
-  for (let i = 0; i < 6; i++) { const win = new THREE.Mesh(new THREE.PlaneGeometry(3.2, 1.4), TX.glassMaterial(0x9fc9ea, 0.6)); win.position.set(-22 + i * 4.2, 4.6, -d / 2 + 0.05); scene.add(win); }
-  for (const x of [-13, -5]) { const door = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), new THREE.MeshStandardMaterial({ map: TX.shutter(1, 10), metalness: 0.5, roughness: 0.5 })); door.position.set(x, 2.5, d / 2 - 0.05); door.rotation.y = Math.PI; scene.add(door); const frame = box(5.4, 0.25, 0.3, m.steelDark, [x, 5.1, d / 2 - 0.1]); scene.add(frame); }
-  const pdoor = new THREE.Mesh(new THREE.PlaneGeometry(1.1, 2.2), new THREE.MeshStandardMaterial({ color: 0x2b4b8c, roughness: 0.5 })); pdoor.position.set(-w / 2 + 0.05, 1.1, 10); pdoor.rotation.y = Math.PI / 2; scene.add(pdoor);
+  const gableMat = new THREE.MeshStandardMaterial({ color: 0xdfe3e6, roughness: 0.6, side: THREE.BackSide }); shellMats.push(gableMat);
+  for (const [x, ry] of [[-w / 2, Math.PI / 2], [w / 2, -Math.PI / 2]]) { const gable = new THREE.Mesh(new THREE.ShapeGeometry(gableShape), gableMat); gable.position.x = x; gable.rotation.y = ry; scene.add(gable); }
+  // blue accent band on both long walls (flush with the wall, drawn on top from either side)
+  const bandMat = new THREE.MeshStandardMaterial({ color: 0x2b4b8c, roughness: 0.5, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 });
+  for (const z of [-d / 2, d / 2]) { const band = new THREE.Mesh(new THREE.PlaneGeometry(w, 0.6), bandMat); band.position.set(0, 6.3, z); scene.add(band); }
+  // window band on the office side and roller-shutter doors on the dispatch side (flush, double-sided)
+  const winMat = TX.glassMaterial(0x9fc9ea, 0.6); winMat.side = THREE.DoubleSide; winMat.polygonOffset = true; winMat.polygonOffsetFactor = -2; winMat.polygonOffsetUnits = -2;
+  for (let i = 0; i < 6; i++) { const win = new THREE.Mesh(new THREE.PlaneGeometry(3.2, 1.4), winMat); win.position.set(-22 + i * 4.2, 4.6, -d / 2); scene.add(win); const frame = box(3.4, 0.08, 0.1, m.steelDark, [-22 + i * 4.2, 3.86, -d / 2]); scene.add(frame); }
+  const doorMat = new THREE.MeshStandardMaterial({ map: TX.shutter(1, 10), metalness: 0.5, roughness: 0.5, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 });
+  for (const x of [-13, -5]) { const door = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), doorMat); door.position.set(x, 2.5, d / 2); scene.add(door); const frame = box(5.4, 0.25, 0.3, m.steelDark, [x, 5.1, d / 2]); scene.add(frame); scene.add(box(0.25, 5.2, 0.3, m.steelDark, [x - 2.7, 2.6, d / 2])); scene.add(box(0.25, 5.2, 0.3, m.steelDark, [x + 2.7, 2.6, d / 2])); }
+  const pdoorMat = new THREE.MeshStandardMaterial({ color: 0x2b4b8c, roughness: 0.5, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 });
+  const pdoor = new THREE.Mesh(new THREE.PlaneGeometry(1.1, 2.2), pdoorMat); pdoor.position.set(-w / 2, 1.1, 10); pdoor.rotation.y = Math.PI / 2; scene.add(pdoor);
+  // exterior details: downpipes at the corners, wall-mounted lamps, company name on the front gable side
+  for (const [x, z] of [[-w / 2 - 0.15, -d / 2 + 0.6], [w / 2 + 0.15, -d / 2 + 0.6], [-w / 2 - 0.15, d / 2 - 0.6], [w / 2 + 0.15, d / 2 - 0.6]]) scene.add(cylinder(0.06, eave, m.steelGrey, [x, eave / 2, z], [0, 0, 0], 10));
+  for (const x of [-20, -10, 0, 10, 20]) { scene.add(box(0.3, 0.2, 0.5, m.steelDark, [x, 7.3, d / 2 + 0.25])); scene.add(box(0.24, 0.06, 0.4, m.lamp, [x, 7.2, d / 2 + 0.3])); }
+  const frontSign = textSprite(HALL_SIGN_TEXT, { scale: 2.0, bg: 'rgba(43,75,140,0.97)', border: 'rgba(255,255,255,0.45)' }); frontSign.position.set(8, 7.4, d / 2 + 0.6); scene.add(frontSign);
   // portal frames: columns, rafters, purlins, runway beams, roof cladding & skylights
   for (let x = -w / 2; x <= w / 2 + 0.01; x += HALL.bay) {
     for (const z of [-d / 2 + 0.3, d / 2 - 0.3]) { scene.add(iBeam(0.45, eave, m.structure, [x, eave / 2, z], 'y')); scene.add(box(0.9, 0.06, 0.9, m.steelDark, [x, 0.03, z])); }
@@ -157,21 +186,25 @@ function buildHall(scene, roofGroup, m) {
   }
   for (let z = -d / 2 + 2; z < d / 2; z += 2) { const y = eave + (ridge - eave) * (1 - Math.abs(z) / (d / 2)); scene.add(box(w, 0.12, 0.08, m.structure, [0, y + 0.15, z])); }
   for (const z of [-d / 2 + 1.5, d / 2 - 1.5]) scene.add(box(w - 1, 0.35, 0.3, m.structure, [0, eave - 1.2, z])); // crane runway
-  // roof
+  // roof (profiled deck) with skylight strips, ridge ventilators and a parapet gutter line
   const roofMat = new THREE.MeshStandardMaterial({ map: TX.roofDeck(30, 8), roughness: 0.6, metalness: 0.4, side: THREE.BackSide, transparent: true, opacity: 0.92 });
   const slopeLen = Math.hypot(d / 2, ridge - eave); const slopeAng = Math.atan2(ridge - eave, d / 2);
-  for (const s of [-1, 1]) { const slope = new THREE.Mesh(new THREE.PlaneGeometry(w + 0.6, slopeLen), roofMat); slope.position.set(0, (eave + ridge) / 2 + 0.3, s * d / 4); slope.rotation.x = -Math.PI / 2 + s * slopeAng * -1; roofGroup.add(slope);
+  for (const s of [-1, 1]) { const slope = new THREE.Mesh(new THREE.PlaneGeometry(w + 0.6, slopeLen), roofMat); slope.position.set(0, (eave + ridge) / 2 + 0.3, s * d / 4); slope.rotation.x = -Math.PI / 2 + s * slopeAng * -1; slope.castShadow = true; slope.receiveShadow = true; roofGroup.add(slope);
     for (let x = -w / 2 + 4; x < w / 2; x += 8) { const sky = new THREE.Mesh(new THREE.PlaneGeometry(3, slopeLen * 0.6), new THREE.MeshStandardMaterial({ color: 0xf6fbff, transparent: true, opacity: 0.45, roughness: 0.2, side: THREE.DoubleSide, emissive: 0xffffff, emissiveIntensity: 0.25 })); sky.position.set(x, (eave + ridge) / 2 + 0.36, s * d / 4); sky.rotation.x = -Math.PI / 2 + s * slopeAng * -1; roofGroup.add(sky); } }
+  roofGroup.add(box(w + 0.8, 0.25, 0.5, m.galvDark, [0, ridge + 0.4, 0])); // ridge capping
+  for (const x of [-21, -9, 3, 15]) { roofGroup.add(cylinder(0.7, 0.6, m.galv, [x, ridge + 0.85, 0], [0, 0, 0], 24)); roofGroup.add(cylinder(0.05, 1.0, m.galvDark, [x, ridge + 1.3, 0], [0, 0, 0], 24, 0.8)); } // ridge ventilators
+  for (const s of [-1, 1]) roofGroup.add(box(w + 0.8, 0.22, 0.3, m.galvDark, [0, eave + 0.2, s * (d / 2 + 0.15)])); // gutters
   // high-bay LED luminaires
   for (let x = -24; x <= 24; x += 8) for (const z of [-9, 0, 9]) { const y = eave + (ridge - eave) * (1 - Math.abs(z) / (d / 2)) - 1.2; scene.add(cylinder(0.02, 1.0, m.steelDark, [x, y + 0.5, z])); scene.add(cylinder(0.45, 0.12, m.lamp, [x, y, z], [0, 0, 0], 20)); }
-  // office block in the north-west corner (two storeys with glazing) and mezzanine stairs
+  // office block in the corner (two storeys with glazing)
   const office = new THREE.Group(); office.position.set(22, 0, 12.5);
   office.add(box(12, 3.2, 5, new THREE.MeshStandardMaterial({ color: 0xe6e9ec, roughness: 0.7 }), [0, 1.6, 0])); office.add(box(12, 3.0, 5, new THREE.MeshStandardMaterial({ color: 0xdde2e6, roughness: 0.7 }), [0, 4.7, 0]));
   for (const y of [1.7, 4.8]) for (let i = 0; i < 4; i++) office.add(new THREE.Mesh(new THREE.PlaneGeometry(2.2, 1.3), TX.glassMaterial(0x9fc9ea, 0.7)).translateX(-4.5 + i * 3).translateY(y).translateZ(-2.51));
-  const sign = textSprite(HALL_SIGN_TEXT, { scale: 1.1, color: '#fff', bg: 'rgba(43,75,140,0.95)', border: 'rgba(255,255,255,0.4)' }); sign.position.set(0, 6.9, -2.4); office.add(sign);
+  const osign = textSprite(HALL_SIGN_TEXT, { scale: 1.1, bg: 'rgba(43,75,140,0.95)', border: 'rgba(255,255,255,0.4)' }); osign.position.set(0, 6.9, -2.4); office.add(osign);
   scene.add(office);
-  // fire extinguishers & first-aid board on columns
+  // fire extinguishers on columns
   for (const x of [-18, 0, 18]) { scene.add(cylinder(0.08, 0.5, new THREE.MeshStandardMaterial({ color: 0xd11a1a, roughness: 0.4 }), [x + 0.5, 0.9, -d / 2 + 0.9])); }
+  return { shellMats, roofMat };
 }
 const HALL_SIGN_TEXT = 'DUCT FACTORY · مصنع الدكت';
 function iBeam(size, len, material, pos, axis) {
@@ -192,9 +225,12 @@ function buildConveyor(scene, curve, m) {
 /** A rectangular duct piece with TDF flanges and corners. */
 function ductPiece(w, h, l, m) {
   const g = new THREE.Group(); const body = new THREE.Mesh(new THREE.BoxGeometry(w, h, l), m.galv); body.castShadow = true; body.receiveShadow = true; g.add(body);
-  for (const s of [-1, 1]) { const fl = new THREE.Mesh(new THREE.BoxGeometry(w + 0.08, h + 0.08, 0.03), m.galvDark); fl.position.z = s * (l / 2 - 0.015); g.add(fl); }
+  for (const s of [-1, 1]) { const fl = new THREE.Mesh(new THREE.BoxGeometry(w + 0.08, h + 0.08, 0.03), m.galvDark); fl.position.z = s * (l / 2 - 0.015); g.add(fl); for (const sx of [-1, 1]) for (const sy of [-1, 1]) { const c = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.07, 0.04), m.steelDark); c.position.set(sx * (w / 2 + 0.005), sy * (h / 2 + 0.005), s * (l / 2 - 0.015)); g.add(c); } }
+  const seam = new THREE.Mesh(new THREE.BoxGeometry(0.012, 0.012, l - 0.06), m.galvDark); seam.position.set(w / 2, -h / 2, 0); g.add(seam);
   return g;
 }
+/** Fully detailed piece (Pittsburgh seam, TDF flanges with corners, bolts, gasket, beads) for close-up benches. */
+function heroPiece(w, h, l) { return straightRect({ w, h, len: l }); }
 function forklift(m) {
   const g = new THREE.Group();
   g.add(box(2.0, 0.9, 1.2, m.orange, [0, 0.75, 0])); g.add(box(1.0, 0.7, 1.1, m.steelDark, [-0.5, 1.55, 0])); g.add(box(0.9, 0.05, 1.0, m.steelDark, [0.1, 2.1, 0]));
@@ -273,8 +309,8 @@ function buildStation(id, L, g, m) {
       g.add(worker([-3.4, 0, 0.7], Math.PI)); g.add(worker([1.6, 0, 0.9], Math.PI, { vest: 0x22c55e }));
       break; }
     case 'assembly': {
-      for (let i = 0; i < 3; i++) { const x = -3.4 + i * 3.2; g.add(bench(m, 2.6, 1.3, [x, 0, -1.8])); const p = ductPiece(1.5, 0.8, 1.1, m); p.position.set(x, 1.34, -1.8); g.add(p); g.add(worker([x, 0, -0.6], Math.PI)); }
-      g.add(bench(m, 2.6, 1.3, [-1.8, 0, 1.6])); const big = ductPiece(2.2, 1.0, 1.2, m); big.position.set(-1.8, 1.44, 1.6); g.add(big); g.add(worker([-1.8, 0, 2.8], 0, { vest: 0x22c55e }));
+      for (let i = 0; i < 3; i++) { const x = -3.4 + i * 3.2; g.add(bench(m, 2.6, 1.3, [x, 0, -1.8])); const p = heroPiece(1.5, 0.8, 1.1); p.position.set(x, 1.34, -1.8); g.add(p); g.add(worker([x, 0, -0.6], Math.PI)); }
+      g.add(bench(m, 2.6, 1.3, [-1.8, 0, 1.6])); const big = heroPiece(2.2, 1.0, 1.2); big.position.set(-1.8, 1.44, 1.6); g.add(big); g.add(worker([-1.8, 0, 2.8], 0, { vest: 0x22c55e }));
       g.add(box(1.3, 1.4, 1.0, m.steelBlue, [2.6, 0.7, 1.6])); g.add(cylinder(0.08, 1.2, m.galvDark, [2.6, 1.45, 1.6], [Math.PI / 2, 0, 0], 12)); // seam closer
       for (let i = 0; i < 3; i++) { g.add(cylinder(0.18, 0.4, new THREE.MeshStandardMaterial({ color: [0xeeeeee, 0x1d4ed8, 0xeeeeee][i], roughness: 0.6 }), [4.2 + (i % 2) * 0.45, 0.2, 1.2 + Math.floor(i / 2) * 0.5], [0, 0, 0], 14)); } // sealant buckets
       g.add(cylinder(0.25, 0.3, m.orange, [4.4, 2.6, -2.6], [0, 0, Math.PI / 2], 16)); g.add(cylinder(0.03, 2.4, m.steelDark, [4.4, 1.4, -2.6])); // air hose reel
@@ -288,7 +324,7 @@ function buildStation(id, L, g, m) {
       g.add(worker([-1.8, 0, 1.3], 0)); g.add(worker([1.9, 0, 0.4], Math.PI / 2, { vest: 0x22c55e }));
       break; }
     case 'qc': {
-      g.add(bench(m, 2.8, 1.4, [-1.6, 0, 0])); const p = ductPiece(1.6, 0.8, 1.1, m); p.position.set(-1.6, 1.34, 0); g.add(p); for (const s of [-1, 1]) g.add(box(1.7, 0.9, 0.04, new THREE.MeshStandardMaterial({ color: 0xd11a1a, roughness: 0.5 }), [-1.6, 1.34, s * 0.57]));
+      g.add(bench(m, 2.8, 1.4, [-1.6, 0, 0])); const p = heroPiece(1.6, 0.8, 1.1); p.position.set(-1.6, 1.34, 0); g.add(p); for (const s of [-1, 1]) g.add(box(1.7, 0.9, 0.04, new THREE.MeshStandardMaterial({ color: 0xd11a1a, roughness: 0.5 }), [-1.6, 1.34, s * 0.57]));
       // leakage test cart: fan, orifice tube, gauges
       g.add(box(1.0, 0.8, 0.7, new THREE.MeshStandardMaterial({ color: 0xd11a1a, roughness: 0.5 }), [1.4, 0.6, 0.4])); g.add(cylinder(0.25, 0.6, m.steelDark, [1.4, 1.2, 0.4], [0, 0, Math.PI / 2], 20)); g.add(cylinder(0.06, 1.8, m.galvDark, [0.2, 1.3, 0.4], [0, 0, Math.PI / 2])); for (const [x, z] of [[1.0, 0.75], [1.4, 0.75]]) { g.add(cylinder(0.12, 0.04, m.white, [x, 1.15, z], [Math.PI / 2, 0, 0], 16)); }
       for (const [x, z] of [[1.0, 0.1], [1.8, 0.1], [1.0, 0.7], [1.8, 0.7]]) g.add(cylinder(0.1, 0.08, m.rubber, [x, 0.1, z], [Math.PI / 2, 0, 0], 12));

@@ -37,6 +37,23 @@ Open the **Supervisor Dashboard** to create classes, assign exams and track stud
 - At the end of each lesson click **Mark as completed** so your progress is recorded and visible to the supervisor.
 - **Quiz me** opens a short quiz on the lesson topic.
 - Switch language with the EN / ع button at the top at any time.` } },
+  gallery: { title: { ar: 'معرض مكونات الدكت 3D', en: 'Duct components 3D gallery' }, body: {
+    ar: `## ماذا يعرض؟
+مكونات دكت حقيقية مبنية بارامترياً بتفاصيل التصنيع: مقطع مستطيل بفلنجات TDF وزوايا وحشوة وقفل بيتسبرغ، أكواع بنصف قطر أو حادة بريش توجيه، انتقالات، تفرعات، دكت حلزوني بوصلات، أكواع دائرية مقطّعة، مقلّصات، دكت مرن معزول، دامبرات ضبط الحجم ودامبرات حريق، مخارج هواء وشبكات، صندوق VAV، وحمالة Trapeze.
+
+## كيف تستخدمه
+1. اختر المكوّن من الشرائط.
+2. حرّك منزلقات الأبعاد؛ يُعاد بناء النموذج فوراً وتتحدث مساحة السطح والسماكة والوزن.
+3. اقرأ التسميات على الأجزاء، أو انقر جزءاً في القائمة لتقريب الكاميرا إليه.
+4. أزرار المشهد: إظهار/إخفاء التسميات، الدوران التلقائي، ولقطة شاشة PNG للتقارير.`,
+    en: `## What it shows
+Real duct components built parametrically with fabrication details: rectangular duct with TDF flanges, corners, gasket and Pittsburgh seam; radius and mitred elbows with turning vanes; transitions; take-offs; spiral duct with couplings; gored round elbows; reducers; insulated flexible duct; volume and fire dampers; diffusers and grilles; a VAV box; and a trapeze hanger.
+
+## How to use it
+1. Pick a component from the chips.
+2. Move the dimension sliders; the model rebuilds instantly and surface area, gauge and weight update.
+3. Read the labels on the parts, or click a part in the list to fly the camera to it.
+4. Scene buttons: labels on/off, auto-rotate, and a PNG screenshot for reports.` } },
   design: { title: { ar: 'مختبر التصميم', en: 'Design Lab' }, body: {
     ar: `## ست حاسبات هندسية
 - **تحليل مقطع**: أدخل المقاس والتدفق والطول والفتنغز؛ تحصل على السرعة وضغط السرعة وفقد الاحتكاك والفقد الكلي والسماكة المناسبة.
@@ -68,7 +85,13 @@ Results update instantly when you change a number.` } },
 5. **حفظ الجلسة** يسجل النتائج باسمك ليطّلع عليها المشرف. **تصدير** ينتج CSV أو تقرير PDF.
 
 ## التحكم بالكاميرا
-اسحب بالفأرة للتدوير، عجلة الفأرة للتقريب، الزر الأيمن للتحريك. أزرار المشاهد أسفل النموذج، وزر **السقف** يخفي السقف.`,
+اسحب بالفأرة للتدوير، عجلة الفأرة للتقريب، الزر الأيمن للتحريك. أزرار المشاهد أسفل النموذج (عام، الموقع، البوابة، خط القطع، التجميع، الشحن، من الداخل، من الأعلى)، وزر **السقف** يخفي السقف.
+
+## أدوات المشهد (أعلى اليسار)
+- **التسميات والقراءات**: لافتات فوق كل محطة تعرض حالتها وWIP ونسبة الاستغلال مباشرة، وتبقى بحجم ثابت على الشاشة مهما قرّبت أو أبعدت.
+- **الجودة**: عالية (ظلال دقيقة، إضاءة محيطة GTAO، تنعيم) أو متوسطة أو منخفضة للأجهزة الأضعف. يخفضها البرنامج تلقائياً إذا تباطأت الحركة.
+- **دوران تلقائي**، **لقطة شاشة PNG** تُحفظ على جهازك، **الغلاف الخارجي** يعرض المبنى بجدران مصمتة كما يُرى من الساحة أو مقطعاً يُظهر الداخل.
+- **وقت اليوم (الإضاءة)**: يحرّك الشمس والسماء من الفجر إلى الليل؛ الظلال وألوان الضوء تتبع الساعة.`,
     en: `## The idea
 A 3D duct factory with a live production-line simulation of seven stations: coil storage, cutting, forming, assembly, insulation, QC, dispatch.
 
@@ -80,7 +103,13 @@ A 3D duct factory with a live production-line simulation of seven stations: coil
 5. **Save session** records the results under your name for the supervisor. **Export** produces CSV or a PDF report.
 
 ## Camera
-Drag to orbit, wheel to zoom, right-drag to pan. View buttons are below the model; **Roof** hides the roof.` } },
+Drag to orbit, wheel to zoom, right-drag to pan. View buttons are below the model (overview, site, gate, cutting line, assembly, dispatch, inside, top); **Roof** hides the roof.
+
+## Scene tools (top-left)
+- **Labels & readings**: callouts above every station with live status, WIP and utilisation; they keep a constant size on screen at any zoom.
+- **Quality**: high (sharp shadows, GTAO ambient occlusion, anti-aliasing), medium or low for weaker machines. It drops automatically if motion gets slow.
+- **Auto-rotate**, **PNG screenshot** saved on your device, **Exterior shell** shows the building with opaque walls as seen from the yard or as a cut-away revealing the inside.
+- **Time of day (lighting)**: moves the sun and sky from dawn to night; shadows and light colour follow the hour.` } },
   building: { title: { ar: 'توأم شبكة الدكت', en: 'Duct Network Twin' }, body: {
     ar: `## الفكرة
 مبنى مكاتب فيه وحدة مناولة هواء على السطح تغذي ثلاثة فروع: A المكاتب، B قاعة الاجتماعات بصندوق VAV، C المعمل. الحاسب يحل الشبكة فورياً بمعادلات ASHRAE وSMACNA عند أي تغيير.
@@ -94,7 +123,13 @@ Drag to orbit, wheel to zoom, right-drag to pan. View buttons are below the mode
 6. ألوان الدكت: اختر **الضغط** أو **السرعة** أو **الحرارة** من الأزرار أسفل المشهد. انقر أي دكت لقراءة حساساته.
 
 ## القراءات المهمة
-الضغط الاستاتيكي مقابل فئة الضغط 500 باسكال، التسرب %، اكتساب الحرارة كW، قدرة المروحة مقابل المقنن، والتنبيهات.`,
+الضغط الاستاتيكي مقابل فئة الضغط 500 باسكال، التسرب %، اكتساب الحرارة كW، قدرة المروحة مقابل المقنن، والتنبيهات.
+
+## ماذا ترى في النموذج
+الدكتات مبنية من مكونات حقيقية: مقاطع مستطيلة بفلنجات TDF وزوايا ومسامير، أكواع بنصف قطر، تفرّع بحذاء، انتقالات، صندوق VAV بمدخل دائري ووحدة تحكم، دكت حلزوني بدامبرات دائرية، وصلات مرنة معزولة تنزل إلى مخارج سقفية رباعية، حمالات Trapeze كل 2.4 م، وقواعد على السطح. ريش الدامبرات تدور مع زاوية الدامبر التي تضبطها. اللافتات فوق كل مقطع ومخرج تعرض التدفق والسرعة والضغط مباشرة.
+
+## أدوات المشهد (أعلى اليسار)
+**التسميات والقراءات** لإظهار/إخفاء اللافتات، **الجودة** (عالية/متوسطة/منخفضة)، **دوران تلقائي**، و**لقطة شاشة PNG**. شريط **ساعة اليوم** في اللوحة يغيّر المناخ والإضاءة معاً: شمس منخفضة ذهبية عند الفجر والغروب، وليل بإضاءة داخلية.`,
     en: `## The idea
 An office building with a rooftop AHU feeding three branches: A offices, B meeting hall with a VAV box, C laboratory. The solver recomputes the network instantly with ASHRAE and SMACNA equations on every change.
 
@@ -107,7 +142,13 @@ An office building with a rooftop AHU feeding three branches: A offices, B meeti
 6. Duct colours: choose **Pressure**, **Velocity** or **Temperature** below the scene. Click any duct to read its sensors.
 
 ## Key readings
-Static pressure vs the 500 Pa class, leakage %, heat gain kW, fan power vs rating, and alarms.` } },
+Static pressure vs the 500 Pa class, leakage %, heat gain kW, fan power vs rating, and alarms.
+
+## What you see in the model
+The ductwork is built from real components: rectangular sections with TDF flanges, corners and bolts, radius elbows, a shoe take-off, transitions, a VAV box with round inlet and controller, spiral duct with round dampers, insulated flexible drops into 4-way ceiling diffusers, trapeze hangers every 2.4 m and roof stands. Damper blades rotate with the damper angle you set. Callouts above every segment and outlet show live flow, velocity and pressure.
+
+## Scene tools (top-left)
+**Labels & readings** toggles the callouts, **Quality** (high/medium/low), **Auto-rotate** and **PNG screenshot**. The **hour of day** slider in the panel changes climate and lighting together: low golden sun at dawn and dusk, night with interior lights.` } },
   fabrication: { title: { ar: 'التصنيع وضبط الجودة', en: 'Fabrication & QC' }, body: {
     ar: `- **اختبار التسرب**: أدخل مساحة الدكت وضغط الاختبار والتسرب المقاس؛ يخبرك بالمسموح والنتيجة ناجح/راسب.
 - **السماكة والتقوية**: أدخل الضلع الأطول؛ تحصل على السماكة وفق SMACNA وDW/144.

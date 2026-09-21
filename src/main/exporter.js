@@ -45,6 +45,13 @@ async function renderPdf(html, { landscape = false } = {}) {
     return await w.webContents.printToPDF({ printBackground: true, pageSize: 'A4', landscape, margins: { marginType: 'default' } });
   } finally { w.destroy(); }
 }
+/** Saves a data-URL PNG (3D screenshot) through the save dialog. */
+async function exportPng(win, { filename, dataUrl }) {
+  const file = await pickSavePath(win, filename.endsWith('.png') ? filename : filename + '.png', [{ name: 'PNG image', extensions: ['png'] }]);
+  if (!file) return { ok: false, canceled: true };
+  const b64 = String(dataUrl).split(',')[1] || ''; fs.writeFileSync(file, Buffer.from(b64, 'base64'));
+  return { ok: true, file };
+}
 /** Write silently (no dialog) — used for automatic backups of results. */
 function writeSilently(filename, content) {
   const file = path.join(defaultDir(), safeName(filename));
@@ -52,4 +59,4 @@ function writeSilently(filename, content) {
   return file;
 }
 
-module.exports = { exportCsv, exportJson, exportPdf, toCsv, defaultDir, writeSilently, renderPdf };
+module.exports = { exportCsv, exportJson, exportPdf, exportPng, toCsv, defaultDir, writeSilently, renderPdf };
