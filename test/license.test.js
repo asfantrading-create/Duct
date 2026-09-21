@@ -5,7 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { webcrypto } = require('node:crypto');
 const { generateKeyPairJwk, buildPayload, signPayload } = require('../src/shared/license-sign');
-const { parseKey, evaluatePayload, PREFIX } = require('../src/shared/license-format');
+const { parseKey, evaluatePayload, planOf, addMonths, PREFIX } = require('../src/shared/license-format');
 const lic = require('../src/main/license');
 
 const { publicJwk, privateJwk } = generateKeyPairJwk();
@@ -80,4 +80,22 @@ test('embedded public key matches the seller private key when present', { skip: 
 
 test('machine id format', () => {
   assert.match(lic.getMachineId(), /^[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}$/);
+});
+
+test('subscription plans: monthly/yearly compute expiry, legacy keys classified by duration, default sale is yearly', () => {
+  const m = buildPayload({ name: 'M', plan: 'monthly', issued: '2026-01-31' });
+  assert.equal(m.type, 'subscription'); assert.equal(m.plan, 'monthly'); assert.equal(m.expires, '2026-02-28');
+  const y = buildPayload({ name: 'Y', plan: 'yearly', issued: '2026-03-10' });
+  assert.equal(y.expires, '2027-03-10'); assert.equal(planOf(y), 'yearly');
+  const d = buildPayload({ name: 'Default' }); assert.equal(d.type, 'subscription'); assert.equal(d.plan, 'yearly'); assert.match(d.expires, /^\d{4}-\d{2}-\d{2}$/);
+  const c = buildPayload({ name: 'C', expires: '2026-06-30', issued: '2026-01-01' }); assert.equal(c.plan, undefined); assert.equal(planOf(c), 'custom');
+  assert.equal(planOf({ type: 'subscription', issued: '2026-01-01', expires: '2026-12-31' }), 'yearly');
+  assert.equal(planOf({ type: 'subscription', issued: '2026-01-01', expires: '2026-01-31' }), 'monthly');
+  assert.equal(planOf({ type: 'lifetime' }), 'internal');
+  assert.equal(addMonths('2024-01-31', 1), '2024-02-29');
+  assert.throws(() => buildPayload({ name: 'X', plan: 'weekly' }));
+  // signed monthly key validates and reports days left
+  const key = signPayload(buildPayload({ name: 'Sub', plan: 'monthly', issued: '2026-01-01' }), privateJwk);
+  const { payload } = parseKey(key); assert.equal(payload.expires, '2026-02-01');
+  assert.equal(evaluatePayload(payload, { now: new Date('2026-01-20T12:00:00Z') }).daysLeft, 13);
 });

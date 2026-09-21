@@ -45,7 +45,7 @@ export default {
       h('div', { class: 'row', style: { marginTop: '12px' } },
         h('button', { class: 'btn primary lg', onClick: () => { const k = keyInput.value.trim(); if (!k) { showStatus({ status: 'malformed' }); return; } activate(k); } }, icon('key', 18), tr('تفعيل', 'Activate')),
         ctx.isElectron ? h('button', { class: 'btn lg', onClick: async () => { const r = await ctx.api.license.activateFile(); showStatus(r); if (r.ok) { await ctx.reloadCore(); ctx.navigate('profiles'); } } }, icon('file', 18), tr('تحميل ملف .lic', 'Load .lic file')) : null),
-      h('p', { class: 'muted tiny', style: { marginTop: '18px' } }, tr('يمكن أن يكون الترخيص مدى الحياة أو محدداً بتاريخ انتهاء، وقد يكون مربوطاً بهذا الجهاز أو مقصوراً على وحدات معيّنة. يحدد ترخيص «المشرف» صلاحيات المدرّس لرؤية نتائج جميع الطلاب.', 'A license can be lifetime or time-limited, bound to this computer or restricted to certain modules. A “supervisor” license gives the teacher access to all students’ results.')));
+      h('p', { class: 'muted tiny', style: { marginTop: '18px' } }, tr('الترخيص اشتراك شهري أو سنوي، وقد يكون مربوطاً بهذا الجهاز أو مقصوراً على وحدات معيّنة. يحدد ترخيص «المشرف» صلاحيات المدرّس لرؤية نتائج جميع الطلاب. للتجديد تواصل مع شركة أصفان.', 'Licences are monthly or annual subscriptions, optionally bound to this computer or restricted to certain modules. A “supervisor” licence gives the teacher access to all students’ results. Contact ASFAN to renew.')));
     container.appendChild(h('div', { class: 'center-page' }, h('div', { class: 'auth-card' }, left, right)));
   },
 };

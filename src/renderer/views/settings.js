@@ -1,5 +1,6 @@
 import { h, icon, toast, confirmDialog, modal, field, select, pageHead } from '../ui.js';
 import { t, tr, fmtDate } from '../i18n.js';
+import { licenseLong } from '../license-ui.js';
 import { isSupervisorSession } from '../state.js';
 import { CITIES } from '../../shared/data/climate.js';
 
@@ -54,7 +55,7 @@ export default {
     const p = lic.payload;
     container.appendChild(h('div', { class: 'card' }, h('h3', null, icon('key', 16), ' ', tr('الترخيص', 'License')),
       h('div', { class: 'grid cols-2' },
-        kv(tr('الجهة', 'Licensee'), p.name), kv(tr('النوع', 'Type'), p.type === 'lifetime' ? t('lifetime') : `${t('subscription')} · ${fmtDate(p.expires)} · ${lic.daysLeft} ${t('daysLeft')}`),
+        kv(tr('الجهة', 'Licensee'), p.name), kv(tr('النوع', 'Type'), licenseLong(lic)),
         kv(tr('معرّف الترخيص', 'License ID'), h('code', { class: 'small' }, p.id)), kv(tr('معرّف هذا الجهاز', 'This machine ID'), h('code', null, info.machineId)),
         kv(tr('تاريخ التفعيل', 'Activated on'), fmtDate(lic.activatedAt)), kv(tr('البريد', 'E-mail'), p.email || '—')),
       h('div', { class: 'row', style: { marginTop: '10px' } },

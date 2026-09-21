@@ -61,8 +61,8 @@ Optional: add `WIN_CSC_LINK` / `WIN_CSC_PASSWORD` secrets with a code-signing ce
 ## التراخيص / Licensing
 
 - Keys are ECDSA P-256 signatures of a JSON payload: `ADDT1-<payload>.<signature>` (same scheme as the ASFAN Renewable-Energy generator, new prefix and key pair).
-- **Seller tools:** `tools/license-generator.html` (open in a browser; loads `tools/keys/private.jwk.json`) or `node tools/issue-license.mjs --name "..." [--type subscription --expires YYYY-MM-DD] [--supervisor] [--seats N] [--machine ID] [--modules A,B]`.
-- Lifetime or time-limited keys, optional machine binding (machine ID shown in the app), optional module restriction, optional supervisor role and seat count.
+- **Seller tools:** `tools/license-generator.html` (open in a browser; loads `tools/keys/private.jwk.json`) or `node tools/issue-license.mjs --name "..." [--plan monthly|yearly | --expires YYYY-MM-DD] [--supervisor] [--seats N] [--machine ID] [--modules A,B]`.
+- Customers get **monthly or annual subscriptions** (renewal notice 30 days before expiry). A never-expiring **internal staff licence** exists for ASFAN employees only (`--staff`; hidden in the generator behind Ctrl+Shift+S) and is never labelled "lifetime" in the app. Optional machine binding, module restriction, supervisor role and seat count.
 - The private key is **not** in the repository (`tools/keys/private.jwk.json` is git-ignored). Keep a backup. To create a new pair (invalidates all existing keys): `node tools/generate-keys.mjs --force`, then rebuild/release. Details: `docs/LICENSING.md`.
 
 ## الفصول والمشرف / Classroom & supervisor

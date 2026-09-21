@@ -1,5 +1,6 @@
 import { h, icon, toast, modal, promptDialog, confirmDialog, field, asfanLogo } from '../ui.js';
 import { t, tr, fmtDate } from '../i18n.js';
+import { licenseLong } from '../license-ui.js';
 import { isSupervisorLicense } from '../state.js';
 import { langToggle } from './activation.js';
 
@@ -65,7 +66,7 @@ export default {
       h('img', { src: 'assets/app-logo-256.png', alt: 'Duct Digital Twin', class: 'app-logo' }),
       h('h1', null, tr('مرحباً بك', 'Welcome')),
       h('div', null, h('div', { class: 'muted small' }, tr('الجهة المرخّصة', 'Licensed to')), h('strong', { style: { fontSize: '16px' } }, lic.name)),
-      h('div', { class: 'row' }, h('span', { class: 'chip ok' }, lic.type === 'lifetime' ? t('lifetime') : `${t('subscription')} · ${fmtDate(lic.expires)}`), lic.role === 'supervisor' ? h('span', { class: 'chip' }, icon('shield', 14), tr('ترخيص مشرف', 'Supervisor license')) : null, lic.seats ? h('span', { class: 'chip' }, `${students.length}/${lic.seats} ${tr('مقعد', 'seats')}`) : null),
+      h('div', { class: 'row' }, h('span', { class: 'chip ok' }, licenseLong({ payload: lic, daysLeft: ctx.state.license && ctx.state.license.daysLeft })), lic.role === 'supervisor' ? h('span', { class: 'chip' }, icon('shield', 14), tr('ترخيص مشرف', 'Supervisor license')) : null, lic.seats ? h('span', { class: 'chip' }, `${students.length}/${lic.seats} ${tr('مقعد', 'seats')}`) : null),
       isSupervisorLicense() ? h('div', { class: 'card' }, h('h3', null, icon('shield', 18), ' ', tr('المشرف / المدرّس', 'Supervisor / teacher')), h('p', { class: 'muted small' }, tr('لوحة المشرف تعرض نتائج جميع الطلاب وتصدر التقارير وتدير الفصول.', 'The supervisor dashboard shows all students’ results, exports reports and manages classes.')), h('button', { class: 'btn primary', onClick: supervisorLogin }, icon('lock', 16), tr('دخول المشرف', 'Supervisor sign-in'))) : h('p', { class: 'muted small' }, tr('هذا ترخيص متدرب. للحصول على لوحة المشرف تواصل مع أصفان.', 'This is a trainee license. Contact ASFAN for a supervisor license.')),
       h('div', { class: 'grow', style: { flex: 1 } }), h('div', { class: 'row between' }, langToggle(ctx), h('div', { class: 'signature' }, tr('من إنتاج', 'Produced by'), h('img', { src: asfanLogo(), alt: 'ASFAN', class: 'asfan-sig' }))));
     const right = h('div', { class: 'form' },

@@ -1,7 +1,8 @@
 // Application shell: boot, routing, top bar, sidebar, update banner.
 import { api, isElectron } from './api.js';
 import { getState, setState, subscribe, isSupervisorLicense, isSupervisorSession, moduleLicensed } from './state.js';
-import { t, L, tr, setLang, getLang, fmtNum } from './i18n.js';
+import { t, L, tr, setLang, getLang, fmtNum, fmtDate } from './i18n.js';
+import { isInternal, licenseShort } from './license-ui.js';
 import { h, clear, icon, toast, modal, asfanLogo } from './ui.js';
 import activation from './views/activation.js';
 import profiles from './views/profiles.js';
@@ -95,9 +96,9 @@ function licenseChip() {
   const lic = getState().license;
   if (!lic || !lic.ok) return h('span', { class: 'chip crit' }, icon('lock', 14), tr('غير مفعّل', 'Not activated'));
   const p = lic.payload;
-  if (p.type === 'lifetime') return h('span', { class: 'chip ok', title: p.name }, icon('key', 14), t('lifetime'));
+  if (isInternal(p)) return h('span', { class: 'chip ok', title: p.name }, icon('key', 14), t('internalLicense'));
   const cls = lic.daysLeft <= 14 ? 'warn' : 'ok';
-  return h('span', { class: `chip ${cls}`, title: p.name }, icon('timer', 14), `${lic.daysLeft} ${t('daysLeft')}`);
+  return h('span', { class: `chip ${cls}`, title: `${p.name} · ${t('expiresOn')} ${fmtDate(p.expires)}` }, icon('timer', 14), licenseShort(lic));
 }
 
 function updateChip() {

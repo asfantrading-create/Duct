@@ -4,6 +4,7 @@ import { moduleLicensed, isSupervisorSession } from '../state.js';
 import { MODULES } from '../../shared/modules.js';
 import { contactBlock } from '../app.js';
 import { showHelp } from '../help.js';
+import { licenseLong, renewalDue } from '../license-ui.js';
 
 const ROUTE_OF = { LEARN: 'learn', DESIGN_LAB: 'design', FACTORY_TWIN: 'factory', BUILDING_TWIN: 'building', FABRICATION_QC: 'fabrication', ASSESSMENT: 'assessment' };
 const DESC = {
@@ -42,9 +43,13 @@ export default {
       const locked = !moduleLicensed(m.id);
       return h('div', { class: `module-card ${locked ? 'locked' : ''}`, onClick: () => ctx.navigate(ROUTE_OF[m.id]) }, icon(m.icon, 30), h('div', { class: 'title' }, L(m)), h('div', { class: 'desc' }, L(DESC[m.id])), locked ? h('span', { class: 'badge crit lock-badge' }, t('locked')) : h('span', { class: 'small', style: { color: 'var(--brand-1)' } }, tr('افتح الوحدة ←', 'Open module →')));
     })));
+    if (renewalDue(st.license)) container.appendChild(h('div', { class: 'alert warn', style: { marginBottom: '14px', alignItems: 'center' } }, icon('timer', 18), h('div', { style: { flex: 1 } },
+      h('strong', null, tr(`ينتهي اشتراككم في ${fmtDate(lic.expires)} (${st.license.daysLeft} ${t('daysLeft')})`, `Your subscription expires on ${fmtDate(lic.expires)} (${st.license.daysLeft} ${t('daysLeft')})`)),
+      h('div', { class: 'small' }, tr('للتجديد تواصل مع شركة أصفان: info@asfanco.com · واتساب +962 77 614 0404، ثم أدخل مفتاح التجديد من الإعدادات ← الترخيص.', 'To renew, contact ASFAN: info@asfanco.com · WhatsApp +962 77 614 0404, then enter the renewal key from Settings → License.'))),
+      h('a', { class: 'btn primary sm', href: 'mailto:info@asfanco.com?subject=' + encodeURIComponent(tr('تجديد اشتراك التوأم الرقمي لمجاري الهواء', 'Duct Digital Twin subscription renewal')) }, t('renewNow'))));
     const licCard = h('div', { class: 'card' }, h('h3', null, icon('key', 16), ' ', tr('الترخيص', 'License')),
       h('div', { class: 'grid cols-2' },
-        kv(tr('الجهة', 'Licensee'), lic.name), kv(tr('النوع', 'Type'), lic.type === 'lifetime' ? t('lifetime') : `${t('subscription')} — ${fmtDate(lic.expires)} (${st.license.daysLeft} ${t('daysLeft')})`),
+        kv(tr('الجهة', 'Licensee'), lic.name), kv(tr('النوع', 'Type'), licenseLong(st.license)),
         kv(tr('تاريخ الإصدار', 'Issued'), fmtDate(lic.issued)), kv(tr('الوحدات', 'Modules'), Array.isArray(lic.modules) && lic.modules.length ? lic.modules.map((id) => L(MODULES.find((m) => m.id === id) || { ar: id, en: id })).join('، ') : tr('جميع الوحدات', 'All modules')),
         kv(tr('الدور', 'Role'), lic.role === 'supervisor' ? tr('ترخيص مشرف', 'Supervisor license') : tr('ترخيص متدرب', 'Trainee license')), lic.seats ? kv(tr('المقاعد', 'Seats'), String(lic.seats)) : null,
         lic.machine ? kv(tr('مربوط بالجهاز', 'Bound to machine'), h('code', null, lic.machine)) : null));

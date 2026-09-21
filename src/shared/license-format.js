@@ -2,9 +2,12 @@
 /**
  * License key format (compatible with the ASFAN license generator):
  *   ADDT1-<base64url(JSON payload)>.<base64url(ECDSA P-256 / SHA-256 signature, IEEE P1363 r||s)>
- * Payload: { v:1, id, name, email?, type:'lifetime'|'subscription', issued:'YYYY-MM-DD',
+ * Payload: { v:1, id, name, email?, type:'subscription'|'lifetime', plan?:'monthly'|'yearly', issued:'YYYY-MM-DD',
  *            expires:'YYYY-MM-DD'|null, machine:'XXXX-XXXX-XXXX-XXXX'|null, notes?,
  *            modules?: string[], role?: 'supervisor', seats?: number }
+ * Commercial policy: customers are sold 'subscription' keys (plan monthly / yearly, or a custom expiry date).
+ * 'lifetime' is an INTERNAL never-expiring licence for ASFAN staff only; the app never shows it as "lifetime"
+ * (it is labelled "internal licence") and the generator hides it unless the staff mode is revealed.
  * This file is dependency-free so it can run in Node (main process) and in the browser (tests/generator).
  */
 const PREFIX = 'ADDT1-';
@@ -62,4 +65,23 @@ function evaluatePayload(payload, { now = new Date(), machineId = null } = {}) {
   return { status: 'valid', daysLeft };
 }
 
-module.exports = { PREFIX, parseKey, evaluatePayload, b64uToBytes, bytesToB64u };
+/** Commercial plan of a payload: 'internal' (type lifetime — ASFAN staff only), 'monthly', 'yearly' or 'custom'.
+ *  Legacy subscription keys without a `plan` field are classified by their duration. */
+function planOf(payload) {
+  if (!payload || payload.type !== 'subscription') return 'internal';
+  if (payload.plan === 'monthly' || payload.plan === 'yearly') return payload.plan;
+  if (payload.issued && payload.expires) {
+    const days = Math.round((Date.parse(payload.expires) - Date.parse(payload.issued)) / 86400000);
+    if (days >= 27 && days <= 32) return 'monthly';
+    if (days >= 360 && days <= 371) return 'yearly';
+  }
+  return 'custom';
+}
+/** ISO date plus calendar months (clamped to the end of the target month). */
+function addMonths(isoDate, months) {
+  const d = new Date(isoDate + 'T00:00:00Z'); const day = d.getUTCDate(); d.setUTCDate(1); d.setUTCMonth(d.getUTCMonth() + months);
+  const last = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 0)).getUTCDate(); d.setUTCDate(Math.min(day, last));
+  return d.toISOString().slice(0, 10);
+}
+
+module.exports = { PREFIX, parseKey, evaluatePayload, planOf, addMonths, b64uToBytes, bytesToB64u };
