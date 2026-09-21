@@ -7,6 +7,8 @@
 - لافتات حية بحجم ثابت على الشاشة فوق كل محطة ومقطع ومخرج تعرض الحالة والقراءات مباشرة.
 - أدوات المشهد: التسميات، الجودة، دوران تلقائي، لقطة شاشة PNG، الغلاف الخارجي للمصنع، ووقت اليوم.
 - مدخنة سحب الأبخرة فوق سقف المصنع مع عمود دخان، ومراوح تهوية على القمة، وشاحنة ثانية في الساحة.
+- الاشتراكات: تراخيص العملاء أصبحت اشتراكاً **شهرياً** أو **سنوياً** (أو بتاريخ محدد) مع تنبيه تجديد قبل 30 يوماً؛ لم تعد عبارة «مدى الحياة» تظهر في البرنامج، والترخيص الداخلي بلا انتهاء مخصص لموظفي أصفان فقط ومخفي في مولّد التراخيص.
+- صفحة الاختبارات ترشد المشرف إلى مكان إنشاء الاختبار المكلَّف بزر مباشر.
 
 ## Version 1.2.0
 
@@ -17,6 +19,8 @@
 - Live screen-constant callouts above every station, segment and outlet showing status and readings.
 - Scene tools: labels, quality, auto-rotate, PNG screenshot, exterior shell (factory) and time of day.
 - Fume-extraction stack through the factory roof with a plume, ridge ventilators and a second truck in the yard.
+- Subscriptions: customer licences are now **monthly** or **annual** (or a fixed date) with a renewal notice 30 days ahead; the word “lifetime” no longer appears in the app, and the never-expiring internal licence is for ASFAN staff only and hidden in the generator.
+- The Assessments page guides supervisors to where assigned exams are created, with a direct button.
 
 ## الإصدار 1.1.0
 
