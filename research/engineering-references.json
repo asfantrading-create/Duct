@@ -1,0 +1,580 @@
+{
+  "_meta": {
+    "compiled": "2026-09-21",
+    "method": "Only pages actually opened were used. The sandbox egress proxy blocked every primary publisher (ashrae.org, smacna.org, engineeringtoolbox.com, manufacturer sites, etc.); GitHub-hosted files were the only reachable documents, so most entries are verified from (a) open-source engineering libraries and code that cite ASHRAE/SMACNA equation and table numbers, (b) official specification/code texts mirrored on GitHub (US DoD UFGS, California Mechanical Code), (c) manufacturer document texts mirrored on GitHub (Armacell/Stiferite EPDs, SBKJ machine pages), and (d) an ASHRAE-derived dataset shipped with EnergyPlus. Confidence reflects source authority and cross-agreement, not just presence of a URL.",
+    "confidence_scale": "high = value confirmed by >=2 independent opened sources or an official/primary document; medium = single or secondary source; unverified = value NOT confirmed from any opened page (left null or explicitly flagged)"
+  },
+  "1": {
+    "summary": "ASHRAE Fundamentals (Duct Design chapter, Table 'Duct Roughness Factors') groups absolute roughness into five categories. Values and example materials confirmed from an open-source duct-sizing library that reproduces the ASHRAE categories (AirCore DuctKit), and the 0.09 mm galvanized value from two further duct calculators. The full ASHRAE material list per category could not be opened, so the material lists below are the ones actually found on opened pages.",
+    "values": {
+      "roughness_classes_mm": {
+        "smooth": 0.03,
+        "medium_smooth": 0.09,
+        "average": 0.15,
+        "medium_rough": 0.9,
+        "rough": 3.0
+      },
+      "materials_by_class_as_found": {
+        "smooth": [
+          "PVC plastic pipe",
+          "aluminium",
+          "drawn tubing"
+        ],
+        "medium_smooth": [
+          "galvanized steel, longitudinal or spiral seams (typical sheet-metal duct; default class)",
+          "rigid fibrous glass duct board"
+        ],
+        "average": [
+          "fibrous glass duct liner, air side with facing material"
+        ],
+        "medium_rough": [
+          "fibrous glass duct liner, air side spray-coated"
+        ],
+        "rough": [
+          "flexible duct, fabric and wire, fully extended (1.0-4.6 mm depending on stretch)"
+        ]
+      },
+      "galvanized_default_used_by_other_tools_mm": 0.09,
+      "galvanized_default_ip_ft": 0.0003,
+      "not_verified_from_opened_pages": "ASHRAE also lists other materials (e.g., flexible metallic duct as medium rough, concrete as rough, and joint-spacing dependence for galvanized steel: ~0.09 mm at 1.2 m joints vs ~0.15 mm at 0.8 m joints) - the joint-spacing variant appears in a European-style table (jakubasiak Desktop-Duct-Designer) but was not confirmed against the ASHRAE table."
+    },
+    "source_urls": [
+      "https://raw.githubusercontent.com/Alexadar/rootyapps/main/aircore/Kits/Duct/DuctKit/Sources/DuctKit/DuctRoughness.swift",
+      "https://raw.githubusercontent.com/GitMecHub/HVAC-Duct_Sizing/main/HVAC_Duct_Sizing.py",
+      "https://raw.githubusercontent.com/EWH2000/controlsfreak.dev/main/html/scripts/duct-engine.js",
+      "https://raw.githubusercontent.com/jakubasiak/Desktop-Duct-Designer/master/RelativeRoughnessWindow.xaml"
+    ],
+    "confidence": "medium"
+  },
+  "2": {
+    "summary": "Altshul-Tsal explicit friction factor as used in ASHRAE Fundamentals Duct Design (cited as Chapter 21 Eq. 32 in the 2017/2021 numbering): f' = 0.11 (eps/Dh + 68/Re)^0.25; if f' >= 0.018 then f = f', else f = 0.85 f' + 0.0028. IP form uses 12*eps/D with eps in ft and D in inches. Confirmed by four independent implementations, including Caleb Bell's 'fluids' library (which cites Tsal, R.J., 'Altshul-Tsal friction factor equation', Heating/Piping/Air Conditioning 1989) and a Revit MEP calculation project citing the ASHRAE equation number.",
+    "values": {
+      "f_prime": "0.11 * (eps/Dh + 68/Re)^0.25   (SI: eps and Dh in same units)",
+      "f_prime_ip": "0.11 * (12*eps_ft/D_in + 68/Re)^0.25",
+      "correction": "f = f' if f' >= 0.018 else 0.85*f' + 0.0028",
+      "validity_range_per_fluids_lib": "4e3 <= Re <= 1e8 ; 0 <= eps/D <= 0.05",
+      "worked_check_from_fluids_docstring": "Tsal_1989(Re=1e5, eD=1e-4) = 0.018383",
+      "ashrae_citation_in_source": "ASHRAE Handbook - Fundamentals, Chapter 21 (Duct Design), Equation 32 (per RevitMEPTransparent docs/formulas.md)"
+    },
+    "source_urls": [
+      "https://raw.githubusercontent.com/CalebBell/fluids/master/fluids/friction.py",
+      "https://raw.githubusercontent.com/DaltonGOO/RevitMEPTransparent/master/docs/formulas.md",
+      "https://raw.githubusercontent.com/DaltonGOO/RevitMEPTransparent/master/src/RevitMEPTransparent/Calculations/Fluids/AltshulTsal.cs",
+      "https://raw.githubusercontent.com/EWH2000/controlsfreak.dev/main/html/scripts/duct-engine.js",
+      "https://raw.githubusercontent.com/GitMecHub/HVAC-Duct_Sizing/main/HVAC_Duct_Sizing.py"
+    ],
+    "confidence": "high"
+  },
+  "3": {
+    "summary": "Huebscher (1948) circular equivalent of a rectangular duct for equal friction and airflow: De = 1.30 (a*b)^0.625 / (a+b)^0.25 (a, b, De in consistent units: in. or mm). Cited as ASHRAE Fundamentals Ch. 21 Eq. 31 in one source; identical formula in three independent implementations.",
+    "values": {
+      "De": "1.30 * (a*b)^0.625 / (a+b)^0.25",
+      "units": "a, b, De all in inches or all in mm",
+      "ashrae_citation_in_source": "ASHRAE Handbook - Fundamentals, Chapter 21, Equation 31"
+    },
+    "source_urls": [
+      "https://raw.githubusercontent.com/DaltonGOO/RevitMEPTransparent/master/docs/formulas.md",
+      "https://raw.githubusercontent.com/NightFast-app/hvac-mcp/main/src/hvac_mcp/tools/sizing.py",
+      "https://raw.githubusercontent.com/cp4001/Acadv25JArch/master/DuctSize/DuctDesignAPI.md"
+    ],
+    "confidence": "high"
+  },
+  "4": {
+    "summary": "Leakage class definition verified: CL = F / P^0.65, F in cfm per 100 ft2 of duct surface, P = static (test) pressure in in. w.g.; equivalently Lmax = CL * P^0.65. Official texts opened: California Mechanical Code Sec. 603.9.2 (Lmax = CL*P^0.65 with CL = 6 at 1 in. w.c.) and US DoD UFGS 23 05 93 (maximum permitted leakage classes by pressure class) and UFGS 23 30 00 (all ductwork Seal Class A; pressure classification per ANSI/SMACNA 006). The classic SMACNA seal-class-to-leakage-class table (rectangular: A=6, B=12, C=24, unsealed=48; round: A=3, B=6, C=12, unsealed=30) could NOT be confirmed from any opened page and is flagged unverified.",
+    "values": {
+      "formula": "CL = F / P^0.65  ->  F = CL * P^0.65",
+      "F_units": "cfm per 100 ft2 duct surface (SI: 0.0001 (m3/s)/m2 per CMC)",
+      "P_units": "in. w.g. (CMC: inch water column; kPa in SI form)",
+      "CMC_603_9_2": {
+        "Lmax": "CL * P^0.65",
+        "CL": 6,
+        "CL_units": "cfm/100 ft2 at 1 in. water column"
+      },
+      "UFGS_23_05_93_max_permitted_leakage_class": [
+        {
+          "pressure_class": ">= 4 in. WG (1000 Pa)",
+          "round_oval": 3,
+          "rectangular": 4
+        },
+        {
+          "pressure_class": "2 and 3 in. WG (500-750 Pa)",
+          "round_oval": 4,
+          "rectangular": 8
+        },
+        {
+          "pressure_class": "1 in. WG (250 Pa)",
+          "round_oval": 8,
+          "rectangular": 16
+        }
+      ],
+      "UFGS_23_30_00": "All ductwork must meet Seal Class A; pressure classification per ANSI/SMACNA 006",
+      "typical_range_in_duct_tools": "sealed metal duct CL ~3-6; unsealed CL ~12-48 (nexyfab ductLeakage.ts comment)",
+      "seal_class_definitions_low_confidence": {
+        "A": "all transverse joints, longitudinal seams and duct-wall penetrations sealed",
+        "B": "all transverse joints and longitudinal seams sealed",
+        "C": "transverse joints only"
+      },
+      "smacna_seal_to_leakage_class_table": "UNVERIFIED (not on any opened page): rectangular A/B/C/unsealed = 6/12/24/48; round A/B/C/unsealed = 3/6/12/30; SMACNA default when designer specifies none: CL24 (Seal C) for 1/2-2 in., CL12 (Seal B) for 3 in., CL6 (Seal A) for 4-10 in."
+    },
+    "source_urls": [
+      "https://raw.githubusercontent.com/accelerate-x/building_codes/main/data/california/california_mechanical_code/chapter-6-duct-systems.txt",
+      "https://github.com/mttvnst-HA/secwriter/blob/main/reference/UFGS_M/23%2005%2093.SEC",
+      "https://github.com/mttvnst-HA/secwriter/blob/main/reference/UFGS_M/23%2030%2000.SEC",
+      "https://raw.githubusercontent.com/gomd999/nexyfab-desktop/main/src/app/%5Blang%5D/shape-generator/hvac/ductLeakage.ts",
+      "https://raw.githubusercontent.com/wonsukchoi/domain-experts/main/roles/sheet-metal-worker/references/playbook.md",
+      "https://raw.githubusercontent.com/Construction-Gamma/construction-gamma-skills/main/skills/mechanical-plumbing-systems/references/ductwork-distribution.md"
+    ],
+    "confidence": "high for formula and the official CMC/UFGS class values; low for seal-class definitions (AI-authored repos); unverified for the SMACNA default table"
+  },
+  "5": {
+    "summary": "US galvanized sheet steel gauge thicknesses (galvanized sheet gauge, which includes zinc coating) confirmed identical in two independent gauge tables (one citing the UNC Rowlett sheet-metal gauge reference, one citing Metal Supermarkets/ASTM).",
+    "values": {
+      "gauge_table": [
+        {
+          "gauge": 26,
+          "in": 0.0217,
+          "mm": 0.551
+        },
+        {
+          "gauge": 24,
+          "in": 0.0276,
+          "mm": 0.701
+        },
+        {
+          "gauge": 22,
+          "in": 0.0336,
+          "mm": 0.853
+        },
+        {
+          "gauge": 20,
+          "in": 0.0396,
+          "mm": 1.006
+        },
+        {
+          "gauge": 18,
+          "in": 0.0516,
+          "mm": 1.311
+        },
+        {
+          "gauge": 16,
+          "in": 0.0635,
+          "mm": 1.613
+        }
+      ],
+      "also_listed": {
+        "28": 0.0187,
+        "30": 0.0157,
+        "14": 0.0785,
+        "12": 0.1084
+      },
+      "galvanized_weight_lb_per_ft2_incl_G90_per_ventra": {
+        "26": 0.906,
+        "24": 1.156,
+        "22": 1.406,
+        "20": 1.656,
+        "18": 2.156,
+        "16": 2.656
+      }
+    },
+    "source_urls": [
+      "https://raw.githubusercontent.com/someonesdad1/plib/main/gauge_sizes.py",
+      "https://raw.githubusercontent.com/Aroars/AQS_Wbsite/main/src/toolbox/data/sheetMetalGaugeData.ts",
+      "https://raw.githubusercontent.com/patriot-p/Ventra/main/src/lib/hvac-engineering.ts"
+    ],
+    "confidence": "high"
+  },
+  "6": {
+    "summary": "SMACNA HVAC Duct Construction Standards pressure classes 1/2, 1, 2, 3, 4, 6, 10 in. w.g. (125/250/500/750/1000/1500/2500 Pa) confirmed as the class set used by SMACNA-based duct tools and referenced (via ANSI/SMACNA 006) in UFGS 23 30 00. Gauge selection for rectangular galvanized duct at <= 2 in. w.g.: the commonly published summary (secondary sources only; real SMACNA tables depend on reinforcement spacing) is <=12 in.: 26 ga; 13-30 in.: 24 ga; 31-54 in.: 22 ga; 55-84 in.: 20 ga; 85-96 in.: 18 ga; >96 in.: 16 ga.",
+    "values": {
+      "pressure_classes_in_wg": [
+        0.5,
+        1,
+        2,
+        3,
+        4,
+        6,
+        10
+      ],
+      "pressure_classes_Pa_approx": [
+        125,
+        250,
+        500,
+        750,
+        1000,
+        1500,
+        2500
+      ],
+      "rect_gauge_summary_at_2in_wg_low_tier": [
+        {
+          "longest_side_in": "<=12",
+          "gauge": 26
+        },
+        {
+          "longest_side_in": "13-30",
+          "gauge": 24
+        },
+        {
+          "longest_side_in": "31-54",
+          "gauge": 22
+        },
+        {
+          "longest_side_in": "55-84",
+          "gauge": 20
+        },
+        {
+          "longest_side_in": "85-96",
+          "gauge": 18
+        },
+        {
+          "longest_side_in": ">96",
+          "gauge": 16
+        }
+      ],
+      "rect_gauge_summary_medium_tier_3_4in_wg_per_nexa": [
+        {
+          "<=12": 24
+        },
+        {
+          "13-30": 22
+        },
+        {
+          "31-54": 20
+        },
+        {
+          "55-84": 18
+        },
+        {
+          ">84": 16
+        }
+      ],
+      "spec_text_example_ComplianceAI_section_23_31_13": "min 24 ga up to 30 in.; 22 ga 31-54 in.; 20 ga 55-84 in.; G90 coating; pressure class 2 in. w.g.",
+      "conservative_variant_ventra": {
+        "<=12": 26,
+        "<=18": 24,
+        "<=30": 22,
+        "<=42": 20,
+        "<=54": 18,
+        ">54": 16
+      },
+      "UFGS_23_30_00": "pressure classification per ANSI/SMACNA 006 identified on drawings; flexible duct rated 2 in. w.g. positive / 1.5 in. w.g. negative",
+      "caveat": "Official SMACNA Table 2-x (gauge vs reinforcement spacing) not opened; the summaries above are single-column simplifications used by contractors/software."
+    },
+    "source_urls": [
+      "https://raw.githubusercontent.com/engryamato/HVAC_Canvas_App/main/hvac-design-app/src/core/services/calculations/gaugeService.ts",
+      "https://raw.githubusercontent.com/nexa-one/WIZARD-FITTINGS-V1/main/src/geometric_engine/smacna.py",
+      "https://raw.githubusercontent.com/memehdi14/ComplianceAI/main/examples/guidelines/HVAC_Metal_Ducts_Guidelines.txt",
+      "https://raw.githubusercontent.com/patriot-p/Ventra/main/src/lib/hvac-engineering.ts",
+      "https://github.com/mttvnst-HA/secwriter/blob/main/reference/UFGS_M/23%2030%2000.SEC"
+    ],
+    "confidence": "medium"
+  },
+  "7": {
+    "summary": "Rule-of-thumb duct velocities from opened engineering-tool sources (all secondary; the ASHRAE Applications noise tables themselves were not reachable): low-velocity/residential practice - supply main/trunk 700-1200 fpm (3.6-6.1 m/s), supply branch 600-900 fpm (3.0-4.6 m/s), return main 600-900 fpm, return branch 500-700 fpm (2.5-3.6 m/s); residential supply target 600-900 fpm, >1200 fpm flagged noisy; commercial guidance main duct < 8 m/s, branch < 5 m/s, diffuser face < 2.5 m/s; one optimizer uses main 4-7 m/s and branch 1-5 m/s.",
+    "values": {
+      "ventra_velocity_guide_fpm_and_m_s": {
+        "supply_main_trunk": {
+          "fpm": [
+            700,
+            1200
+          ],
+          "m_s": [
+            3.56,
+            6.1
+          ]
+        },
+        "supply_branch": {
+          "fpm": [
+            600,
+            900
+          ],
+          "m_s": [
+            3.05,
+            4.57
+          ]
+        },
+        "return_main": {
+          "fpm": [
+            600,
+            900
+          ],
+          "m_s": [
+            3.05,
+            4.57
+          ]
+        },
+        "return_branch": {
+          "fpm": [
+            500,
+            700
+          ],
+          "m_s": [
+            2.54,
+            3.56
+          ]
+        }
+      },
+      "residential_low_noise_hvac_mcp": {
+        "target_fpm": [
+          600,
+          900
+        ],
+        "target_m_s": [
+          3.05,
+          4.57
+        ],
+        "noise_warning_above_fpm": 1200,
+        "noise_warning_above_m_s": 6.1
+      },
+      "commercial_limits_skills_architects": {
+        "main_duct_max_m_s": 8,
+        "branch_duct_max_m_s": 5,
+        "diffuser_face_max_m_s": 2.5
+      },
+      "gitmechub_optimizer_bounds": {
+        "main_m_s": [
+          4,
+          7
+        ],
+        "branch_m_s": [
+          1,
+          5
+        ]
+      },
+      "sizewise_smacna_tool_range_fpm": [
+        800,
+        2500
+      ]
+    },
+    "source_urls": [
+      "https://raw.githubusercontent.com/patriot-p/Ventra/main/src/lib/hvac-engineering.ts",
+      "https://raw.githubusercontent.com/NightFast-app/hvac-mcp/main/src/hvac_mcp/tools/sizing.py",
+      "https://raw.githubusercontent.com/Abhinavbwj/Skills-Architects/main/skills/building-services/references/hvac-systems.md",
+      "https://raw.githubusercontent.com/GitMecHub/HVAC-Duct_Sizing/main/HVAC_Duct_Sizing.py",
+      "https://raw.githubusercontent.com/engryamato/SizeWise_Suite_App/main/frontend/components/3d/utils/SMACNAStandards.ts"
+    ],
+    "confidence": "medium"
+  },
+  "8": {
+    "summary": "Dry air at 20 C, 101.325 kPa: density 1.204 kg/m3, dynamic viscosity 1.82-1.825e-5 Pa.s, kinematic viscosity 1.51-1.52e-5 m2/s, cp ~1005-1007 J/(kg.K). Computed with CoolProp 8.0.0 (installed from PyPI in this session) and cross-checked against three opened tables/libraries.",
+    "values": {
+      "coolprop_8_0_0_T293_15K_P101325Pa": {
+        "density_kg_m3": 1.2046,
+        "dynamic_viscosity_Pa_s": 1.8206e-05,
+        "kinematic_viscosity_m2_s": 1.5114e-05,
+        "cp_J_kgK": 1006.1,
+        "thermal_conductivity_W_mK": 0.0259
+      },
+      "TES_TubeBank_airProps_table_20C": {
+        "density_kg_m3": 1.204,
+        "cp_J_kgK": 1007,
+        "kinematic_viscosity_m2_s": 1.516e-05,
+        "dynamic_viscosity_Pa_s": 1.825e-05
+      },
+      "mechanical_engineering_toolkit_preset_Air_20C": {
+        "density_kg_m3": 1.204,
+        "dynamic_viscosity_Pa_s": 1.825e-05
+      },
+      "Modelica_Standard_Library_SimpleAir_constants_0_100C": {
+        "cp_J_kgK": 1005.45,
+        "dynamic_viscosity_Pa_s": 1.82e-05,
+        "thermal_conductivity_W_mK": 0.026
+      },
+      "Modelica_Buildings_Air_dStp": 1.2,
+      "recommended_for_simulator": {
+        "density_kg_m3": 1.204,
+        "dynamic_viscosity_Pa_s": 1.825e-05,
+        "kinematic_viscosity_m2_s": 1.516e-05,
+        "cp_J_kgK": 1006
+      }
+    },
+    "source_urls": [
+      "https://pypi.org/project/CoolProp/",
+      "https://raw.githubusercontent.com/casey-troxler/TES_TubeBank/main/airProps.py",
+      "https://raw.githubusercontent.com/banghuazhao/mechanical-engineering-toolkit/main/lib/util/fluid_library.dart",
+      "https://raw.githubusercontent.com/modelica/ModelicaStandardLibrary/master/Modelica/Media/Air/SimpleAir.mo",
+      "https://raw.githubusercontent.com/lbl-srg/modelica-buildings/master/Buildings/Media/Air.mo"
+    ],
+    "confidence": "high"
+  },
+  "9": {
+    "summary": "Insulation conductivities confirmed from manufacturer Environmental Product Declaration texts (IBU EPDs, mirrored on GitHub) and the ASHRAE 2005 Handbook of Fundamentals material dataset shipped with EnergyPlus. Nitrile rubber (Armacell AF/ArmaFlex): lambda 0.033 W/(m.K) at 0 C. PIR pre-insulated duct panel (Stiferite Isocanale ALC): 22.0 mm PUR/PIR core, 80 um embossed aluminium both faces, declared average lambda 0.021 W/(m.K); Isocanale Ai6: 21.4 mm, 60 um foil. Glass fibre: ASHRAE 2005 HOF 'Glass fiber, organic bonded' 0.036 W/(m.K) (64-140 kg/m3); a 32 kg/m3 foil-faced glasswool duct wrap (Bradford Supertel) 0.032 W/(m.K) at 20 C in 25-100 mm. Kingspan KoolDuct phenolic (22 mm, 0.021 W/mK claimed) could NOT be verified from an opened page.",
+    "values": {
+      "nitrile_rubber_AF_ArmaFlex": {
+        "lambda_W_mK": 0.033,
+        "at_temperature_C": 0,
+        "service_temp_C": [
+          -50,
+          110
+        ],
+        "typical_sheet_thicknesses_mm": null,
+        "note": "thickness list not present in the opened EPD text; Armaflex Evo EPD text also states lambda 0.033 W/(mK) at 0 C"
+      },
+      "PIR_preinsulated_duct_panel_Stiferite_Isocanale_ALC": {
+        "thickness_mm": 22.0,
+        "foil_um": 80,
+        "lambda_W_mK_declared_average": 0.021,
+        "panel_mm": "1200 x 4000",
+        "core": "closed-cell PIR/PUR rigid foam",
+        "use": "pre-insulated heating and ventilation ducts (EPD wording)"
+      },
+      "PIR_preinsulated_duct_panel_Stiferite_Isocanale_Ai6": {
+        "thickness_mm": 21.4,
+        "foil_um": 60
+      },
+      "ASHRAE_2005_HOF_via_EnergyPlus_dataset": {
+        "glass_fiber_organic_bonded_W_mK": 0.036,
+        "glass_fiber_density_kg_m3": [
+          64,
+          140
+        ],
+        "glass_fiber_thicknesses_mm": [
+          25,
+          50,
+          75
+        ],
+        "cellular_polyurethane_polyisocyanurate_unfaced_W_mK": 0.0245,
+        "polyisocyanurate_gas_impermeable_facers_W_mK": 0.02
+      },
+      "glasswool_duct_wrap_Bradford_Supertel_HD_foil": {
+        "density_kg_m3": 32,
+        "lambda_W_mK": 0.032,
+        "at_temperature_C": 20,
+        "thicknesses_mm": [
+          25,
+          100
+        ],
+        "R_range_m2K_W": [
+          0.8,
+          3.0
+        ],
+        "source_quality": "secondary product-knowledge JSON, not the datasheet itself"
+      },
+      "phenolic_Kingspan_KoolDuct": {
+        "thickness_mm": null,
+        "lambda_W_mK": null,
+        "note": "UNVERIFIED: search snippets state 0.021 W/mK at 10 C mean, 22 mm and 30 mm panels, 2950 x 1200 mm; no page opened"
+      },
+      "common_fiberglass_duct_wrap_25_50mm_at_0_040_W_mK": "UNVERIFIED from opened pages (industry value seen only in search snippets)"
+    },
+    "source_urls": [
+      "https://raw.githubusercontent.com/emil091001/open_ai_structured_output/main/data/pdf2/AF_ArmaFlex%20insulation%20for%20industrial%20and%20building%20installation.txt",
+      "https://raw.githubusercontent.com/emil091001/open_ai_structured_output/main/data/pdf2/AF_ArmaFlex%20Evo%20insulation%20for%20industrial%20and%20building%20installation.txt",
+      "https://raw.githubusercontent.com/emil091001/open_ai_structured_output/main/data/pdf/EPD-STF-20220336-CBC2-EN.txt",
+      "https://raw.githubusercontent.com/emil091001/open_ai_structured_output/main/data/pdf2/Stiferite%20Isocanale%20Ai6%20durchschnittlich%20dicke%20Platte.txt",
+      "https://raw.githubusercontent.com/NatLabRockies/EnergyPlus/master/datasets/ASHRAE_2005_HOF_Materials.idf",
+      "https://raw.githubusercontent.com/ganeshbashyal/Insulation_Product_Selection/main/knowledge/bradford/research/bradford_supertel_faced_heavy_duty_foil.json"
+    ],
+    "confidence": "medium (high for the EPD/ASHRAE numbers themselves; KoolDuct and generic 0.040 duct-wrap value unverified)"
+  },
+  "10": {
+    "summary": "Only one manufacturer's specification pages were reachable: the source files of SBKJ Group's duct-machinery website (sbkjduct.com), mirrored on GitHub. Figures below are that manufacturer's published specs (m/min). US/European OEM figures (Lockformer/Mestek, Iowa Precision, Spiro, etc.) were NOT verifiable - their sites were blocked - and are listed as unverified search-snippet values only.",
+    "values": {
+      "pittsburgh_lock_former_SBKJ_SBLC": {
+        "sheet_feed_speed_m_min": [
+          10,
+          14
+        ],
+        "sheet_feed_speed_ft_min": [
+          33,
+          46
+        ],
+        "capacity_mm": [
+          0.4,
+          1.5
+        ],
+        "cycle_time_per_1200mm_blank_s": [
+          5,
+          7
+        ],
+        "blanks_per_hour_per_operator": [
+          250,
+          350
+        ],
+        "roller_stages": "8-12 pairs",
+        "motor_kW": [
+          1.5,
+          3
+        ]
+      },
+      "plasma_cutting_table_SBKJ_SBPC1550x4000": {
+        "processing_speed_m_min": [
+          7,
+          8
+        ],
+        "processing_speed_ft_min": [
+          23,
+          26
+        ],
+        "thickness_mm": [
+          0.4,
+          4
+        ],
+        "table_mm": "1550 x 4000 / 1550 x 5000",
+        "power_kW": 12,
+        "note": "manufacturer figure for plasma on GI sheet; not gauge-specific"
+      },
+      "coil_line_auto_duct_line_SBKJ_SBAL_V": {
+        "line_speed_m_min": 18,
+        "line_speed_ft_min": 59,
+        "output_m2_per_day": [
+          800,
+          2500
+        ],
+        "operators_per_shift": "2-3",
+        "max_sheet_width_mm": [
+          1250,
+          1550
+        ],
+        "power_kW": 40
+      },
+      "tdf_flange_former_SBKJ_SBTDF_12": {
+        "thickness_mm": [
+          0.5,
+          1.2
+        ],
+        "motor_kW": 2.2,
+        "flange_height_mm": 35,
+        "forming_speed": null,
+        "note": "forming speed not published on the opened page; SBKJ duct zipper (seam closer) SBHF-I max 15 m/min and automatic drive-cleat former 14 m/min are published"
+      },
+      "spiral_duct_machine_SBKJ_SBTF_1602": {
+        "max_strip_feed_speed_m_min": 35,
+        "max_strip_feed_ft_min": 115,
+        "diameter_range_mm": [
+          80,
+          1600
+        ],
+        "strip_width_mm": [
+          90,
+          300
+        ],
+        "output_example": "~2,400 linear metres per 8-hour shift at 0.6 mm GI, 35 m/min strip feed",
+        "SBTF_1500_effective_m_min": [
+          20,
+          25
+        ],
+        "case_study_pipe_production_rate_m_min": "up to 16"
+      },
+      "unverified_OEM_figures_from_search_snippets_only": {
+        "Lockformer Pittsburgh 20 (20-26 ga)": "up to 25 ft/min",
+        "Lockformer Pittsburgh 20 Super Speed": "up to 75 ft/min",
+        "Lockformer TDC T25a rollformer (16-24 ga)": "70 ft/min",
+        "TDFC lockformers": "~45 ft/min",
+        "Lockformer Vulcan fiber-laser Elite (24 ga mild steel)": "cut speed up to 1,200 in/min (~3x conventional plasma)",
+        "Iowa Precision Fabriduct coil line": "up to 75 ft/min",
+        "SBKJ SBTF-1500C (search snippet)": "38 m/min variable"
+      }
+    },
+    "source_urls": [
+      "https://github.com/tyw908899-dot/sbkjduct-website/blob/master/product/lockformer.html",
+      "https://github.com/tyw908899-dot/sbkjduct-website/blob/master/product/plasma-cutter.html",
+      "https://github.com/tyw908899-dot/sbkjduct-website/blob/master/product/sbal-v.html",
+      "https://github.com/tyw908899-dot/sbkjduct-website/blob/master/product/tdf-flange.html",
+      "https://github.com/tyw908899-dot/sbkjduct-website/blob/master/product/duct-zipper-tdf.html",
+      "https://github.com/tyw908899-dot/sbkjduct-website/blob/master/product/automatic-drive-cleat.html",
+      "https://github.com/tyw908899-dot/sbkjduct-website/blob/master/product/sbtf-1602.html",
+      "https://github.com/tyw908899-dot/sbkjduct-website/blob/master/case-studies/middle-east-spiral-duct-production.html"
+    ],
+    "confidence": "medium for SBKJ figures (manufacturer marketing/spec pages); unverified for other OEMs"
+  }
+}

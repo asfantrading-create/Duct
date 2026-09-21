@@ -1,0 +1,50 @@
+# electron-builder configuration — ASFAN Duct Digital Twin (Windows)
+appId: com.asfanco.ductdigitaltwin
+productName: ASFAN Duct Digital Twin
+copyright: Copyright © 2026 ASFAN Trading Co. — info@asfanco.com
+executableName: ASFAN Duct Digital Twin
+directories:
+  output: release
+  buildResources: build
+files:
+  - src/main/**/*
+  - src/shared/**/*
+  - dist/renderer/**/*
+  - package.json
+  - "!**/*.map"
+asar: true
+compression: normal
+npmRebuild: false
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  icon: build/icon.ico
+  # Fixed artifact name so the customer download link never changes:
+  # https://github.com/asfantrading-create/Duct/releases/latest/download/ASFAN-Duct-Digital-Twin-Setup.exe
+  artifactName: ASFAN-Duct-Digital-Twin-Setup.${ext}
+  verifyUpdateCodeSignature: false
+  requestedExecutionLevel: asInvoker
+nsis:
+  oneClick: false
+  perMachine: false
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: always
+  createStartMenuShortcut: true
+  shortcutName: ASFAN Duct Digital Twin
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico
+  installerHeaderIcon: build/icon.ico
+  installerLanguages: [ar_SA, en_US]
+  multiLanguageInstaller: true
+  differentialPackage: true
+  deleteAppDataOnUninstall: false
+  artifactName: ASFAN-Duct-Digital-Twin-Setup.${ext}
+releaseInfo:
+  releaseNotesFile: RELEASE_NOTES.md
+publish:
+  provider: github
+  owner: asfantrading-create
+  repo: Duct
+  releaseType: release

@@ -1,0 +1,40 @@
+{
+  "name": "asfan-duct-digital-twin",
+  "productName": "ASFAN Duct Digital Twin",
+  "version": "1.0.0",
+  "description": "Educational Digital Twin simulator for HVAC duct factories and duct systems (ASFAN)",
+  "author": {
+    "name": "ASFAN Trading Co.",
+    "email": "info@asfanco.com"
+  },
+  "homepage": "https://asfanco.com",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "npm run build:renderer && electron .",
+    "dev": "npm run build:renderer && electron . --dev",
+    "build:renderer": "node scripts/build-renderer.mjs",
+    "watch:renderer": "node scripts/build-renderer.mjs --watch",
+    "test": "npm run build:renderer && node --test \"test/**/*.test.js\"",
+    "test:unit": "node --test \"test/**/*.test.js\"",
+    "keys": "node tools/generate-keys.mjs",
+    "icon": "python3 scripts/make-icon.py",
+    "pack": "npm run build:renderer && electron-builder --win --dir",
+    "dist": "npm run build:renderer && electron-builder --win nsis",
+    "release": "npm run build:renderer && electron-builder --win nsis --publish always"
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.9"
+  },
+  "devDependencies": {
+    "electron": "^44.0.0",
+    "electron-builder": "^26.0.0",
+    "esbuild": "^0.28.0",
+    "playwright-core": "^1.63.0",
+    "three": "^0.186.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
