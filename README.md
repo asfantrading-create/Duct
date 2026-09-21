@@ -21,7 +21,8 @@ An educational Windows application by **ASFAN Trading Co.** — a digital twin o
 | التصنيع وضبط الجودة | Fabrication & QC | اختبار التسرب، جداول السماكة، الحمالات والوصلات، كتالوج الآلات، قائمة فحص PDF |
 | الاختبارات | Assessments | 64 سؤالاً (اختيار متعدد، صح/خطأ، حسابية عشوائية) مع تقارير PDF/CSV/JSON |
 | دليل المصانع | Factory Directory | 89 مصنع دكت في 14 دولة عربية (بيانات منشورة علناً ومُتحقَّق منها، مع المصادر) وخريطة |
-| لوحة المشرف | Supervisor Dashboard | نتائج كل الطلاب، الفصول، الاستيراد، التصدير، تقارير PDF |
+| لوحة المشرف | Supervisor Dashboard | نتائج كل الطلاب، الاختبارات المكلَّفة (اختبار موحد لكل الطلاب)، الفصول، الاستيراد، التصدير، تقارير PDF |
+| دليل الاستخدام | User Guide | شرح البرنامج خطوة بخطوة وشرح كل شاشة، مع جولة أولى وزر «شرح الشاشة» |
 
 ## البنية التقنية / Tech stack
 
@@ -64,7 +65,7 @@ Optional: add `WIN_CSC_LINK` / `WIN_CSC_PASSWORD` secrets with a code-signing ce
 
 ## الفصول والمشرف / Classroom & supervisor
 
-Students’ results are stored locally (`%APPDATA%/asfan-duct-digital-twin`). A supervisor (teacher) license unlocks the PIN-protected dashboard; setting a **shared classroom folder** (network share or synced cloud folder) on all PCs mirrors every student’s results there, so the supervisor sees everyone. JSON exports can also be imported manually. See `docs/CLASSROOM.md`.
+Supervisors create **assigned exams** (same seeded questions for every student, time limit, pass mark, closing date) from the dashboard; students see them on their Assessments page. Students’ results are stored locally (`%APPDATA%/asfan-duct-digital-twin`). A supervisor (teacher) license unlocks the PIN-protected dashboard; setting a **shared classroom folder** (network share or synced cloud folder) on all PCs mirrors every student’s results there, so the supervisor sees everyone. JSON exports can also be imported manually. See `docs/CLASSROOM.md`.
 
 ## البيانات والمراجع / Data & references
 

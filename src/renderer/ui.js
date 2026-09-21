@@ -191,3 +191,5 @@ export function pageHead(title, subtitle, actions = []) {
   return h('div', { class: 'page-head' }, h('div', null, h('h1', null, title), subtitle ? h('p', null, subtitle) : null), actions.length ? h('div', { class: 'row' }, actions) : null);
 }
 export const Lx = L;
+/** ASFAN signature logo suited to the active theme (dark wordmark on light, light wordmark on dark). */
+export const asfanLogo = () => (document.documentElement.dataset.theme === 'light' ? 'assets/logo.png' : 'assets/logo-light.png');

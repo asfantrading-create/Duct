@@ -39,6 +39,12 @@ contextBridge.exposeInMainWorld('duct', {
     removeClass: (id) => invoke('supervisor:removeClass', id),
     allResults: () => invoke('supervisor:allResults'),
   },
+  assignments: {
+    list: () => invoke('assignments:list'),
+    create: (data) => invoke('assignments:create', data),
+    update: (id, patch) => invoke('assignments:update', id, patch),
+    remove: (id) => invoke('assignments:remove', id),
+  },
   results: {
     get: (profileId) => invoke('results:get', profileId),
     saveAttempt: (profileId, attempt) => invoke('results:saveAttempt', profileId, attempt),

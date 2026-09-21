@@ -6,10 +6,11 @@ const crypto = require('node:crypto');
 
 const DEFAULT_STATE = () => ({
   license: null, // { key, activatedAt }
-  settings: { lang: 'ar', units: 'si', theme: 'dark', classroomFolder: null, autoDownloadUpdates: true, city: 'riyadh', lastCheckedUpdate: null },
+  settings: { lang: 'ar', units: 'si', theme: 'dark', classroomFolder: null, autoDownloadUpdates: true, city: 'riyadh', lastCheckedUpdate: null, uiZoom: 1, tourDone: false },
   profiles: [],
   supervisor: null, // { salt, hash }
   classes: [],
+  assignments: [],
   meta: { installedAt: null, lastSeen: null, runs: 0 },
 });
 
@@ -27,6 +28,7 @@ class Store {
     this.state.meta = { ...fresh.meta, ...(this.state.meta || {}) };
     if (!Array.isArray(this.state.profiles)) this.state.profiles = [];
     if (!Array.isArray(this.state.classes)) this.state.classes = [];
+    if (!Array.isArray(this.state.assignments)) this.state.assignments = [];
     this.save();
   }
 
@@ -101,6 +103,15 @@ class Store {
     this.state.classes.push(cls); this.save(); return { ...cls };
   }
   removeClass(id) { this.state.classes = this.state.classes.filter((c) => c.id !== id); this.save(); return true; }
+
+  // ---- assigned exams (created by a supervisor)
+  listAssignments() { return this.state.assignments.map((a) => ({ ...a })); }
+  createAssignment({ title, moduleIds = [], count = 15, minutes = 20, passPct = 70, maxDifficulty = 3, dueDate = null, classCode = '', createdBy = '' }) {
+    const a = { id: crypto.randomUUID(), title: String(title).trim(), moduleIds: Array.isArray(moduleIds) ? moduleIds : [], count: Math.max(3, Math.min(60, Number(count) || 15)), minutes: Math.max(0, Number(minutes) || 0), passPct: Math.max(1, Math.min(100, Number(passPct) || 70)), maxDifficulty: [1, 2, 3].includes(Number(maxDifficulty)) ? Number(maxDifficulty) : 3, dueDate: dueDate || null, classCode: String(classCode || '').toUpperCase(), createdBy: String(createdBy || ''), seed: crypto.randomInt(1, 2 ** 31 - 1), active: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() };
+    this.state.assignments.push(a); this.save(); return { ...a };
+  }
+  updateAssignment(id, patch) { const a = this.state.assignments.find((x) => x.id === id); if (!a) return null; for (const k of ['title', 'dueDate', 'active', 'classCode']) if (k in patch) a[k] = patch[k]; a.updatedAt = new Date().toISOString(); this.save(); return { ...a }; }
+  removeAssignment(id) { this.state.assignments = this.state.assignments.filter((x) => x.id !== id); this.save(); return true; }
 
   // ---- results
   resultsPath(profileId) { return path.join(this.resultsDir, `${profileId}.json`); }

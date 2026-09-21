@@ -1,4 +1,4 @@
-import { h, icon, toast } from '../ui.js';
+import { h, icon, toast, asfanLogo } from '../ui.js';
 import { t, tr, L, fmtDate } from '../i18n.js';
 import { contactBlock } from '../app.js';
 
@@ -31,11 +31,12 @@ export default {
     };
     const machine = info.machineId || '';
     const left = h('div', { class: 'side' },
-      h('img', { src: 'assets/logo.png', alt: 'ASFAN' }),
+      h('img', { src: 'assets/app-logo-256.png', alt: 'Duct Digital Twin', class: 'app-logo' }),
       h('h1', null, t('appName')), h('p', { class: 'muted' }, tr('محاكاة رقمية تعليمية لمصانع وشبكات مجاري الهواء (Duct) لأنظمة التكييف', 'Educational digital-twin simulator for HVAC duct factories and duct networks')),
       h('ul', null, [tr('توأم رقمي ثلاثي الأبعاد لمصنع الدكت وخط الإنتاج', '3D digital twin of a duct factory and its production line'), tr('محاكاة شبكة مجاري الهواء: ضغط، سرعة، تسرب، اكتساب حراري', 'Duct-network simulation: pressure, velocity, leakage, heat gain'), tr('مكتبة تعليمية واختبارات وتقارير للطلاب والمشرفين', 'Learning library, assessments and reports for students and supervisors'), tr('دليل مصانع الدكت في الوطن العربي وبيانات مناخ التصميم', 'Arab-world duct factory directory and climate design data')].map((x) => h('li', null, x))),
       h('div', { class: 'card', style: { padding: '10px 12px' } }, h('div', { class: 'small muted' }, tr('معرّف هذا الجهاز (أرسله لأصفان عند طلب ترخيص مربوط بالجهاز):', 'This machine ID (send it to ASFAN when requesting a machine-bound license):')), h('div', { class: 'row' }, h('code', { style: { fontSize: '15px' } }, machine), h('button', { class: 'btn sm', onClick: () => { navigator.clipboard.writeText(machine); toast(tr('تم نسخ معرّف الجهاز', 'Machine ID copied'), 'ok'); } }, tr('نسخ', 'Copy')))),
-      h('div', null, h('h4', null, t('contact')), contactBlock()));
+      h('div', null, h('h4', null, t('contact')), contactBlock()),
+      h('div', { class: 'signature' }, tr('من إنتاج', 'Produced by'), h('img', { src: asfanLogo(), alt: 'ASFAN', class: 'asfan-sig' })));
     const right = h('div', { class: 'form' },
       h('div', { class: 'row between' }, h('h2', null, tr('تفعيل الترخيص', 'Activate license')), langToggle(ctx)),
       lic && !lic.ok && lic.status !== 'malformed' ? h('div', { class: 'alert crit', style: { marginBottom: '12px' } }, icon('alert'), h('div', null, h('strong', null, lic.payload ? lic.payload.name : ''), h('div', null, L(STATUS_MSG[lic.status] || {})), lic.payload && lic.payload.expires ? h('div', { class: 'small' }, `${tr('تاريخ الانتهاء', 'Expiry')}: ${fmtDate(lic.payload.expires)}`) : null)) : null,

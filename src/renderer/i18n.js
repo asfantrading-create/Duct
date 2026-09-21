@@ -35,7 +35,7 @@ export const DICT = {
   nav_home: { ar: 'الرئيسية', en: 'Home' }, nav_learn: { ar: 'المكتبة التعليمية', en: 'Learning Library' }, nav_design: { ar: 'مختبر التصميم', en: 'Design Lab' },
   nav_factory: { ar: 'توأم المصنع', en: 'Factory Twin' }, nav_building: { ar: 'توأم شبكة الدكت', en: 'Duct Network Twin' }, nav_fab: { ar: 'التصنيع وضبط الجودة', en: 'Fabrication & QC' },
   nav_quiz: { ar: 'الاختبارات', en: 'Assessments' }, nav_dir: { ar: 'دليل المصانع', en: 'Factory Directory' }, nav_sup: { ar: 'لوحة المشرف', en: 'Supervisor Dashboard' },
-  nav_settings: { ar: 'الإعدادات', en: 'Settings' }, nav_about: { ar: 'حول البرنامج', en: 'About' }, nav_modules: { ar: 'الوحدات', en: 'Modules' }, nav_system: { ar: 'النظام', en: 'System' },
+  nav_settings: { ar: 'الإعدادات', en: 'Settings' }, nav_guide: { ar: 'دليل الاستخدام', en: 'User Guide' }, nav_about: { ar: 'حول البرنامج', en: 'About' }, nav_modules: { ar: 'الوحدات', en: 'Modules' }, nav_system: { ar: 'النظام', en: 'System' },
   save: { ar: 'حفظ', en: 'Save' }, cancel: { ar: 'إلغاء', en: 'Cancel' }, close: { ar: 'إغلاق', en: 'Close' }, ok: { ar: 'موافق', en: 'OK' }, back: { ar: 'رجوع', en: 'Back' }, next: { ar: 'التالي', en: 'Next' },
   delete: { ar: 'حذف', en: 'Delete' }, edit: { ar: 'تعديل', en: 'Edit' }, add: { ar: 'إضافة', en: 'Add' }, export: { ar: 'تصدير', en: 'Export' }, exportCsv: { ar: 'تصدير CSV', en: 'Export CSV' }, exportJson: { ar: 'تصدير JSON', en: 'Export JSON' }, exportPdf: { ar: 'تصدير PDF', en: 'Export PDF' },
   yes: { ar: 'نعم', en: 'Yes' }, no: { ar: 'لا', en: 'No' }, confirm: { ar: 'تأكيد', en: 'Confirm' }, search: { ar: 'بحث…', en: 'Search…' }, all: { ar: 'الكل', en: 'All' }, none: { ar: 'لا شيء', en: 'None' },

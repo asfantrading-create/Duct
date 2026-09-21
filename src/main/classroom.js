@@ -53,6 +53,17 @@ class Classroom {
     return out;
   }
 
+  /** Publishes the supervisor's assigned exams to the shared folder so students on other PCs see them. */
+  mirrorAssignments(assignments) {
+    const root = this.root(); if (!root) return false;
+    try { Store.writeJsonAtomic(path.join(root, 'assignments.json'), { app: 'asfan-duct-digital-twin', updatedAt: new Date().toISOString(), assignments }); return true; } catch (_) { return false; }
+  }
+  readSharedAssignments() {
+    const root = this.root(); if (!root) return [];
+    try { const data = JSON.parse(fs.readFileSync(path.join(root, 'assignments.json'), 'utf8')); return Array.isArray(data.assignments) ? data.assignments.map((a) => ({ ...a, source: 'classroom' })) : []; } catch (_) { return []; }
+  }
+  static mergeAssignments(...lists) { const map = new Map(); for (const list of lists) for (const a of list) { const prev = map.get(a.id); if (!prev || String(a.updatedAt || '') >= String(prev.updatedAt || '')) map.set(a.id, a); } return [...map.values()].sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt))); }
+
   /** Reads all results from the shared folder (returns [] when not configured). */
   readShared() {
     const root = this.root();

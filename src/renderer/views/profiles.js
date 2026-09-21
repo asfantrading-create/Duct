@@ -1,4 +1,4 @@
-import { h, icon, toast, modal, promptDialog, confirmDialog, field } from '../ui.js';
+import { h, icon, toast, modal, promptDialog, confirmDialog, field, asfanLogo } from '../ui.js';
 import { t, tr, fmtDate } from '../i18n.js';
 import { isSupervisorLicense } from '../state.js';
 import { langToggle } from './activation.js';
@@ -62,12 +62,12 @@ export default {
       isSupervisorLicense() ? h('button', { class: 'btn ghost sm', title: t('delete'), onClick: (e) => removeStudent(p, e) }, icon('trash', 14)) : null));
 
     const left = h('div', { class: 'side' },
-      h('img', { src: 'assets/logo.png', alt: 'ASFAN' }),
+      h('img', { src: 'assets/app-logo-256.png', alt: 'Duct Digital Twin', class: 'app-logo' }),
       h('h1', null, tr('مرحباً بك', 'Welcome')),
       h('div', null, h('div', { class: 'muted small' }, tr('الجهة المرخّصة', 'Licensed to')), h('strong', { style: { fontSize: '16px' } }, lic.name)),
       h('div', { class: 'row' }, h('span', { class: 'chip ok' }, lic.type === 'lifetime' ? t('lifetime') : `${t('subscription')} · ${fmtDate(lic.expires)}`), lic.role === 'supervisor' ? h('span', { class: 'chip' }, icon('shield', 14), tr('ترخيص مشرف', 'Supervisor license')) : null, lic.seats ? h('span', { class: 'chip' }, `${students.length}/${lic.seats} ${tr('مقعد', 'seats')}`) : null),
       isSupervisorLicense() ? h('div', { class: 'card' }, h('h3', null, icon('shield', 18), ' ', tr('المشرف / المدرّس', 'Supervisor / teacher')), h('p', { class: 'muted small' }, tr('لوحة المشرف تعرض نتائج جميع الطلاب وتصدر التقارير وتدير الفصول.', 'The supervisor dashboard shows all students’ results, exports reports and manages classes.')), h('button', { class: 'btn primary', onClick: supervisorLogin }, icon('lock', 16), tr('دخول المشرف', 'Supervisor sign-in'))) : h('p', { class: 'muted small' }, tr('هذا ترخيص متدرب. للحصول على لوحة المشرف تواصل مع أصفان.', 'This is a trainee license. Contact ASFAN for a supervisor license.')),
-      h('div', { class: 'grow', style: { flex: 1 } }), langToggle(ctx));
+      h('div', { class: 'grow', style: { flex: 1 } }), h('div', { class: 'row between' }, langToggle(ctx), h('div', { class: 'signature' }, tr('من إنتاج', 'Produced by'), h('img', { src: asfanLogo(), alt: 'ASFAN', class: 'asfan-sig' }))));
     const right = h('div', { class: 'form' },
       h('div', { class: 'row between' }, h('h2', null, tr('اختر ملفك', 'Choose your profile')), h('button', { class: 'btn primary', onClick: addStudent }, icon('plus', 16), tr('طالب جديد', 'New student'))),
       tiles.length ? h('div', { class: 'stack', style: { maxHeight: '60vh', overflow: 'auto' } }, tiles) : h('div', { class: 'alert info' }, icon('info'), h('div', null, tr('لا توجد ملفات بعد. أنشئ ملف طالب للبدء؛ تُحفظ نتائج كل طالب باسمه على هذا الجهاز.', 'No profiles yet. Create a student profile to start; each student’s results are saved under their name on this computer.'))));

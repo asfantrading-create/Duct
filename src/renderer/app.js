@@ -2,7 +2,7 @@
 import { api, isElectron } from './api.js';
 import { getState, setState, subscribe, isSupervisorLicense, isSupervisorSession, moduleLicensed } from './state.js';
 import { t, L, tr, setLang, getLang, fmtNum } from './i18n.js';
-import { h, clear, icon, toast, modal } from './ui.js';
+import { h, clear, icon, toast, modal, asfanLogo } from './ui.js';
 import activation from './views/activation.js';
 import profiles from './views/profiles.js';
 import home from './views/home.js';
@@ -16,8 +16,10 @@ import directory from './views/directory.js';
 import supervisor from './views/supervisor.js';
 import settings from './views/settings.js';
 import about from './views/about.js';
+import guide from './views/guide.js';
+import { showHelp } from './help.js';
 
-const VIEWS = { activation, profiles, home, learn, design, factory, building, fabrication, assessment, directory, supervisor, settings, about };
+const VIEWS = { activation, profiles, home, learn, design, factory, building, fabrication, assessment, directory, supervisor, settings, about, guide };
 const ROUTE_MODULE = { learn: 'LEARN', design: 'DESIGN_LAB', factory: 'FACTORY_TWIN', building: 'BUILDING_TWIN', fabrication: 'FABRICATION_QC', assessment: 'ASSESSMENT' };
 const NAV = [
   { section: 'nav_modules' },
@@ -30,6 +32,7 @@ const NAV = [
   { route: 'assessment', icon: 'clipboard', label: 'nav_quiz' },
   { route: 'directory', icon: 'map', label: 'nav_dir' },
   { section: 'nav_system' },
+  { route: 'guide', icon: 'book', label: 'nav_guide' },
   { route: 'supervisor', icon: 'users', label: 'nav_sup', supervisorOnly: true },
   { route: 'settings', icon: 'settings', label: 'nav_settings' },
   { route: 'about', icon: 'info', label: 'nav_about' },
@@ -60,6 +63,11 @@ const ctx = {
     else renderShell();
     return s;
   },
+  async setZoom(dir) {
+    const cur = Number(getState().settings.uiZoom) || 1;
+    const next = dir === 0 ? 1 : Math.min(1.6, Math.max(0.8, Math.round((cur + dir * 0.1) * 10) / 10));
+    await api.settings.set({ uiZoom: next }); setState({ settings: { ...getState().settings, uiZoom: next } }); applyPrefs();
+  },
   lockedModal(moduleId) {
     modal({ title: t('locked'), body: h('div', { class: 'stack' }, h('p', null, t('lockedMsg')), contactBlock()), actions: [{ label: t('close'), primary: true }] });
   },
@@ -76,7 +84,10 @@ function applyPrefs() {
   const s = getState().settings || {};
   setLang(s.lang || 'ar');
   document.documentElement.dataset.theme = s.theme === 'light' ? 'light' : 'dark';
+  document.body.style.zoom = String(Number(s.uiZoom) || 1);
 }
+// Ctrl+= / Ctrl+- / Ctrl+0 keyboard zoom
+window.addEventListener('keydown', (e) => { if (!e.ctrlKey) return; if (e.key === '=' || e.key === '+') { e.preventDefault(); ctx.setZoom(1); } else if (e.key === '-') { e.preventDefault(); ctx.setZoom(-1); } else if (e.key === '0') { e.preventDefault(); ctx.setZoom(0); } });
 
 function licenseChip() {
   const lic = getState().license;
@@ -115,8 +126,12 @@ function renderShell() {
 function buildTopbar(st) {
   const profile = st.profile;
   return h('div', { class: 'topbar' },
-    h('div', { class: 'brand' }, h('img', { src: 'assets/logo.png', alt: 'ASFAN' }), h('span', null, t('appName')), h('small', null, `v${(st.info && st.info.version) || ''}`)),
+    h('div', { class: 'brand' }, h('img', { src: 'assets/app-logo-128.png', alt: 'Duct Digital Twin' }), h('span', null, t('appName')), h('small', null, `v${(st.info && st.info.version) || ''}`), h('img', { src: asfanLogo(), alt: 'ASFAN', class: 'asfan-sig', title: tr('من إنتاج شركة أصفان', 'Produced by ASFAN') })),
     h('div', { class: 'spacer' }),
+    h('button', { class: 'btn ghost sm', title: tr('تصغير الخط', 'Smaller text'), onClick: () => ctx.setZoom(-1) }, 'A−'),
+    h('button', { class: 'btn ghost sm', title: tr('تكبير الخط', 'Larger text'), onClick: () => ctx.setZoom(1) }, 'A+'),
+    h('button', { class: 'btn ghost sm', title: tr('شرح هذه الشاشة', 'Explain this screen'), onClick: () => showHelp(getState().route) }, icon('info', 16), tr('شرح الشاشة', 'This screen')),
+    h('button', { class: 'btn ghost sm', title: tr('دليل الاستخدام', 'User guide'), onClick: () => navigate('guide') }, icon('book', 16), tr('الدليل', 'Guide')),
     updateChip(), licenseChip(),
     profile ? h('span', { class: 'chip', title: profile.institution }, icon(profile.role === 'supervisor' ? 'shield' : 'users', 14), profile.name) : null,
     h('button', { class: 'btn ghost sm', title: tr('English', 'العربية'), onClick: () => ctx.setSetting({ lang: getLang() === 'ar' ? 'en' : 'ar' }) }, icon('globe', 16), getLang() === 'ar' ? 'EN' : 'ع'),
@@ -133,7 +148,7 @@ function buildSidebar(st, route) {
     side.appendChild(h('button', { class: `nav-item ${route === item.route ? 'active' : ''} ${locked ? 'locked' : ''}`, onClick: () => navigate(item.route) }, icon(item.icon), h('span', null, t(item.label)), locked ? h('span', { class: 'lock' }, icon('lock', 14)) : null));
   }
   side.appendChild(h('div', { class: 'grow' }));
-  side.appendChild(h('div', { class: 'sidebar-footer' }, h('div', null, tr('شركة أصفان — ASFAN', 'ASFAN Trading Co.')), h('div', { class: 'ltr' }, 'info@asfanco.com'), h('div', { class: 'ltr' }, '+962 77 614 0404')));
+  side.appendChild(h('div', { class: 'sidebar-footer' }, h('img', { src: asfanLogo(), alt: 'ASFAN' }), h('div', null, tr('من إنتاج شركة أصفان', 'Produced by ASFAN Trading Co.')), h('div', { class: 'ltr' }, 'info@asfanco.com'), h('div', { class: 'ltr' }, '+962 77 614 0404')));
   return side;
 }
 

@@ -1,4 +1,4 @@
-import { h, icon, pageHead } from '../ui.js';
+import { h, icon, pageHead, asfanLogo } from '../ui.js';
 import { t, tr } from '../i18n.js';
 import { contactBlock } from '../app.js';
 
@@ -7,8 +7,9 @@ export default {
     const info = ctx.state.info || {};
     container.appendChild(pageHead(t('nav_about'), 'ASFAN Duct Digital Twin'));
     container.appendChild(h('div', { class: 'card', style: { textAlign: 'center', padding: '30px' } },
-      h('img', { src: 'assets/logo.png', alt: 'ASFAN', style: { height: '70px' } }),
+      h('img', { src: 'assets/app-logo-256.png', alt: 'Duct Digital Twin', style: { height: '110px', borderRadius: '24px' } }),
       h('h2', { style: { marginTop: '14px' } }, t('appName')),
+      h('div', { class: 'row', style: { justifyContent: 'center', gap: '8px', color: 'var(--muted)' } }, tr('من إنتاج', 'Produced by'), h('img', { src: asfanLogo(), alt: 'ASFAN', style: { height: '26px' } })),
       h('p', { class: 'muted' }, tr('برنامج تعليمي لمحاكاة مصانع وشبكات مجاري الهواء (Duct) لأنظمة التكييف — توأم رقمي ببيانات هندسية حقيقية.', 'Educational simulator for HVAC duct factories and duct networks — a digital twin built on real engineering data.')),
       h('div', { class: 'row', style: { justifyContent: 'center' } }, h('span', { class: 'chip' }, `v${info.version || ''}`), info.electron ? h('span', { class: 'chip' }, `Electron ${info.electron}`) : null, info.chrome ? h('span', { class: 'chip' }, `Chromium ${info.chrome}`) : null, h('span', { class: 'chip' }, `${info.platform || ''} ${info.arch || ''}`)),
       h('div', { style: { marginTop: '16px', display: 'inline-block', textAlign: 'start' } }, contactBlock()),

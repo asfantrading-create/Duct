@@ -11,7 +11,9 @@ const mcq = (moduleId, difficulty, text, options, answer, explain) => Q.push({ i
 const tf = (moduleId, difficulty, text, answer, explain) => Q.push({ id: `q${++n}`, type: 'tf', moduleId, difficulty, text, answer, explain });
 const num = (moduleId, difficulty, text, unit, generate, explain, tolerancePct = 5) => Q.push({ id: `q${++n}`, type: 'numeric', moduleId, difficulty, text, unit, generate, explain, tolerancePct });
 const B = (ar, en) => ({ ar, en });
-const rnd = (a, b, step = 1) => a + Math.round(Math.random() * ((b - a) / step)) * step;
+let RNG = Math.random; // swapped for a seeded generator while building an assigned exam
+function mulberry32(seed) { let a = seed >>> 0; return () => { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+const rnd = (a, b, step = 1) => a + Math.round(RNG() * ((b - a) / step)) * step;
 
 // ---------------- LEARN (fundamentals, types, materials, standards)
 mcq('LEARN', 1, B('ما الوظيفة الأساسية لمجاري الهواء (Duct) في نظام التكييف؟', 'What is the primary function of ducts in an HVAC system?'),
@@ -144,18 +146,22 @@ num('ASSESSMENT', 3, B('مسح بيتو أعطى ضغط سرعة متوسطاً 
   () => { const pv = rnd(10, 60, 5); const rho = [1.1, 1.15, 1.2][rnd(0, 2)]; const a = rnd(400, 1000, 100); const b = rnd(300, 500, 50); const v = Math.sqrt(2 * pv / rho); return { params: { pv, rho, a, b }, answer: v * (a / 1000) * (b / 1000) }; }, B('V = √(2Pv/ρ)، Q = V × A.', 'V = √(2Pv/ρ), Q = V × A.'), 4);
 
 /** Builds an exam: picks `count` questions filtered by modules and difficulty, shuffled; numeric questions get generated params. */
-function buildExam({ count = 15, moduleIds = null, maxDifficulty = 3, seedShuffle = true } = {}) {
-  let pool = Q.filter((q) => (!moduleIds || moduleIds.length === 0 || moduleIds.includes(q.moduleId)) && q.difficulty <= maxDifficulty);
-  pool = pool.slice();
-  if (seedShuffle) for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
-  return pool.slice(0, Math.min(count, pool.length)).map((q) => {
-    if (q.type === 'numeric') { const g = q.generate(); return { ...q, generate: undefined, params: g.params, answer: g.answer }; }
-    if (q.type === 'mcq') { // shuffle options, track correct index
-      const idx = q.options.map((_, i) => i); for (let i = idx.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [idx[i], idx[j]] = [idx[j], idx[i]]; }
-      return { ...q, options: idx.map((i) => q.options[i]), answer: idx.indexOf(q.answer) };
-    }
-    return { ...q };
-  });
+/** `seed` (number) makes the exam deterministic: same questions, order, options and numeric values for everyone. */
+function buildExam({ count = 15, moduleIds = null, maxDifficulty = 3, seedShuffle = true, seed = null } = {}) {
+  const prev = RNG; if (seed !== null && seed !== undefined) RNG = mulberry32(Number(seed) || 1);
+  try {
+    let pool = Q.filter((q) => (!moduleIds || moduleIds.length === 0 || moduleIds.includes(q.moduleId)) && q.difficulty <= maxDifficulty);
+    pool = pool.slice();
+    if (seedShuffle) for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(RNG() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
+    return pool.slice(0, Math.min(count, pool.length)).map((q) => {
+      if (q.type === 'numeric') { const g = q.generate(); return { ...q, generate: undefined, params: g.params, answer: g.answer }; }
+      if (q.type === 'mcq') { // shuffle options, track correct index
+        const idx = q.options.map((_, i) => i); for (let i = idx.length - 1; i > 0; i--) { const j = Math.floor(RNG() * (i + 1)); [idx[i], idx[j]] = [idx[j], idx[i]]; }
+        return { ...q, options: idx.map((i) => q.options[i]), answer: idx.indexOf(q.answer) };
+      }
+      return { ...q };
+    });
+  } finally { RNG = prev; }
 }
 
 function fillTemplate(text, params) { return String(text).replace(/\{(\w+)\}/g, (_, k) => (params && k in params ? params[k] : `{${k}}`)); }
