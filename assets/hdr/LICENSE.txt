@@ -1,0 +1,6 @@
+HDRI environment maps in this folder are CC0 (public domain) from Poly Haven (https://polyhaven.com/hdris),
+redistributed via the three.js examples repository:
+  - blouberg_sunrise_2_1k.hdr  (Greg Zaal)
+  - venice_sunset_1k.hdr       (Greg Zaal)
+  - moonless_golf_1k.hdr       (Greg Zaal)
+No attribution required; provided here for realistic lighting and skies in the ASFAN Duct Digital Twin.

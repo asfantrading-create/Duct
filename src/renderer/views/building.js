@@ -4,6 +4,7 @@ import * as NS from '../../shared/network-sim.js';
 import * as E from '../../shared/engineering.js';
 import { CITIES, cityById, ambientAt } from '../../shared/data/climate.js';
 import { createBuildingScene } from '../three/building-scene.js';
+import { sceneTools } from './factory.js';
 import { reportHtml } from './fabrication.js';
 import { showHelp } from '../help.js';
 
@@ -21,13 +22,15 @@ export default {
 
     const sceneEl = h('div', { class: 'scene' }); const panel = h('div', { class: 'panel' });
     container.appendChild(h('div', { class: 'twin' }, sceneEl, panel));
-    scene = createBuildingScene(sceneEl, { lang, labels, onSelect: (id) => { st.selected = id; scene.highlight(id); renderHotspot(); } });
+    scene = createBuildingScene(sceneEl, { lang, labels, hour: st.hour, onSelect: (id) => { st.selected = id; scene.highlight(id); renderHotspot(); } });
     scene.build(sized);
+    scene.onQualityChange = (q) => toast(tr(`تم تخفيض جودة العرض تلقائياً إلى «${q === 'medium' ? 'متوسطة' : 'منخفضة'}» لسلاسة الحركة`, `Render quality lowered automatically to "${q}" for smooth motion`), 'info');
     const hud = h('div', { class: 'scene-hud' }); const legend = h('div', { class: 'scene-hud scene-legend small' }); const hotspot = h('div', { class: 'hotspot-info hidden' });
     let colorMode = 'pressure';
     const modeBtns = h('div', { class: 'row' }, ['pressure', 'velocity', 'temperature'].map((m) => h('button', { class: `btn sm ${m === colorMode ? 'active' : ''}`, onClick: (e) => { colorMode = m; scene.setColorMode(m); modeBtns.querySelectorAll('.btn').forEach((b) => b.classList.remove('active')); e.currentTarget.classList.add('active'); renderLegend(); } }, { pressure: tr('الضغط', 'Pressure'), velocity: tr('السرعة', 'Velocity'), temperature: tr('الحرارة', 'Temperature') }[m])));
     sceneEl.append(h('div', { class: 'scene-overlay' }, hud, legend, h('div', { class: 'scene-hud small' }, tr('انقر على دكت أو مخرج أو وحدة المناولة لعرض قراءات الحساسات', 'Click a duct, outlet or the AHU to read its sensors'))),
-      h('div', { class: 'scene-tabs' }, modeBtns, ['overview', 'ahu', 'branchA', 'branchBC', 'inside', 'top'].map((v) => h('button', { class: 'btn sm', onClick: () => scene.setView(v) }, { overview: tr('عام', 'Overview'), ahu: 'AHU', branchA: tr('فرع A', 'Branch A'), branchBC: tr('فرعا B/C', 'Branches B/C'), inside: tr('من الداخل', 'Inside'), top: tr('من الأعلى', 'Top') }[v]))), hotspot);
+      h('div', { class: 'scene-tabs' }, modeBtns, ['overview', 'site', 'ahu', 'branchA', 'branchBC', 'inside', 'top'].map((v) => h('button', { class: 'btn sm', onClick: () => scene.setView(v) }, { overview: tr('عام', 'Overview'), site: tr('الموقع', 'Site'), ahu: 'AHU', branchA: tr('فرع A', 'Branch A'), branchBC: tr('فرعا B/C', 'Branches B/C'), inside: tr('من الداخل', 'Inside'), top: tr('من الأعلى', 'Top') }[v]))),
+      sceneTools(scene, ctx, { file: 'network-twin' }), hotspot);
     function renderLegend() { legend.replaceChildren(h('span', null, { pressure: tr('ضغط استاتيكي: منخفض ← عالٍ', 'Static pressure: low → high'), velocity: tr('سرعة: 3 م/ث ← 11 م/ث', 'Velocity: 3 → 11 m/s'), temperature: tr('حرارة الهواء: 12 ← 22°م', 'Air temperature: 12 → 22 °C') }[colorMode]), h('i', { style: { background: colorMode === 'velocity' ? 'linear-gradient(90deg,#22c55e,#f59e0b,#ef4444)' : 'linear-gradient(90deg,#3b5bdb,#22c55e,#f59e0b,#ef4444)' } })); }
     renderLegend();
 
@@ -63,7 +66,7 @@ export default {
 
     let last = null;
     function recompute() {
-      const e = env(); const r = NS.solve(topo, sized, controls, e); last = r; scene.update(r);
+      const e = env(); const r = NS.solve(topo, sized, controls, e); last = r; scene.update(r); scene.setHour(st.hour);
       st.history.push({ minute: st.simMinutes, staticPa: r.totals.maxStaticPa, fanKw: r.fan.powerKw, delivered: r.totals.deliveredLps, leakPct: r.totals.leakPct, heatKw: r.totals.heatGainKw, filterDp: r.filterDpPa, ambient: e.tempC }); if (st.history.length > 400) st.history.shift();
       hud.replaceChildren(h('div', null, h('strong', null, `${tr(e.city.city_ar, e.city.city_en)} · ${String(st.hour).padStart(2, '0')}:00 · ${fmtNum(e.tempC, 1)} °C`), ` · ${tr('المروحة', 'fan')} ${fmtNum(r.fan.qLps, 0)} L/s @ ${fmtNum(r.fan.dpPa, 0)} Pa · ${fmtNum(r.fan.powerKw, 2)} kW`), st.live ? h('div', { class: 'tiny' }, `${tr('زمن حي', 'Live time')}: ${fmtDuration(st.simMinutes * 60)}`) : null);
       const pcls = topo.pressureClassPa;

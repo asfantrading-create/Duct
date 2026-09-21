@@ -16,6 +16,7 @@ An educational Windows application by **ASFAN Trading Co.** — a digital twin o
 |---|---|---|
 | المكتبة التعليمية | Learning Library | 14 درساً (عربي/إنجليزي): الأنواع، المواد والسماكات، المعايير (SMACNA, DW/144, ASHRAE, EN)، الاحتكاك والفتنغز، التحجيم، التسرب، العزل، التصنيع، التركيب، TAB، التوأم الرقمي، السلامة |
 | مختبر التصميم | Design Lab | تحليل مقطع، تحجيم (سرعة/احتكاك متساوٍ)، القطر المكافئ، السماكة، الوزن والتكلفة، العزل والتكاثف، قوانين المراوح، تحويل الوحدات |
+| معرض الدكت 3D | Duct 3D Gallery | مكتبة مكونات دكت حقيقية بارامترية (17 مكوّناً: فلنجات TDF، أكواع، تفرّعات، حلزوني، VAV، دامبرات، مخارج، حمالات…) بأجزاء مسمّاة وقراءات SMACNA ولقطة PNG |
 | توأم المصنع | Factory Twin | نموذج 3D لمصنع دكت مع محاكاة خط الإنتاج (7 محطات)، OEE، الاختناقات، الطاقة، الأعطال؛ يمكن ربطه بمصنع حقيقي من الدليل |
 | توأم شبكة الدكت | Duct Network Twin | شبكة مبنى 3D: مروحة VFD، فلتر، دامبرات، VAV، تسرب SMACNA، اكتساب حراري، تكاثف، موازنة تلقائية، حقن أعطال |
 | التصنيع وضبط الجودة | Fabrication & QC | اختبار التسرب، جداول السماكة، الحمالات والوصلات، كتالوج الآلات، قائمة فحص PDF |
@@ -27,6 +28,7 @@ An educational Windows application by **ASFAN Trading Co.** — a digital twin o
 ## البنية التقنية / Tech stack
 
 - **Electron 44** (Windows x64, NSIS installer) · **three.js** (3D) · **esbuild** (renderer bundle) · vanilla JS, no framework.
+- 3D: analytic sky driven by the hour of day + HDRI image-based lighting (Poly Haven CC0, `assets/hdr/`), procedural terrain/site, GTAO + SMAA post-processing with adaptive quality, screen-constant callout labels, parametric duct-component library (`src/renderer/three/duct-parts.js`). All models are procedural (built from engineering dimensions), not photo scans.
 - Main process: `src/main/` (license verification, JSON store, classroom sync, exports, auto-update).
 - Shared engine: `src/shared/` (`engineering.js` physics, `network-sim.js`, `factory-sim.js`, `quiz-bank.js`, `content/lessons.js`, `data/*`).
 - Renderer: `src/renderer/` (views, i18n, three.js scenes). Bundled to `dist/renderer/` by `scripts/build-renderer.mjs`.

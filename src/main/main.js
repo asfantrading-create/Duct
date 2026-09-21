@@ -150,6 +150,7 @@ function registerIpc() {
   ipcMain.handle('export:csv', (_e, payload) => exporter.exportCsv(mainWindow, payload));
   ipcMain.handle('export:json', (_e, payload) => exporter.exportJson(mainWindow, payload));
   ipcMain.handle('export:pdf', (_e, payload) => exporter.exportPdf(mainWindow, payload));
+  ipcMain.handle('export:png', (_e, payload) => exporter.exportPng(mainWindow, payload));
   ipcMain.handle('export:defaultDir', () => exporter.defaultDir());
 
   // updates
