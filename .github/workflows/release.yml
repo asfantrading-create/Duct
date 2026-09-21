@@ -55,6 +55,8 @@ jobs:
           # RELEASES_TOKEN (optional PAT) lets you publish to a separate public "releases" repository;
           # otherwise the workflow token publishes to this repository.
           GH_TOKEN: ${{ secrets.RELEASES_TOKEN || secrets.GITHUB_TOKEN }}
+          # Upload into a release that was created from the GitHub web UI even if it was published a while ago.
+          EP_GH_IGNORE_TIME: "true"
           # Optional Windows code-signing certificate (base64 .pfx) — removes the SmartScreen warning.
           CSC_LINK: ${{ secrets.WIN_CSC_LINK }}
           CSC_KEY_PASSWORD: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
