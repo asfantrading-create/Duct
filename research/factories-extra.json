@@ -1,0 +1,36 @@
+[
+  {
+    "id": "houranieh-iron-trading-damascus",
+    "name_en": "Houranieh Co. for Iron Trading",
+    "name_ar": "شركة حورانية لتجارة الحديد",
+    "country_code": "SY",
+    "country_en": "Syria",
+    "country_ar": "سوريا",
+    "city_en": "Damascus",
+    "city_ar": "دمشق",
+    "lat": 33.5138,
+    "lon": 36.2765,
+    "location_note": "city centroid (company address given as Zoqaq al-Jin, Abdul Rahman bin Qasim Avenue, Damascus; retail outlet in the New Industrial Zone of Damascus)",
+    "founded": 1949,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": null,
+    "sources": [
+      "https://github.com/chbuanjicann/ar/blob/9796e7c4d247423cb3d2df74c19c9569485acdff/35/%D8%B4%D8%B1%D9%83%D8%A7%D8%AA%20%D9%84%D8%AA%D8%B5%D9%86%D9%8A%D8%B9%20%D9%85%D8%A7%D9%83%D9%86%D8%A7%D8%AA%20pvc%20%D9%81%D9%8A%20%D8%B3%D9%88%D8%B1%D9%8A%D8%A7.md",
+      "https://github.com/chbuanjicann/ar/blob/9796e7c4d247423cb3d2df74c19c9569485acdff/34/%D9%85%D8%B9%D8%AF%D8%A7%D8%AA%20%D8%A5%D9%86%D8%AA%D8%A7%D8%AC%20%D8%B5%D9%81%D8%A7%D8%A6%D8%AD%20%D8%A7%D9%84%D9%86%D8%AD%D8%A7%D8%B3.md",
+      "https://github.com/chbuanjicann/ar/blob/9796e7c4d247423cb3d2df74c19c9569485acdff/35/%D8%A7%D9%84%D9%84%D8%AD%D8%A7%D9%85%20%D8%AE%D8%B7%20%D8%A7%D9%86%D8%AA%D8%A7%D8%AC%20%D9%82%D8%B6%D8%A8%D8%A7%D9%86.md",
+      "https://github.com/chbuanjicann/ar/blob/9796e7c4d247423cb3d2df74c19c9569485acdff/35/%D8%B4%D8%B1%D9%83%D8%A7%D8%AA%20%D9%84%D8%AA%D8%B5%D9%86%D9%8A%D8%B9%20%D8%AD%D8%AF%D9%8A%D8%AF%20%D8%A7%D9%84%D9%85%D8%B3%D8%AD%D9%88%D8%A8%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%A8%D8%A7%D8%B1%D8%AF.md",
+      "https://github.com/ziyouzhiyz/ar/blob/5aacaa1a2e3e57d79f559a1d8348b55e00397e88/36/%D8%A7%D9%84%D9%83%D8%B1%D9%88%D9%85%20%D8%A8%D9%8A%D8%B9%20%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D8%B5%D9%86%D8%B9.md",
+      "https://github.com/gongxiangjz/ar/blob/c991f1141fbdc41d77f86d8fb25ec6c0950191eb/20/%D9%85%D8%A7%D9%83%D9%86%D8%A7%D8%AA%20%D8%AA%D8%AB%D9%83%D9%8A%D9%84%20%D8%A7%D9%84%D8%AD%D8%AF%D9%8A%D8%AF%20%D8%A7%D9%84%D8%B5%D9%8A%D9%86%D9%8A%D8%A9.md"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Damascus steel trader founded in 1949 whose own website copy, preserved verbatim in indexed third-party copies, states that in 2008 it installed machinery to manufacture central-AC ducts and runs a duct production line making round and rectangular air ducts automatically."
+  }
+]

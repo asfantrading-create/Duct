@@ -1,0 +1,22 @@
+ASFAN Duct Digital Twin - End User License Agreement (EULA)
+
+Copyright (c) 2026 ASFAN Trading Co. All rights reserved.
+Contact: info@asfanco.com | WhatsApp: +962 77 614 0404
+
+1. LICENSE. ASFAN grants the licensee a non-exclusive, non-transferable license to install and use this
+   educational software on computers of the licensed organisation, subject to a valid license key issued by
+   ASFAN. Lifetime and time-limited (subscription) keys are available; a time-limited key stops working on
+   its expiry date.
+2. RESTRICTIONS. The licensee may not copy, distribute, resell, rent, reverse engineer, decompile or
+   modify the software, nor share license keys with third parties.
+3. EDUCATIONAL USE. The simulator, calculations and reference data are provided for training and
+   education. They are not a substitute for engineering design, standards (SMACNA, DW/144, ASHRAE, EN) or
+   professional judgement, and ASFAN accepts no liability for decisions based on them.
+4. DATA. Student results are stored locally on the computer (and optionally in a shared classroom folder
+   selected by the supervisor). The software does not upload personal data to ASFAN. Update checks contact
+   GitHub Releases only to fetch version information and installers.
+5. UPDATES. ASFAN may provide updates. The software notifies the user when an update is available.
+6. WARRANTY. The software is provided "as is" without warranty of any kind, to the extent permitted by law.
+7. TERMINATION. This license terminates automatically if the licensee breaches these terms.
+
+By installing the software you agree to these terms.

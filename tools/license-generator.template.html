@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>License Generator · مولّد التراخيص – ASFAN Duct Digital Twin</title>
+<style>
+  :root { --bg:#f4f6f9; --panel:#fff; --line:#dbe2ea; --text:#0f172a; --muted:#5b6b7f; --accent:#6d5ce7; --accent2:#c93cd6; --warn:#b45309; --crit:#dc2626; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,'Noto Sans Arabic',Tahoma,sans-serif; font-size:14px; }
+  header { background:var(--panel); border-bottom:1px solid var(--line); padding:12px 24px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  header .brand { display:flex; align-items:center; gap:14px; } header img { height:40px; }
+  h1 { font-size:17px; margin:0; } h2 { font-size:15px; margin:0 0 10px; }
+  main { max-width:1120px; margin:20px auto; padding:0 16px; display:grid; gap:16px; grid-template-columns:1fr 1fr; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; }
+  label { display:block; font-size:12px; color:var(--muted); margin:10px 0 4px; }
+  input, select, textarea { width:100%; padding:8px 10px; border:1px solid var(--line); border-radius:8px; font:inherit; background:#fff; color:var(--text); }
+  textarea { font-family:Consolas,monospace; font-size:12px; min-height:110px; direction:ltr; }
+  button { background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#fff; border:0; border-radius:8px; padding:9px 14px; font:inherit; font-weight:600; cursor:pointer; margin-top:12px; }
+  button.secondary { background:#fff; color:var(--text); border:1px solid var(--line); }
+  .row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .out { font-family:Consolas,monospace; font-size:12px; word-break:break-all; background:#f8fafc; border:1px dashed var(--line); border-radius:8px; padding:10px; direction:ltr; text-align:left; min-height:60px; }
+  .muted { color:var(--muted); font-size:12px; } .ok { color:#0f9d58; } .bad { color:var(--crit); }
+  .lang { border:1px solid var(--line); border-radius:8px; overflow:hidden; display:inline-flex; } .lang button { margin:0; border-radius:0; background:#fff; color:var(--text); padding:6px 10px; } .lang button.active { background:#efe9ff; color:var(--accent); }
+  .types { display:grid; grid-template-columns:1fr 1fr; gap:6px 12px; margin-top:6px; } .types label { display:flex; align-items:center; gap:8px; margin:0; font-size:13px; color:var(--text); cursor:pointer; } .types input { width:auto; } .types label.all { grid-column:1 / -1; font-weight:600; border-bottom:1px solid var(--line); padding-bottom:6px; margin-bottom:2px; }
+  footer { max-width:1120px; margin:10px auto 30px; padding:0 16px; color:var(--muted); font-size:12px; display:flex; gap:16px; flex-wrap:wrap; }
+  footer a { color:var(--accent); text-decoration:none; }
+  @media (max-width:800px) { main { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><img src="__LOGO__" alt="ASFAN" /><h1 data-i18n="title">مولّد تراخيص التوأم الرقمي لمجاري الهواء (Duct)</h1></div>
+  <div class="lang"><button id="lang-ar" class="active" onclick="setLang('ar')">العربية</button><button id="lang-en" onclick="setLang('en')">English</button></div>
+</header>
+<main>
+  <section class="card">
+    <h2 data-i18n="privTitle">1 · المفتاح الخاص (سري – لا يُرسل للعميل أبداً)</h2>
+    <p class="muted" data-i18n="privHint">ألصق محتوى الملف private.jwk.json أو حمّله. يبقى المفتاح في متصفحك فقط ولا يُرسل لأي مكان.</p>
+    <textarea id="priv" placeholder='{"kty":"EC","crv":"P-256","x":"...","y":"...","d":"..."}'></textarea>
+    <div class="row"><input type="file" id="privFile" accept=".json" /><button class="secondary" onclick="rememberPriv()" data-i18n="remember">حفظ في هذا المتصفح</button></div>
+    <h2 style="margin-top:18px" data-i18n="custTitle">2 · بيانات العميل والترخيص</h2>
+    <label data-i18n="name">اسم العميل / الجهة</label><input id="name" placeholder="مثال: جامعة العلوم والتكنولوجيا – قسم الهندسة الميكانيكية" />
+    <label data-i18n="email">البريد الإلكتروني (اختياري)</label><input id="email" type="email" />
+    <label data-i18n="type">نوع الترخيص</label>
+    <select id="type" onchange="toggleExp()"><option value="lifetime" data-i18n="lifetime">مدى الحياة</option><option value="subscription" data-i18n="subscription">ينتهي بتاريخ محدد</option></select>
+    <div id="expRow" style="display:none"><label data-i18n="expires">تاريخ انتهاء الترخيص</label><input id="expires" type="date" /></div>
+    <label data-i18n="machine">ربط بجهاز محدد (اختياري) – معرّف الجهاز يظهر للعميل في نافذة الترخيص</label><input id="machine" placeholder="XXXX-XXXX-XXXX-XXXX" style="direction:ltr" />
+    <label data-i18n="seats">عدد المقاعد / المتدربين (اختياري – للعرض فقط)</label><input id="seats" type="number" min="1" style="direction:ltr" />
+    <label data-i18n="notes">ملاحظات (اختياري)</label><input id="notes" />
+    <h2 style="margin-top:18px" data-i18n="typesTitle">الوحدات المشمولة بالترخيص</h2>
+    <p class="muted" data-i18n="typesHint">اختر «جميع الوحدات» أو حدد الوحدات التي دفع العميل ثمنها فقط؛ الوحدات الأخرى تظهر مقفلة في البرنامج.</p>
+    <div id="types" class="types"></div>
+    <h2 style="margin-top:18px" data-i18n="roleTitle">دور الترخيص</h2>
+    <label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="supervisor" style="width:auto" /> <span data-i18n="supervisor">ترخيص مشرف (مدرس / مدرب / سوبر أدمن): ينشئ الفصول ويرى إجابات ونتائج جميع الطلاب</span></label>
+    <p class="muted" data-i18n="roleHint">اترك الخيار فارغاً لتراخيص الطلاب والمستخدمين العاديين.</p>
+    <button onclick="generate()" data-i18n="generate">توليد مفتاح الترخيص</button>
+  </section>
+  <section class="card">
+    <h2 data-i18n="keyTitle">3 · مفتاح الترخيص – أرسله للعميل</h2>
+    <div class="out" id="out"><span class="muted" data-i18n="empty">لم يُولَّد مفتاح بعد.</span></div>
+    <div class="row"><button class="secondary" onclick="copyKey()" data-i18n="copy">نسخ</button><button class="secondary" onclick="downloadKey()" data-i18n="download">تنزيل ملف .lic</button></div>
+    <p class="muted" id="summary"></p>
+    <h2 style="margin-top:18px" data-i18n="verifyTitle">التحقق من مفتاح</h2>
+    <textarea id="verifyIn" placeholder="ADDT1-..."></textarea>
+    <label data-i18n="pubLabel">المفتاح العام (اختياري – يُستخدم المفتاح المدمج إن تُرك فارغاً)</label>
+    <textarea id="pub" style="min-height:60px"></textarea>
+    <button class="secondary" onclick="verifyKey()" data-i18n="verify">تحقق</button>
+    <div id="verifyOut" class="muted" style="margin-top:8px"></div>
+  </section>
+</main>
+<footer><span>ASFAN Trading Co. — شركة أصفان</span><a href="mailto:info@asfanco.com">info@asfanco.com</a><a href="https://wa.me/962776140404">WhatsApp +962 77 614 0404</a><span data-i18n="ver">مولّد التراخيص v1.0 · صيغة المفتاح ADDT1</span></footer>
+<script>
+const EMBEDDED_PUB = __PUB__;
+const PREFIX = 'ADDT1-';
+const MODULES = [['LEARN','المكتبة التعليمية','Learning Library'],['DESIGN_LAB','مختبر تصميم الدكت','Duct Design Lab'],['FACTORY_TWIN','التوأم الرقمي لمصنع الدكت','Factory Digital Twin'],['BUILDING_TWIN','التوأم الرقمي لشبكة الدكت','Duct Network Digital Twin'],['FABRICATION_QC','التصنيع والتركيب وضبط الجودة','Fabrication, Installation & QC'],['ASSESSMENT','الاختبارات والتقييم','Assessments']];
+const I18N = {
+  ar: { roleTitle:'دور الترخيص', supervisor:'ترخيص مشرف (مدرس / مدرب / سوبر أدمن): ينشئ الفصول ويرى إجابات ونتائج جميع الطلاب', roleHint:'اترك الخيار فارغاً لتراخيص الطلاب والمستخدمين العاديين.', roleSummary:' – مشرف (سوبر أدمن)', typesTitle:'الوحدات المشمولة بالترخيص', typesHint:'اختر «جميع الوحدات» أو حدد الوحدات التي دفع العميل ثمنها فقط؛ الوحدات الأخرى تظهر مقفلة في البرنامج.', allTypes:'جميع الوحدات (6)', needTypes:'اختر وحدة واحدة على الأقل', typesSummary:(ts)=>ts?` – الوحدات: ${ts.join('، ')}`:' – جميع الوحدات', title:'مولّد تراخيص التوأم الرقمي لمجاري الهواء (Duct)', privTitle:'1 · المفتاح الخاص (سري – لا يُرسل للعميل أبداً)', privHint:'ألصق محتوى الملف private.jwk.json أو حمّله. يبقى المفتاح في متصفحك فقط ولا يُرسل لأي مكان.', remember:'حفظ في هذا المتصفح', custTitle:'2 · بيانات العميل والترخيص', name:'اسم العميل / الجهة', email:'البريد الإلكتروني (اختياري)', type:'نوع الترخيص', lifetime:'مدى الحياة', subscription:'ينتهي بتاريخ محدد', expires:'تاريخ انتهاء الترخيص', machine:'ربط بجهاز محدد (اختياري) – معرّف الجهاز يظهر للعميل في نافذة الترخيص', seats:'عدد المقاعد / المتدربين (اختياري – للعرض فقط)', notes:'ملاحظات (اختياري)', generate:'توليد مفتاح الترخيص', keyTitle:'3 · مفتاح الترخيص – أرسله للعميل', empty:'لم يُولَّد مفتاح بعد.', copy:'نسخ', download:'تنزيل ملف .lic', verifyTitle:'التحقق من مفتاح', pubLabel:'المفتاح العام (اختياري – يُستخدم المفتاح المدمج إن تُرك فارغاً)', verify:'تحقق', needPriv:'أدخل المفتاح الخاص أولاً', needName:'أدخل اسم العميل', needDate:'أدخل تاريخ الانتهاء', copied:'تم النسخ', valid:'التوقيع صحيح ✓', invalid:'التوقيع غير صحيح ✗', ver:'مولّد التراخيص v1.0 · صيغة المفتاح ADDT1', summary:(p)=>`ترخيص ${p.type==='lifetime'?'مدى الحياة':'ينتهي في '+p.expires} للعميل «${p.name}» – صدر بتاريخ ${p.issued}${p.machine?' – مربوط بالجهاز '+p.machine:''}${p.seats?' – '+p.seats+' مقعد':''}` },
+  en: { roleTitle:'License role', supervisor:'Supervisor license (teacher / trainer / super admin): creates classes and sees the answers and scores of all students', roleHint:'Leave it unticked for student and ordinary user licenses.', roleSummary:' – supervisor (super admin)', typesTitle:'Modules included in the license', typesHint:'Choose “All modules” or tick only the modules the customer paid for; the other modules appear locked in the program.', allTypes:'All modules (6)', needTypes:'Select at least one module', typesSummary:(ts)=>ts?` – modules: ${ts.join(', ')}`:' – all modules', title:'ASFAN Duct Digital Twin – License Generator', privTitle:'1 · Private key (secret – never send it to customers)', privHint:'Paste the content of private.jwk.json or load the file. The key stays in your browser and is never uploaded.', remember:'Remember in this browser', custTitle:'2 · Customer & license details', name:'Customer / organisation name', email:'E-mail (optional)', type:'License type', lifetime:'Lifetime', subscription:'Expires on a date', expires:'License expiry date', machine:'Bind to one computer (optional) – the machine ID is shown to the customer in the license window', seats:'Seats / trainees (optional – informational)', notes:'Notes (optional)', generate:'Generate license key', keyTitle:'3 · License key – send this to the customer', empty:'No key generated yet.', copy:'Copy', download:'Download .lic file', verifyTitle:'Verify a key', pubLabel:'Public key (optional – the embedded key is used when empty)', verify:'Verify', needPriv:'Enter the private key first', needName:'Enter the customer name', needDate:'Enter the expiry date', copied:'Copied', valid:'Signature valid ✓', invalid:'Signature INVALID ✗', ver:'License generator v1.0 · key format ADDT1', summary:(p)=>`${p.type==='lifetime'?'Lifetime':'Expires '+p.expires} license for “${p.name}” – issued ${p.issued}${p.machine?' – bound to machine '+p.machine:''}${p.seats?' – '+p.seats+' seats':''}` }
+};
+let lang = 'ar';
+function renderTypes() { const box = document.getElementById('types'); const checked = new Set([...box.querySelectorAll('input[data-type]:checked')].map((i) => i.dataset.type)); const allWas = box.querySelector('#allTypes') ? document.getElementById('allTypes').checked : true; box.innerHTML = `<label class="all"><input type="checkbox" id="allTypes" ${allWas ? 'checked' : ''} onchange="toggleAllTypes()" /> ${I18N[lang].allTypes}</label>` + MODULES.map(([id, ar, en]) => `<label><input type="checkbox" data-type="${id}" ${allWas || checked.has(id) ? 'checked' : ''} ${allWas ? 'disabled' : ''} /> ${lang === 'ar' ? ar : en} <span class="muted" dir="ltr">${id}</span></label>`).join(''); }
+function toggleAllTypes() { const all = document.getElementById('allTypes').checked; document.querySelectorAll('#types input[data-type]').forEach((i) => { i.disabled = all; if (all) i.checked = true; }); }
+function selectedTypes() { if (document.getElementById('allTypes').checked) return null; const ts = [...document.querySelectorAll('#types input[data-type]:checked')].map((i) => i.dataset.type); return ts.length === MODULES.length ? null : ts; }
+function setLang(l) { lang = l; renderTypes(); document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr'; document.querySelectorAll('[data-i18n]').forEach((el) => { const v = I18N[l][el.dataset.i18n]; if (typeof v === 'string') el.textContent = v; }); document.getElementById('lang-ar').classList.toggle('active', l === 'ar'); document.getElementById('lang-en').classList.toggle('active', l === 'en'); }
+const t = (k) => I18N[lang][k];
+const b64u = (bytes) => btoa(String.fromCharCode(...new Uint8Array(bytes))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+const unb64u = (s) => { const p = s.replace(/-/g,'+').replace(/_/g,'/'); const bin = atob(p + '='.repeat((4 - p.length % 4) % 4)); return Uint8Array.from(bin, (c) => c.charCodeAt(0)); };
+let lastKey = '', lastName = '';
+document.getElementById('privFile').addEventListener('change', (e) => { const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => (document.getElementById('priv').value = r.result); r.readAsText(f); });
+function rememberPriv() { localStorage.setItem('addt.priv', document.getElementById('priv').value); alert(t('copied')); }
+if (localStorage.getItem('addt.priv')) document.getElementById('priv').value = localStorage.getItem('addt.priv');
+function toggleExp() { document.getElementById('expRow').style.display = document.getElementById('type').value === 'subscription' ? '' : 'none'; }
+async function generate() {
+  const privTxt = document.getElementById('priv').value.trim(); if (!privTxt) return alert(t('needPriv'));
+  const name = document.getElementById('name').value.trim(); if (!name) return alert(t('needName'));
+  const type = document.getElementById('type').value; const expires = document.getElementById('expires').value;
+  if (type === 'subscription' && !expires) return alert(t('needDate'));
+  const types = selectedTypes(); if (Array.isArray(types) && types.length === 0) return alert(t('needTypes'));
+  const jwk = JSON.parse(privTxt);
+  const key = await crypto.subtle.importKey('jwk', jwk, { name: 'ECDSA', namedCurve: 'P-256' }, false, ['sign']);
+  const seats = parseInt(document.getElementById('seats').value, 10);
+  const payload = { v: 1, id: crypto.randomUUID(), name, email: document.getElementById('email').value.trim() || undefined, type, issued: new Date().toISOString().slice(0, 10), expires: type === 'subscription' ? expires : null, machine: document.getElementById('machine').value.trim().toUpperCase() || null, notes: document.getElementById('notes').value.trim() || undefined, modules: types || undefined, role: document.getElementById('supervisor').checked ? 'supervisor' : undefined, seats: seats > 0 ? seats : undefined };
+  const data = new TextEncoder().encode(JSON.stringify(payload));
+  const sig = await crypto.subtle.sign({ name: 'ECDSA', hash: 'SHA-256' }, key, data);
+  lastKey = `${PREFIX}${b64u(data)}.${b64u(sig)}`; lastName = name;
+  document.getElementById('out').textContent = lastKey;
+  document.getElementById('summary').textContent = t('summary')(payload) + t('typesSummary')(payload.modules || null) + (payload.role ? t('roleSummary') : '');
+}
+function copyKey() { if (!lastKey) return; navigator.clipboard.writeText(lastKey).then(() => alert(t('copied'))); }
+function downloadKey() { if (!lastKey) return; const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([lastKey + '\n'], { type: 'text/plain' })); a.download = `${lastName.replace(/[^\w.-]+/g, '_')}.lic`; a.click(); }
+async function verifyKey() {
+  const raw = document.getElementById('verifyIn').value.replace(/\s+/g, ''); const out = document.getElementById('verifyOut');
+  try {
+    if (!raw.startsWith(PREFIX)) throw new Error('prefix');
+    const body = raw.slice(PREFIX.length); const dot = body.indexOf('.');
+    const payloadBytes = unb64u(body.slice(0, dot)); const sig = unb64u(body.slice(dot + 1));
+    const pubTxt = document.getElementById('pub').value.trim(); const pubJwk = pubTxt ? JSON.parse(pubTxt) : EMBEDDED_PUB;
+    const key = await crypto.subtle.importKey('jwk', pubJwk, { name: 'ECDSA', namedCurve: 'P-256' }, false, ['verify']);
+    const ok = await crypto.subtle.verify({ name: 'ECDSA', hash: 'SHA-256' }, key, sig, payloadBytes);
+    const payload = JSON.parse(new TextDecoder().decode(payloadBytes));
+    out.innerHTML = `<span class="${ok ? 'ok' : 'bad'}">${ok ? t('valid') : t('invalid')}</span><br><span dir="ltr">${JSON.stringify(payload)}</span>`;
+  } catch (e) { out.innerHTML = `<span class="bad">${t('invalid')} (${e.message})</span>`; }
+}
+renderTypes();
+</script>
+</body>
+</html>

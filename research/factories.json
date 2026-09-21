@@ -1,0 +1,3104 @@
+[
+  {
+    "id": "saudi-duct-factory-riyadh",
+    "name_en": "Saudi Duct Factory",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Riyadh",
+    "city_ar": "الرياض",
+    "lat": 24.7136,
+    "lon": 46.6753,
+    "location_note": "city centroid",
+    "founded": 1998,
+    "products": [
+      "spiral_round_duct",
+      "duct_accessories"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://sdf-ksa.com/",
+    "sources": [
+      "https://sdf-ksa.com/",
+      "https://sdf-ksa.com/about-us-2/",
+      "https://sdf-ksa.com/round-ducts-and-fittings/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Established 1998 as an independent, 100% Saudi-owned company with its main production units and head office in Riyadh; site lists round ducts and fittings for HVAC."
+  },
+  {
+    "id": "technical-duct-factory-riyadh",
+    "name_en": "Technical Duct Factory (TDF)",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Riyadh",
+    "city_ar": "الرياض",
+    "lat": 24.7136,
+    "lon": 46.6753,
+    "location_note": "city centroid",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "oval_duct",
+      "duct_accessories",
+      "ahu_fcu",
+      "other"
+    ],
+    "materials": [],
+    "standards": [
+      "ISO_9001"
+    ],
+    "capacity_note": "fully equipped 10,000 sqm working space",
+    "employees_note": null,
+    "website": "https://technicalductfactory.com/",
+    "sources": [
+      "https://technicalductfactory.com/",
+      "https://technicalductfactory.com/product_category/rectangular-ducts-and-fittings-single-wall-double-wall/",
+      "https://technicalductfactory.com/quality-policy/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "ISO 9001:2015-certified HVAC duct factory making round, flat-oval, rectangular (single/double wall), spiral and welded ducts plus AHUs; Riyadh (Sulaimaniyah) address on site."
+  },
+  {
+    "id": "daymat-factory-huraymila",
+    "name_en": "Daymat Factory",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Huraymila (Riyadh Region)",
+    "city_ar": "حريملاء",
+    "lat": 25.1167,
+    "lon": 46.1,
+    "location_note": "Huraymila town centroid (Bader Street address on site)",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "dampers",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [],
+    "standards": [
+      "other"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://daymat.sa/",
+    "sources": [
+      "https://daymat.sa/",
+      "https://daymat.sa/products/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Self-described ISO-certified (standard number not stated) duct and HVAC factory listing air ducts, spiral duct, pre-insulated duct, plenum boxes, dampers and sand-trap louvers."
+  },
+  {
+    "id": "sharqawi-air-distribution-system-factory-jeddah",
+    "name_en": "Sharqawi Air Distribution System Factory Company",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Jeddah",
+    "city_ar": "جدة",
+    "lat": 21.4,
+    "lon": 39.25,
+    "location_note": "Jeddah Industrial Area Phase 3, approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [],
+    "standards": [
+      "SMACNA",
+      "ASHRAE"
+    ],
+    "capacity_note": "production capacity exceeds 50 tons daily",
+    "employees_note": null,
+    "website": "https://sharqawifactory.com/",
+    "sources": [
+      "https://sharqawifactory.com/about-us/",
+      "https://sharqawifactory.com/duct/",
+      "https://sharqawifactory.com/spiral-duct-2/",
+      "https://sharqawifactory.com/double-wall-ducts-2/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Over 20 years fabricating ducts and accessories (rectangular, spiral, double-wall, duct heaters) to SMACNA and ASHRAE in Jeddah Industrial Area Phase 3."
+  },
+  {
+    "id": "safid-riyadh",
+    "name_en": "SAFID (Saudi Factory for Insulated Ducts)",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Riyadh",
+    "city_ar": "الرياض",
+    "lat": 24.57,
+    "lon": 46.77,
+    "location_note": "Riyadh Second Industrial City, approximate",
+    "founded": 1979,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "oval_duct",
+      "flexible_duct",
+      "dampers",
+      "grilles_diffusers",
+      "sound_attenuators",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://safid.com/",
+    "sources": [
+      "https://safid.com/",
+      "https://www.safid.com/about.php",
+      "https://www.safid.com/products.php",
+      "https://www.safid.com/contact.php",
+      "https://safid.com/pdf/AirDucts/Rectangular%20Duct%20&%20Fittings.pdf"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Founded 1979 as a joint venture of the Rahbani Group and NOKIA (Finland); manufactures round, oval, rectangular, flexible and double-wall ducts plus dampers, louvers and acoustic products from the Second Industrial Area, Riyadh."
+  },
+  {
+    "id": "alfaneyah-duct-factory-jeddah",
+    "name_en": "Alfaneyah Electromechanical Company Ltd - Duct Factory",
+    "name_ar": "الشركة الفنية للأعمال الكهروميكانيكية المحدودة",
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Jeddah",
+    "city_ar": "جدة",
+    "lat": 21.4858,
+    "lon": 39.1925,
+    "location_note": "city centroid",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "duct_accessories"
+    ],
+    "materials": [],
+    "standards": [
+      "SMACNA",
+      "ISO_45001"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://alfaneyah.com/",
+    "sources": [
+      "https://alfaneyah.com/Duct%20Factory.html",
+      "https://alfaneyah.com/Duct%20Factory-Ar.html",
+      "https://alfaneyah.com/assets/Files/ALFANEYAH%20DUCT%20CATALOGUE.pdf",
+      "https://alfaneyah.com/assets/images/CERT/1%20OHSAS%20Cert%20(ISO%2045001)%20-MEP&Prod-Exp%20270528.pdf"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Duct factory of a Jeddah electromechanical contractor; factory-fabricated rectangular duct and fittings (lengths up to 1.2 m) and spiral lock-seam pipe; Arabic page cites SMACNA 2005; ISO 45001 certificate published."
+  },
+  {
+    "id": "saudi-akhwan-ducting-factory-alafco-riyadh",
+    "name_en": "Saudi Akhwan Ducting Factory Co. Ltd (ALAFCO)",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Riyadh",
+    "city_ar": "الرياض",
+    "lat": 24.7136,
+    "lon": 46.6753,
+    "location_note": "city centroid",
+    "founded": null,
+    "products": [
+      "fire_rated_duct",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://alafcohvac.com/",
+    "sources": [
+      "https://alafcohvac.com/",
+      "https://www.alafcohvac.com/products-fire-rated-duct.php",
+      "https://alafcohvac.com/contact.php"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Riyadh manufacturer of HVAC ductwork products and accessories, licensed manufacturer of FFC fire-rated ductwork; also makes post-tension pipes and void formers."
+  },
+  {
+    "id": "sara-international-duct-factory-jubail",
+    "name_en": "Sara International Factory for Air Conditioning Duct",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Jubail",
+    "city_ar": "الجبيل",
+    "lat": 27,
+    "lon": 49.6,
+    "location_note": "Jubail Industrial City, approximate",
+    "founded": 2013,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "fire_rated_duct",
+      "stainless_duct",
+      "duct_accessories"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "stainless_steel"
+    ],
+    "standards": [
+      "SMACNA",
+      "other"
+    ],
+    "capacity_note": "capacity to produce over 100 ton of steel per month",
+    "employees_note": null,
+    "website": "https://www.saraduct.com/",
+    "sources": [
+      "https://www.saraduct.com/",
+      "http://saraduct.com/about.html",
+      "http://saraduct.com/assets/catalog/5-Fire%20Rated%20Ducts%20and%20Fittings.pdf"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Established 2013 with factory and head office in Jubail Industrial City; rectangular and spiral duct in galvanized, stainless and black steel; states SMACNA membership, ISO certification and Aramco/SABIC/Royal Commission approvals."
+  },
+  {
+    "id": "masarat-united-factory-riyadh",
+    "name_en": "Masarat United Factory Company",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Riyadh",
+    "city_ar": "الرياض",
+    "lat": 24.62,
+    "lon": 46.83,
+    "location_note": "Al Mashael district / Istanbul Street industrial zone, approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "fire_rated_duct",
+      "dampers",
+      "duct_accessories"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.masarat-sa.com/",
+    "sources": [
+      "https://www.masarat-sa.com/",
+      "https://www.masarat-sa.com/products",
+      "https://www.masarat-sa.com/about"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Saudi HVAC duct fabrication firm with factory on Istanbul Street, Al Mashael, Riyadh; product list includes rectangular fittings, spiral duct, fire-rated spiral duct, black-steel duct, VCDs, plenum boxes and access doors."
+  },
+  {
+    "id": "faris-ducts-riyadh",
+    "name_en": "Faris Ducts (Faris Duct Factory)",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Riyadh",
+    "city_ar": "الرياض",
+    "lat": 24.62,
+    "lon": 46.83,
+    "location_note": "Istanbul Street, Exit 18 industrial zone, approximate",
+    "founded": null,
+    "products": [
+      "other"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "http://www.alwathiqllc.com/",
+    "sources": [
+      "http://www.alwathiqllc.com/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Site describes an HVAC factory-fabricated duct manufacturer on Istanbul Street (Exit 18), Riyadh; product detail on the page is minimal."
+  },
+  {
+    "id": "omamah-air-conditioning-systems-ksa",
+    "name_en": "Omamah Air Conditioning Systems - Automated Duct Factory",
+    "name_ar": "شركة أمامة لأنظمة التكييف",
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": null,
+    "city_ar": null,
+    "lat": 23.8859,
+    "lon": 45.0792,
+    "location_note": "country centroid - factory city not published on the source pages",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel"
+    ],
+    "standards": [
+      "SMACNA"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://omamah-ac.com/",
+    "sources": [
+      "https://omamah-ac.com/services/duct-fabrication-factory",
+      "https://omamah-ac.com/factory"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Saudi HVAC company (30 years) running an automated duct factory producing galvanized rectangular and round/spiral ducts, pre-insulated ducts, plenum boxes and canvas connections to SMACNA."
+  },
+  {
+    "id": "al-jazira-solutions-ac-duct-factory-ksa",
+    "name_en": "Al Jazira Solutions for Air Conditioning - Duct Factory",
+    "name_ar": "شركة حلول الجزيرة للتكييف والتبريد",
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": null,
+    "city_ar": null,
+    "lat": 23.8859,
+    "lon": 45.0792,
+    "location_note": "country centroid - source gives factory address as Al Misfat district, Ahmed Al Marzouqi Street, without naming the city",
+    "founded": null,
+    "products": [
+      "other"
+    ],
+    "materials": [],
+    "standards": [
+      "ISO_9001"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://aljaziraac.com/",
+    "sources": [
+      "https://aljaziraac.com/%D9%85%D8%B5%D9%86%D8%B9-%D9%85%D8%AC%D8%A7%D8%B1%D9%8A-%D8%A7%D9%84%D9%87%D9%88%D8%A7%D8%A1/",
+      "https://aljaziraac.com/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Saudi central-AC company with an automated duct production line, industrial licence no. 4704090013 from the Ministry of Industry and ISO 9001:2015 certification stated on its duct-factory page."
+  },
+  {
+    "id": "nefal-ac-riyadh",
+    "name_en": "Nefal Air Conditioning & Electromechanical - Duct Factory",
+    "name_ar": "نفال للتكييف والكهروميكانيك",
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Riyadh",
+    "city_ar": "الرياض",
+    "lat": 24.8,
+    "lon": 46.63,
+    "location_note": "Al Sahafa district, approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "duct_accessories"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "aluminium"
+    ],
+    "standards": [
+      "SMACNA"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://nefal-ac.com/",
+    "sources": [
+      "https://nefal-ac.com/service/%D8%B5%D9%86%D8%A7%D8%B9%D8%A9-%D9%88%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D8%A7%D9%84%D8%AF%D9%83%D8%AA-%D8%A2%D9%84%D9%8A%D8%A7/",
+      "http://www.nefal-ac.com/service/manufacturing-and-design-of-air-ducts",
+      "https://guideriyadh.com/item/54925/شركة-نفال-للتكييف-والصيانة"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Riyadh HVAC contractor (30+ years) that designs and machine-fabricates galvanized (and aluminium) ductwork in its own factory to SMACNA gauges."
+  },
+  {
+    "id": "mangeer-contracting-al-qunfudhah",
+    "name_en": "Mangeer Contracting Company - Ductwork Division",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Al Qunfudhah",
+    "city_ar": "القنفذة",
+    "lat": 19.1264,
+    "lon": 41.0789,
+    "location_note": "city centroid",
+    "founded": 1991,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "pre_insulated_pir_duct",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "pir_panel",
+      "fabric"
+    ],
+    "standards": [
+      "ASHRAE",
+      "SMACNA"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.mangeerac.com/",
+    "sources": [
+      "https://www.mangeerac.com/ductwork",
+      "https://www.mangeerac.com/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "HVAC contractor headquartered in Al Qunfudhah (Makkah Region) since 1991 whose in-house workshop fabricates GI rectangular, spiral, pre-insulated PIR and fabric ducts to ASHRAE/SMACNA."
+  },
+  {
+    "id": "hilal-projects-al-khobar",
+    "name_en": "Hilal Projects (Al Hilal Group) - Duct Fabrication Workshop",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Al Khobar",
+    "city_ar": "الخبر",
+    "lat": 26.2172,
+    "lon": 50.1971,
+    "location_note": "city centroid (workshop on Prince Musaad Street, Al Shamaliya)",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "stainless_duct",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "stainless_steel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://hilalprojects.com/",
+    "sources": [
+      "https://hilalprojects.com/",
+      "https://hilalprojects.com/quality-policy.php"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Al Khobar HVAC contractor (15+ years) with an in-house workshop manufacturing GI, stainless-steel and insulated ducts for the Eastern Province."
+  },
+  {
+    "id": "jamed-duct-division-jeddah",
+    "name_en": "JAMED (Juffali Airconditioning, Mechanical & Electrical Co.) - Duct Division",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Jeddah",
+    "city_ar": "جدة",
+    "lat": 21.65,
+    "lon": 39.17,
+    "location_note": "Juffali complex, Madinah Road Km 14, approximate",
+    "founded": 1984,
+    "products": [
+      "rectangular_gi_duct",
+      "stainless_duct",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "stainless_steel"
+    ],
+    "standards": [
+      "SMACNA",
+      "ASHRAE",
+      "ISO_9001"
+    ],
+    "capacity_note": "daily production capacity can reach 3 to 4 tons and more than 1500 tons per year of ductwork and accessories",
+    "employees_note": null,
+    "website": "https://juffalijamed.com/",
+    "sources": [
+      "https://juffalijamed.com/duct-fabrication-facility/",
+      "https://juffalijamed.com/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Duct division established 1984 with a computerized coil line producing galvanized, stainless and black-steel rectangular duct and fittings; ISO 9001:2015, Aramco vendor ID 10041371 and SEC approval stated."
+  },
+  {
+    "id": "samman-hvac-duct-work-factory-jeddah",
+    "name_en": "Samman HVAC Duct Work Factory (Alsamman Duct Factory)",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Jeddah",
+    "city_ar": "جدة",
+    "lat": 21.4858,
+    "lon": 39.1925,
+    "location_note": "city centroid",
+    "founded": null,
+    "products": [
+      "fire_rated_duct",
+      "dampers",
+      "sound_attenuators",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://duct.sammangroup.com/",
+    "sources": [
+      "https://duct.sammangroup.com/samman-hvac-duct-work-factory/",
+      "https://duct.sammangroup.com/about-us/",
+      "https://duct.sammangroup.com/our-line-of-products/",
+      "https://mep.sammangroup.com/contact-us/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Duct factory of the Samman Group (group established 1973) supplying ductwork, corners, flanges, gaskets, volume and fire dampers, sound attenuators and fire-rated duct; group MEP office in Ad Dahiah district, Jeddah."
+  },
+  {
+    "id": "al-ahram-duct-factory-riyadh",
+    "name_en": "Al-Ahram Duct Factory (Riyadh plant)",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Riyadh",
+    "city_ar": "الرياض",
+    "lat": 24.7136,
+    "lon": 46.6753,
+    "location_note": "city centroid",
+    "founded": 2012,
+    "products": [
+      "flexible_duct",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [
+      "fiberglass"
+    ],
+    "standards": [],
+    "capacity_note": "capable of supplying more than 6,000 tons of ducting and accessories annually (Riyadh and Cairo factories combined)",
+    "employees_note": "team of over 250 skilled professionals (company-wide)",
+    "website": "https://alahram.com.sa/en",
+    "sources": [
+      "https://alahram.com.sa/en",
+      "https://alahram.com.sa/en/about-us",
+      "https://alahram.com.sa/en/insu-poly-alu-adf"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Established 2012; manufacturer of HVAC duct systems and accessories with factories in Riyadh and Cairo, including thermally insulated polyester flexible ducts with glass-wool insulation."
+  },
+  {
+    "id": "sdm-saudi-factory-for-ducts-riyadh",
+    "name_en": "SDM - Saudi Factory for Ducts (SDM Factory & Contracting)",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Riyadh",
+    "city_ar": "الرياض",
+    "lat": 24.7136,
+    "lon": 46.6753,
+    "location_note": "city centroid",
+    "founded": 2011,
+    "products": [
+      "dampers",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "http://www.sdmfactory.com/",
+    "sources": [
+      "https://alhakbanigroup.com/company/saudi-factory-for-ducts-sdm",
+      "http://www.sdmfactory.com/",
+      "https://www.linkedin.com/company/sdm-factory-&-contracting--saudi-company-for-air-duct-manufacturer"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Saudi duct manufacturer established in Riyadh in May 2011 as a joint venture between FLEXAIR Ltd (Greece) and the Al Hakbani Group; full range of air ducts and accessories."
+  },
+  {
+    "id": "almalaz-alarabi-duct-factory-dammam",
+    "name_en": "Almalaz Alarabi Factory for Air Duct Industry",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Dammam",
+    "city_ar": "الدمام",
+    "lat": 26.4207,
+    "lon": 50.0888,
+    "location_note": "city centroid",
+    "founded": null,
+    "products": [
+      "duct_accessories",
+      "ahu_fcu",
+      "other"
+    ],
+    "materials": [],
+    "standards": [
+      "ISO_9001"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://malaz-ar.com/",
+    "sources": [
+      "https://malaz-ar.com/",
+      "https://malaz-ar.com/about-us",
+      "https://malaz-ar.com/contact"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Dammam sheet-metal and HVAC duct factory, ISO 9001:2015 certified, covering design, fabrication, installation and commissioning of engineered duct systems, AHUs and ventilation accessories."
+  },
+  {
+    "id": "duct-star-riyadh",
+    "name_en": "Duct Star",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Riyadh",
+    "city_ar": "الرياض",
+    "lat": 24.56,
+    "lon": 46.62,
+    "location_note": "Al-Awali / Capital Industrial Area, Exit 28, approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct"
+    ],
+    "materials": [
+      "galvanized_steel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://duct-star.com/",
+    "sources": [
+      "https://duct-star.com/",
+      "https://duct-star.com/contact/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Riyadh firm (Muhammad Omar Zubayr Street, Al-Awali, postal code 14925) manufacturing galvanized-steel air ducts as part of integrated HVAC solutions."
+  },
+  {
+    "id": "al-awad-air-conditioning-ksa",
+    "name_en": "Al Awad Air Conditioning - Duct Factory",
+    "name_ar": "العواد للتكييف",
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": null,
+    "city_ar": null,
+    "lat": 23.8859,
+    "lon": 45.0792,
+    "location_note": "country centroid - factory city not published on the source pages",
+    "founded": null,
+    "products": [
+      "other"
+    ],
+    "materials": [],
+    "standards": [
+      "SMACNA"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://alawad-air.com/",
+    "sources": [
+      "https://alawad-air.com/aboutus",
+      "https://alawad-air.com/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Saudi HVAC company (25+ years) stating that it manufactures ductwork inside its own factory described as SMACNA-approved; factory location not given."
+  },
+  {
+    "id": "mistyref-riyadh",
+    "name_en": "Mistyref Duct Systems",
+    "name_ar": null,
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Riyadh",
+    "city_ar": "الرياض",
+    "lat": 24.7136,
+    "lon": 46.6753,
+    "location_note": "city centroid",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "stainless_duct",
+      "dampers",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "stainless_steel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://mistyref.com/",
+    "sources": [
+      "https://mistyref.com/duct-systems-best-hvac-contractor-in-riyadh/",
+      "https://mistyref.com/fire-smoke-damper-manufacturers-in-riyadh/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Riyadh HVAC contractor offering custom fabrication of GI, pre-insulated, round, stainless and mild-steel ducts and fire/smoke dampers."
+  },
+  {
+    "id": "fal-air-conditioning-riyadh",
+    "name_en": "Fal Air Conditioning - Duct Manufacturing Department",
+    "name_ar": "فال للتكييف",
+    "country_code": "SA",
+    "country_en": "Saudi Arabia",
+    "country_ar": "السعودية",
+    "city_en": "Riyadh",
+    "city_ar": "الرياض",
+    "lat": 24.7136,
+    "lon": 46.6753,
+    "location_note": "city centroid (office Al Mursalat, Imam Saud Road Exit 9)",
+    "founded": null,
+    "products": [
+      "other"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://fal-ac.com/",
+    "sources": [
+      "https://fal-ac.com/services/%D9%82%D8%B3%D9%85-%D9%85%D8%B5%D9%86%D8%B9-%D9%88%D8%AA%D9%88%D8%B1%D9%8A%D8%AF-%D9%88%D8%AA%D8%B1%D9%83%D9%8A%D8%A8-%D9%85%D8%AC%D8%A7%D8%B1%D9%8A-%D8%A7%D9%84%D9%87%D9%88%D8%A7%D8%A1-%D8%A7%D9%84/",
+      "https://fal-ac.com/contact/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Riyadh HVAC contractor with a dedicated duct manufacturing and installation department; product detail limited on source page."
+  },
+  {
+    "id": "leminar-air-conditioning-industries-dubai",
+    "name_en": "Leminar Air Conditioning Industries LLC (Al Shirawi Group)",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Dubai",
+    "city_ar": "دبي",
+    "lat": 24.85,
+    "lon": 55.08,
+    "location_note": "Dubai Industrial City (Saih Shuaib), approximate",
+    "founded": 2000,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "fire_rated_duct",
+      "sound_attenuators",
+      "dampers",
+      "stainless_duct",
+      "aluminium_duct",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "stainless_steel",
+      "aluminium"
+    ],
+    "standards": [
+      "ISO_9001"
+    ],
+    "capacity_note": "company news release: AED100 million duct production unit at Dubai Industrial City spread over 325,000 square feet; about page cites a 100,000 sq. ft. facility with the region's largest ductwork manufacturing capacity, powered by a 650 kW solar plant",
+    "employees_note": null,
+    "website": "https://leminarindustries.com/",
+    "sources": [
+      "https://leminarindustries.com/about-us/",
+      "https://leminarindustries.com/leminar-industries-inaugurates-largest-ductwork-manufacturing-facility-in-the-middle-east-at-dubai-industrial-city/",
+      "https://leminarindustries.com/rectangular-duct-system/",
+      "https://alshirawi.com/company/leminar-industries/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Al Shirawi Group ductwork manufacturer founded 2000; fully automated coil line with integral low-leakage flanges, spiral duct, fire-rated duct (Fenland/Flamesafe), attenuators and dampers at Dubai Industrial City."
+  },
+  {
+    "id": "leminar-flexible-duct-factory-dubai",
+    "name_en": "Leminar Air Conditioning Co. LLC - Flexible Duct Factory",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Dubai",
+    "city_ar": "دبي",
+    "lat": 24.85,
+    "lon": 55.08,
+    "location_note": "Dubai Industrial City (Saih Shuaib), approximate",
+    "founded": null,
+    "products": [
+      "flexible_duct"
+    ],
+    "materials": [
+      "fiberglass"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://leminar.net/",
+    "sources": [
+      "https://leminar.net/flexible-duct-factory/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Separate Leminar plant at Dubai Industrial City dedicated to manufacturing flexible ducts with fiberglass insulation technology."
+  },
+  {
+    "id": "duct-fab-llc-abm-group-uae",
+    "name_en": "Duct Fab LLC (Al Basti & Mukhta Group)",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": null,
+    "city_ar": null,
+    "lat": 23.4241,
+    "lon": 53.8478,
+    "location_note": "country centroid - page states a manufacturing facility \"in U.A.E.\" without naming the emirate",
+    "founded": 2004,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "stainless_duct",
+      "aluminium_duct",
+      "dampers",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "stainless_steel",
+      "aluminium"
+    ],
+    "standards": [
+      "ASHRAE",
+      "SMACNA",
+      "DW/144"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.abmgroup.ae/ductfab.html",
+    "sources": [
+      "https://www.abmgroup.ae/ductfab.html"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Established June 2004 as an ABM Group unit fabricating galvanized, stainless, black-steel and aluminium ductwork, spiral and pre-insulated ducts, VCDs and access doors; states it was first in the UAE to make TDF integrally flanged duct."
+  },
+  {
+    "id": "alpha-ducts-dubai",
+    "name_en": "Alpha Ducts LLC (Faisal Jassim Group)",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Dubai",
+    "city_ar": "دبي",
+    "lat": 25.02,
+    "lon": 55.11,
+    "location_note": "Jebel Ali Industrial area, approximate",
+    "founded": 2004,
+    "products": [
+      "pre_insulated_pir_duct",
+      "pre_insulated_phenolic_duct",
+      "duct_accessories"
+    ],
+    "materials": [
+      "pir_panel",
+      "phenolic_panel"
+    ],
+    "standards": [
+      "ISO_9001",
+      "ISO_14001",
+      "ISO_45001",
+      "DCL",
+      "other"
+    ],
+    "capacity_note": "current annual production capacity is 5 million square meters (panels)",
+    "employees_note": null,
+    "website": "https://www.alphaducts.com/",
+    "sources": [
+      "https://www.alphaducts.com/about/",
+      "https://www.alphaducts.com/product/alpha-pir-air-duct-system/",
+      "https://www.alphaducts.com/product/alpha-pf-air-duct-system/",
+      "https://www.faisaljassim.ae/ac-duct-work"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Established 2004 in Al Quoz and moved panel production to Jebel Ali Industrial in 2008; makes PIR and phenolic pre-insulated duct panels/systems with ISO 9001/14001/45001, UL listing, Certifire, DCL and BSRIA leakage certification."
+  },
+  {
+    "id": "air-master-equipments-emirates-ajman",
+    "name_en": "Air Master Equipments Emirates LLC (Airmaster)",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Ajman",
+    "city_ar": "عجمان",
+    "lat": 25.4052,
+    "lon": 55.5136,
+    "location_note": "city centroid (head office P.O. Box 3180 Ajman; 8 group facilities across the GCC)",
+    "founded": 1987,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "fire_rated_duct",
+      "aluminium_duct",
+      "flexible_duct",
+      "grilles_diffusers",
+      "dampers",
+      "sound_attenuators",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "aluminium"
+    ],
+    "standards": [
+      "SMACNA",
+      "DW/144",
+      "other"
+    ],
+    "capacity_note": "computerized sheet metal duct manufacturing facility capable of producing over 20,000 sq.ft. of ducting per day",
+    "employees_note": "over 300 skilled workforce with 8 manufacturing facilities across the G.C.C.",
+    "website": "https://airmasteremirates.com/",
+    "sources": [
+      "https://airmasteremirates.com/aboutus/",
+      "https://airmasteremirates.com/hvac-ducting/",
+      "https://airmasteremirates.com/product/gi-duct/",
+      "https://airmasteremirates.com/contact-us/",
+      "https://airmasteremirates.com/our-certificates/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Established 1987; manufactures GI rectangular, round and spiral ducting to SMACNA/DW144 plus grilles, diffusers, dampers, louvers and fire-safety products; Dubai Civil Defence certificates published."
+  },
+  {
+    "id": "gulf-duct-industries-dubai",
+    "name_en": "Gulf Duct Industries LLC (GDI)",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Dubai",
+    "city_ar": "دبي",
+    "lat": 24.98,
+    "lon": 55.17,
+    "location_note": "Dubai Investment Park 2, approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "stainless_duct",
+      "kitchen_exhaust_duct",
+      "fire_rated_duct",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "stainless_steel"
+    ],
+    "standards": [
+      "other"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.gulfductind.ae/",
+    "sources": [
+      "https://www.gulfductind.ae/about-us/",
+      "https://www.gulfductind.ae/products/",
+      "https://www.gulfductind.ae/contact-us/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Fully automated coil-line factory in Dubai Investment Park making ready-to-install GI, MS and SS rectangular ducts, including stainless kitchen and fire-rated ductwork made per NFPA and BS 476."
+  },
+  {
+    "id": "al-ajwaa-ac-systems-sharjah",
+    "name_en": "Al Ajwaa A/C Systems Ind. LLC",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Sharjah",
+    "city_ar": "الشارقة",
+    "lat": 25.3463,
+    "lon": 55.4209,
+    "location_note": "city centroid",
+    "founded": 2009,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel"
+    ],
+    "standards": [
+      "SMACNA",
+      "DW/144"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://alajwaa.ae/",
+    "sources": [
+      "https://alajwaa.ae/",
+      "https://alajwaa.ae/index.php/about-us/",
+      "https://alajwaa.ae/index.php/gi-ducts/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Sharjah duct manufacturer serving the UAE since 2009; GI ducts in rectangular, spiral and round profiles to SMACNA/DW-144, pre-insulated ducts from partner panels and duct accessories."
+  },
+  {
+    "id": "mbm-gulf-electromechanical-dubai",
+    "name_en": "MBM Gulf Electromechanical LLC - Duct Factory",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Dubai",
+    "city_ar": "دبي",
+    "lat": 25.2048,
+    "lon": 55.2708,
+    "location_note": "city centroid",
+    "founded": null,
+    "products": [
+      "dampers",
+      "other"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.mbmdubai.com/",
+    "sources": [
+      "https://www.mbmdubai.com/duct-factory/hvac-ductworks/",
+      "https://www.mbmdubai.com/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Dubai MEP contractor operating its own in-house duct fabrication and dampers factory; capacity and product detail not published."
+  },
+  {
+    "id": "pearl-industries-sharjah",
+    "name_en": "Pearl Industries LLC",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Sharjah",
+    "city_ar": "الشارقة",
+    "lat": 25.31,
+    "lon": 55.44,
+    "location_note": "Sharjah Industrial Area 15, approximate",
+    "founded": 1998,
+    "products": [
+      "pre_insulated_pir_duct",
+      "pre_insulated_phenolic_duct",
+      "other"
+    ],
+    "materials": [
+      "pir_panel",
+      "phenolic_panel"
+    ],
+    "standards": [
+      "other"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://pearl.ae/",
+    "sources": [
+      "http://pearl.ae/",
+      "https://pearl.ae/service/pre-insulated-duct/pre-insulated-pir-duct/",
+      "https://www.pearl.ae/phenolic.html",
+      "https://pearl.ae/certificates/",
+      "https://www.pearl.ae/about.html"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Founded 1998 in Sharjah Industrial Area 15; manufactures pre-insulated PIR ducts and panels, phenolic panels and garbage chutes; publishes ISO certificates (standard numbers not captured)."
+  },
+  {
+    "id": "master-duct-air-condition-industries-uaq",
+    "name_en": "Master Duct Air-Condition Industries LLC (MasterDuct, GYSZ Group)",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Umm Al Quwain",
+    "city_ar": "أم القيوين",
+    "lat": 25.5647,
+    "lon": 55.5552,
+    "location_note": "city centroid (factory in Modern Emirates Industrial Area)",
+    "founded": null,
+    "products": [
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": "10,000+ square feet facility",
+    "employees_note": null,
+    "website": "https://masterduct.ae/",
+    "sources": [
+      "https://masterduct.ae/about.html",
+      "https://masterduct.ae/products.html",
+      "https://masterduct.ae/contact.html"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Ducting and HVAC-accessories manufacturing facility in the Modern Emirates Industrial Area, Umm Al Quwain, with automated machinery; serves all emirates."
+  },
+  {
+    "id": "delta-duct-air-conditioning-dubai",
+    "name_en": "Delta Duct Air Conditioning LLC (Bin Dasmal Group)",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Dubai",
+    "city_ar": "دبي",
+    "lat": 24.85,
+    "lon": 55.08,
+    "location_note": "Dubai Industrial City (Saih Shuaib), approximate",
+    "founded": null,
+    "products": [
+      "fire_rated_duct",
+      "flexible_duct",
+      "duct_accessories"
+    ],
+    "materials": [],
+    "standards": [
+      "ISO_9001",
+      "ISO_14001",
+      "ISO_45001",
+      "other"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.deltaduct.com/",
+    "sources": [
+      "https://www.deltaduct.com/",
+      "https://www.deltaduct.com/flexible-duct/",
+      "https://www.deltaduct.com/certifications/",
+      "https://www.deltaduct.com/contact/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Factory 2, Dubai Industrial City (Saih Shuaib 4); makes fire-rated duct coating systems (2 h to BS 476 Part 24), UL-listed Delta-flex flexible duct, sealants and tapes; part of Bin Dasmal Group since 2015."
+  },
+  {
+    "id": "kad-air-conditioning-dubai",
+    "name_en": "KAD Air Conditioning LLC",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Dubai",
+    "city_ar": "دبي",
+    "lat": 24.85,
+    "lon": 55.08,
+    "location_note": "Dubai Industrial City (Saih Shuaib), approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "stainless_duct",
+      "aluminium_duct",
+      "fire_rated_duct",
+      "dampers",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "stainless_steel",
+      "aluminium"
+    ],
+    "standards": [
+      "other"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.kadairconditioning.com/",
+    "sources": [
+      "https://www.kadairconditioning.com/",
+      "https://www.kadairconditioning.com/products/spiral-duct/",
+      "https://www.kadairconditioning.com/products/non-coated-fire-rated-duct/",
+      "https://www.kadairconditioning.com/contact/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Dubai Industrial City factory producing spiral duct, GI/SS/MS/aluminium ducts, non-coated fire-rated duct, VCDs, access doors and UL-classified fire dampers; ISO certification stated."
+  },
+  {
+    "id": "emirates-air-conditioning-industry-abu-dhabi",
+    "name_en": "Emirates Air Conditioning Industry",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Abu Dhabi",
+    "city_ar": "أبوظبي",
+    "lat": 24.36,
+    "lon": 54.49,
+    "location_note": "Musaffah industrial area, approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "fire_rated_duct",
+      "dampers",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel"
+    ],
+    "standards": [
+      "SMACNA",
+      "DW/144",
+      "ISO_9001"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.emirateac.com/",
+    "sources": [
+      "https://www.emirateac.com/",
+      "https://www.emirateac.com/product/volume-control-damper-vcd"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Musaffah (Abu Dhabi) duct factory with fully automated rectangular duct production; GI, pre-insulated and fire-rated ducting to SMACNA/DW144, ISO 9001:2015, 1,650+ projects claimed."
+  },
+  {
+    "id": "gmamco-dubai",
+    "name_en": "GMAMCO",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Dubai",
+    "city_ar": "دبي",
+    "lat": 25.02,
+    "lon": 55.11,
+    "location_note": "Jebel Ali Industrial Area 1, approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "stainless_duct",
+      "aluminium_duct",
+      "dampers",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "stainless_steel",
+      "aluminium"
+    ],
+    "standards": [
+      "DW/144",
+      "SMACNA"
+    ],
+    "capacity_note": "capacity of manufacturing 5000 m2 of GI Ducting per day using automated coil lines",
+    "employees_note": null,
+    "website": "https://gmamco.ae/",
+    "sources": [
+      "https://gmamco.ae/",
+      "https://www.gmamco.ae/Companyprofile.php",
+      "https://www.gmamco.ae/contact.php"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Jebel Ali HVAC-accessories and duct manufacturer (30 years) with automated coil lines; GI, SS, MS and aluminium ducting to DW144/SMACNA plus VAV and dampers; partnership with Nailor Industries (USA)."
+  },
+  {
+    "id": "benair-duct-division-sharjah",
+    "name_en": "Benair Group - Duct Division",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Sharjah",
+    "city_ar": "الشارقة",
+    "lat": 25.33,
+    "lon": 55.62,
+    "location_note": "Emirates Industrial City, Sajaa, approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "pre_insulated_phenolic_duct"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "phenolic_panel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.benairgroup.com/",
+    "sources": [
+      "https://www.benairgroup.com/services/hvac-duct-manufacturing",
+      "https://benairgroup.com/about.php"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Automated sheet-metal and phenolic pre-insulated duct manufacturing facility in Emirates Industrial City (Sajaa), Sharjah, using CNC 5-axis panel cutting."
+  },
+  {
+    "id": "coolpro-duct-solutions-uae",
+    "name_en": "CoolPro Duct Solutions",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": null,
+    "city_ar": null,
+    "lat": 23.4241,
+    "lon": 53.8478,
+    "location_note": "country centroid - company describes operations in Abu Dhabi and Dubai; factory address not published",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://coolpro.ae/",
+    "sources": [
+      "https://coolpro.ae/",
+      "https://coolpro.ae/about-us"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "HVAC duct fabricator supplying GI ducts and aluminium cladding to projects in Abu Dhabi and Dubai."
+  },
+  {
+    "id": "electro-rak-duct-fabrication-rak",
+    "name_en": "Electro RAK (ERAK Group) - HVAC Duct Fabrication Division",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Ras Al Khaimah",
+    "city_ar": "رأس الخيمة",
+    "lat": 25.7895,
+    "lon": 55.9432,
+    "location_note": "city centroid",
+    "founded": null,
+    "products": [
+      "other"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": "can produce 8,000 square feet of fabricated ducts daily",
+    "employees_note": null,
+    "website": "http://electrorakgroup.com/",
+    "sources": [
+      "http://electrorakgroup.com/erak-group-services.php?id=SRC-11",
+      "https://electrorakgroup.com/contact.php"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Ras Al Khaimah contracting group whose duct fabrication division was set up to supply ductwork to the Northern Emirates."
+  },
+  {
+    "id": "pal-middle-east-pir-dubai",
+    "name_en": "PAL Middle East PIR LLC",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Dubai",
+    "city_ar": "دبي",
+    "lat": 25.28,
+    "lon": 55.38,
+    "location_note": "Damascus Street (Al Qusais) area, approximate",
+    "founded": 2003,
+    "products": [
+      "pre_insulated_pir_duct"
+    ],
+    "materials": [
+      "pir_panel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": null,
+    "sources": [
+      "https://www.aeconline.ae/pal-middle-east-pir-llc/company.html",
+      "https://www.tradekey.com/company/Pal-Middle-East-Pir-Llc-2398001.html"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Established 2003 in Dubai; produces PAL PIR/PUR pre-insulated duct panels in technical collaboration with PAL International (Italy); verified only via third-party directories."
+  },
+  {
+    "id": "rapid-cool-group-sharjah",
+    "name_en": "Rapid Cool Group",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Sharjah",
+    "city_ar": "الشارقة",
+    "lat": 25.33,
+    "lon": 55.62,
+    "location_note": "Sajja industrial area (warehouse Shed 223), approximate",
+    "founded": 1995,
+    "products": [
+      "rectangular_gi_duct",
+      "stainless_duct",
+      "kitchen_exhaust_duct",
+      "pre_insulated_pir_duct",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "stainless_steel",
+      "pir_panel"
+    ],
+    "standards": [
+      "SMACNA",
+      "DW/144"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.rapidcool.ae/",
+    "sources": [
+      "https://www.rapidcool.ae/hvac-duct/",
+      "https://www.rapidcool.ae/about-us/",
+      "https://www.rapidcool.ae/contact/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "HVAC group (trading office since 1995) that fabricates hot-dip galvanized, stainless and carbon-steel kitchen-extract ducts to SMACNA/DW144 and PIR ducts; branch and warehouse in Sharjah."
+  },
+  {
+    "id": "duct-masters-abu-dhabi",
+    "name_en": "Duct Masters",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Abu Dhabi",
+    "city_ar": "أبوظبي",
+    "lat": 24.36,
+    "lon": 54.49,
+    "location_note": "Musaffah industrial area, approximate",
+    "founded": 2005,
+    "products": [
+      "rectangular_gi_duct",
+      "stainless_duct",
+      "aluminium_duct",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "stainless_steel",
+      "aluminium"
+    ],
+    "standards": [
+      "SMACNA"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://ductmasters.ae/",
+    "sources": [
+      "https://ductmasters.ae/",
+      "https://ductmasters.ae/services/duct-fabrication/",
+      "https://ductmasters.ae/contact/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "HVAC duct manufacturing and sheet-metal fabrication shop at M-40 Musaffah since 2005 with fiber laser, CNC press brakes and plasma cutting; GI, SS, aluminium and MS ducts to SMACNA."
+  },
+  {
+    "id": "hvac-industries-abu-dhabi",
+    "name_en": "HVAC Industries",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": "Abu Dhabi",
+    "city_ar": "أبوظبي",
+    "lat": 24.33,
+    "lon": 54.51,
+    "location_note": "ICAD-1, Musaffah, approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "dampers",
+      "grilles_diffusers",
+      "duct_accessories"
+    ],
+    "materials": [
+      "galvanized_steel"
+    ],
+    "standards": [
+      "SMACNA"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://hvacindustries.ae/",
+    "sources": [
+      "https://hvacindustries.ae/",
+      "https://hvacindustries.ae/access-doors/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "ICAD-1 (Musaffah) manufacturer of custom GI ducts, volume control dampers, grilles, access doors and C & S channels fabricated to SMACNA."
+  },
+  {
+    "id": "al-qemah-ac-systems-uae",
+    "name_en": "Al Qemah A/C Systems Accessories Ind. Center LLC",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": null,
+    "city_ar": null,
+    "lat": 23.4241,
+    "lon": 53.8478,
+    "location_note": "country centroid - emirate not published on source pages (landline prefix +971 6)",
+    "founded": 2014,
+    "products": [
+      "stainless_duct",
+      "fire_rated_duct",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [
+      "stainless_steel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.alqemahac.com/",
+    "sources": [
+      "https://www.alqemahac.com/",
+      "https://alqemahac.com/fire-rated-duct.html",
+      "https://alqemahac.com/certifications.html",
+      "https://alqemahac.com/machine.html"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "UAE manufacturer (est. 2014) of duct works and accessories including stainless-steel, pre-insulated and fire-rated ducts; certifications and machinery pages published."
+  },
+  {
+    "id": "insultherm-middle-east-uae",
+    "name_en": "Insultherm Middle East LLC",
+    "name_ar": null,
+    "country_code": "AE",
+    "country_en": "United Arab Emirates",
+    "country_ar": "الإمارات",
+    "city_en": null,
+    "city_ar": null,
+    "lat": 23.4241,
+    "lon": 53.8478,
+    "location_note": "country centroid - UAE plant city not published on source pages",
+    "founded": null,
+    "products": [
+      "pre_insulated_phenolic_duct",
+      "pre_insulated_pir_duct"
+    ],
+    "materials": [
+      "phenolic_panel",
+      "pir_panel"
+    ],
+    "standards": [
+      "other"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://insultherme.com/",
+    "sources": [
+      "https://insultherme.com/",
+      "https://insultherme.com/phenolic-foam-pre-insulated-air-duct.html",
+      "https://insultherme.com/about.html"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "UAE manufacturer of Insultherm phenolic-foam pre-insulated air duct panels (UL, DCD and ADCD certified per site) and PIR/PUR insulation."
+  },
+  {
+    "id": "cat-duct-doha",
+    "name_en": "CAT Duct LLC (Al Malki Holding Group)",
+    "name_ar": null,
+    "country_code": "QA",
+    "country_en": "Qatar",
+    "country_ar": "قطر",
+    "city_en": "Doha",
+    "city_ar": "الدوحة",
+    "lat": 25.2854,
+    "lon": 51.531,
+    "location_note": "city centroid",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "stainless_duct",
+      "aluminium_duct",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "stainless_steel",
+      "aluminium"
+    ],
+    "standards": [
+      "other"
+    ],
+    "capacity_note": "several duct factories in Doha with a total production capacity that exceeds 300,000 sq. meters per year",
+    "employees_note": null,
+    "website": "https://catduct.com/",
+    "sources": [
+      "https://almalkiholding.com/cat-duct-factory/",
+      "https://catduct.com/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Al Malki Holding duct factories in Doha with computer-controlled machinery from the USA, UK and Europe; rectangular ductwork in GI, SS, black steel and aluminium plus circular/spiral duct; ISO certification stated."
+  },
+  {
+    "id": "dvac-duct-ventilation-air-conditioning-doha",
+    "name_en": "DVAC - Duct Ventilation Air Conditioning Co. W.L.L.",
+    "name_ar": null,
+    "country_code": "QA",
+    "country_en": "Qatar",
+    "country_ar": "قطر",
+    "city_en": "Doha",
+    "city_ar": "الدوحة",
+    "lat": 25.16,
+    "lon": 51.45,
+    "location_note": "Small Industries Zone, Doha Industrial Area, approximate",
+    "founded": 2005,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "fire_rated_duct",
+      "dampers",
+      "other"
+    ],
+    "materials": [],
+    "standards": [
+      "other"
+    ],
+    "capacity_note": "daily production capacity approximately 2,000 square meters of ductwork; 10,500 m2 manufacturing facility",
+    "employees_note": "145 highly skilled professionals and technicians",
+    "website": "https://dvac-duct.com/",
+    "sources": [
+      "https://dvac-duct.com/about-us/",
+      "https://dvac-duct.com/",
+      "https://dvac-duct.com/product/welded-rectangular-ducts/",
+      "https://dvac-duct.com/wp-content/uploads/2024/09/A01-DVAC-COMPANY-PROFILE-Rev05.pdf"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Established 2005 in Doha; CNC duct factory making welded rectangular and circular ducts, fire-rated ducts and QCDD fire dampers; AMCA membership stated."
+  },
+  {
+    "id": "arabian-duct-factory-doha",
+    "name_en": "Arabian Duct Factory W.L.L. (Arabian Electro-Mechanical & Duct Co.)",
+    "name_ar": null,
+    "country_code": "QA",
+    "country_en": "Qatar",
+    "country_ar": "قطر",
+    "city_en": "Doha",
+    "city_ar": "الدوحة",
+    "lat": 25.17,
+    "lon": 51.44,
+    "location_note": "New Industrial Area, Doha, approximate",
+    "founded": 2011,
+    "products": [
+      "fire_rated_duct",
+      "spiral_round_duct",
+      "pre_insulated_pir_duct",
+      "flexible_duct",
+      "duct_accessories"
+    ],
+    "materials": [
+      "pir_panel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.aemd.co/",
+    "sources": [
+      "https://www.aemd.co/",
+      "http://www.aemd.co/archives/ourproduct/pir-rectangular-duct",
+      "http://aemd.co/archives/ourproduct/fire-rated-gasket"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Established 2011 with manufacturing facility in the New Industrial Area of Doha; fire-rated duct systems, spiral ducts, PIR rectangular ducts and insulated flexible ducts."
+  },
+  {
+    "id": "qad-duct-doha",
+    "name_en": "QAD-DUCT (Qatar Air Distribution Network / QadNet)",
+    "name_ar": null,
+    "country_code": "QA",
+    "country_en": "Qatar",
+    "country_ar": "قطر",
+    "city_en": "Doha",
+    "city_ar": "الدوحة",
+    "lat": 25.2854,
+    "lon": 51.531,
+    "location_note": "city centroid",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel"
+    ],
+    "standards": [],
+    "capacity_note": "annual capacity of 480,000 square meters (GI rectangular duct) using automated duct coil lines",
+    "employees_note": null,
+    "website": "https://qadnet.com/",
+    "sources": [
+      "https://www.qadnet.com/about_qad_duct.html",
+      "https://www.qadnet.com/qad_duct_product.html",
+      "https://qadnet.com/pdf/DUCTING/03Rectangular_Duct.pdf"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Doha fabricator of galvanized rectangular ducts on American and European automated coil lines; also lists canvas cloth duct connectors."
+  },
+  {
+    "id": "taj-duct-fab-doha",
+    "name_en": "Taj Duct Fab W.L.L.",
+    "name_ar": null,
+    "country_code": "QA",
+    "country_en": "Qatar",
+    "country_ar": "قطر",
+    "city_en": "Doha",
+    "city_ar": "الدوحة",
+    "lat": 25.2854,
+    "lon": 51.531,
+    "location_note": "city centroid",
+    "founded": null,
+    "products": [
+      "fire_rated_duct",
+      "spiral_round_duct",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://tajduct.com/",
+    "sources": [
+      "https://tajduct.com/",
+      "https://tajduct.com/index.php/products/non-coated-fire-rated-duct"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Doha duct manufacturing company listing non-coated fire-rated duct, HVAC duct, circular duct and fittings, garbage chutes and general sheet-metal fabrication."
+  },
+  {
+    "id": "al-maftol-doha",
+    "name_en": "Al Maftol - Duct Fabrication",
+    "name_ar": null,
+    "country_code": "QA",
+    "country_en": "Qatar",
+    "country_ar": "قطر",
+    "city_en": "Doha",
+    "city_ar": "الدوحة",
+    "lat": 25.2854,
+    "lon": 51.531,
+    "location_note": "city centroid",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://almaftol.com/",
+    "sources": [
+      "https://almaftol.com/sheet-metal-ductwork-fabrication-qatar/",
+      "https://almaftol.com/duct-ac-service-in-qatar/",
+      "https://almaftol.com/contact/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Doha HVAC contractor with an in-house CNC duct fabrication facility producing rectangular and spiral ducts for its projects."
+  },
+  {
+    "id": "lunar-ac-duct-qatar",
+    "name_en": "Lunar AC Duct W.L.L.",
+    "name_ar": null,
+    "country_code": "QA",
+    "country_en": "Qatar",
+    "country_ar": "قطر",
+    "city_en": null,
+    "city_ar": null,
+    "lat": 25.3548,
+    "lon": 51.1839,
+    "location_note": "country centroid - city not published on source page",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "kitchen_exhaust_duct",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.lunarhvac.com/",
+    "sources": [
+      "https://www.lunarhvac.com/contact"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Qatar HVAC company fabricating GI, pre-insulated, spiral, insulated and kitchen-exhaust ducts to project drawings; limited detail on source page."
+  },
+  {
+    "id": "refrigeration-world-doha",
+    "name_en": "Refrigeration World W.L.L.",
+    "name_ar": null,
+    "country_code": "QA",
+    "country_en": "Qatar",
+    "country_ar": "قطر",
+    "city_en": "Doha",
+    "city_ar": "الدوحة",
+    "lat": 25.2854,
+    "lon": 51.531,
+    "location_note": "city centroid",
+    "founded": 1991,
+    "products": [
+      "dampers",
+      "sound_attenuators",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "http://www.refworld.net/",
+    "sources": [
+      "http://refworld.net/ducting-works.php",
+      "http://www.refworld.net/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Doha company established 1991 specialised in duct fabrication for marine and building HVAC, also making sound attenuators, VCDs, UL-classified fire dampers, VAV units, sand-trap louvers, access doors and plenum boxes."
+  },
+  {
+    "id": "leminar-air-conditioning-industries-qatar-doha",
+    "name_en": "Leminar Air Conditioning Industries Qatar W.L.L.",
+    "name_ar": null,
+    "country_code": "QA",
+    "country_en": "Qatar",
+    "country_ar": "قطر",
+    "city_en": "Doha",
+    "city_ar": "الدوحة",
+    "lat": 25.2854,
+    "lon": 51.531,
+    "location_note": "city centroid",
+    "founded": 2004,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "fire_rated_duct",
+      "stainless_duct",
+      "aluminium_duct",
+      "sound_attenuators",
+      "dampers",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "stainless_steel",
+      "aluminium"
+    ],
+    "standards": [],
+    "capacity_note": "manufacturing facility of over 25,000 sq.ft.",
+    "employees_note": null,
+    "website": "https://leminarindustries-qatar.com/",
+    "sources": [
+      "https://leminarindustries-qatar.com/about-us",
+      "https://leminarindustries-qatar.com/news-and-events/leminar-industries-inaugurates-ffc-uk-fire-rated-duct-production-line-in-doha",
+      "https://leminarindustries.com/leminar-industries-brings-hvac-expertise-to-dubai-doha-and-muscat/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Sheet-metal HVAC ductwork manufacturer serving Qatar since 2004; GI/MS/SS/aluminium ducts, GI spiral duct, FFC (UK) fire-rated duct line, attenuators, dampers and VAV boxes."
+  },
+  {
+    "id": "fawaz-trading-engineering-kuwait",
+    "name_en": "FAWAZ Trading & Engineering Services Co. W.L.L. - Manufacturing",
+    "name_ar": "شركة فواز للتجارة والخدمات الهندسية ذ.م.م",
+    "country_code": "KW",
+    "country_en": "Kuwait",
+    "country_ar": "الكويت",
+    "city_en": "Kuwait City",
+    "city_ar": "مدينة الكويت",
+    "lat": 29.34,
+    "lon": 47.93,
+    "location_note": "Shuwaikh Industrial Area 3 (Street 47), approximate",
+    "founded": null,
+    "products": [
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [],
+    "standards": [
+      "ISO_9001",
+      "ISO_14001",
+      "other"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://kw.fawaz.com/",
+    "sources": [
+      "https://kw.fawaz.com/business-lines/manufacturing/",
+      "https://kw.fawaz.com/our-facilities/",
+      "https://ae.fawaz.com/business-lines/manufacturing/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Kuwait market leader in sheet-metal ducting fabrication and HVAC accessories with manufacturing workshop and showroom in Shuwaikh Industrial Area; ISO 9001:2015, ISO 14001:2015 and BS OHSAS 18001:2007 stated."
+  },
+  {
+    "id": "cyberia-hvac-kuwait",
+    "name_en": "Cyberia HVAC - Duct Workshop",
+    "name_ar": null,
+    "country_code": "KW",
+    "country_en": "Kuwait",
+    "country_ar": "الكويت",
+    "city_en": "Kuwait City",
+    "city_ar": "مدينة الكويت",
+    "lat": 29.34,
+    "lon": 47.93,
+    "location_note": "Shuwaikh Industrial Area 3, approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct"
+    ],
+    "materials": [
+      "galvanized_steel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://cyberiahvac.com/",
+    "sources": [
+      "https://cyberiahvac.com/services/supply-of-ventilation-and-hvac-materials/",
+      "https://cyberiahvac.com/en/contact-us/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Kuwaiti ventilation company custom-fabricating galvanized rectangular and circular spiral ductwork in its Shuwaikh workshop; states Kuwait Civil Defence approval for materials."
+  },
+  {
+    "id": "al-mulla-industries-shuaiba-kuwait",
+    "name_en": "Al Mulla Industries Co. W.L.L. - Air Duct & Air Movement Products",
+    "name_ar": null,
+    "country_code": "KW",
+    "country_en": "Kuwait",
+    "country_ar": "الكويت",
+    "city_en": "Shuaiba",
+    "city_ar": "الشعيبة",
+    "lat": 29.03,
+    "lon": 48.13,
+    "location_note": "Shuaiba Industrial Area (Plot 137, Block 5), approximate",
+    "founded": 1983,
+    "products": [
+      "dampers",
+      "sound_attenuators",
+      "grilles_diffusers",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [],
+    "standards": [
+      "ISO_9001",
+      "ISO_14001",
+      "other"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.almullagroup.com/trading-manufacturing/trading-manufacturing-al-mulla-industries",
+    "sources": [
+      "https://www.almullagroup.com/trading-manufacturing/trading-manufacturing-al-mulla-industries",
+      "https://madeinkuwaitgate.com/factories/al-mulla-industries-ami/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Al Mulla Group subsidiary (est. 1983) manufacturing various types of air ducts, dampers, VAVs, sound attenuators, grilles and diffusers at Shuaiba, Kuwait (plus a UAE facility); ISO 9001/14001/18001 and AMCA membership stated."
+  },
+  {
+    "id": "djs-oman-muscat",
+    "name_en": "DJS Enterprise LLC (DJS Oman) - HVAC Duct Manufacturing",
+    "name_ar": null,
+    "country_code": "OM",
+    "country_en": "Oman",
+    "country_ar": "عُمان",
+    "city_en": "Muscat",
+    "city_ar": "مسقط",
+    "lat": 23.588,
+    "lon": 58.3829,
+    "location_note": "city centroid",
+    "founded": 2011,
+    "products": [
+      "rectangular_gi_duct",
+      "fire_rated_duct",
+      "dampers",
+      "sound_attenuators",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://djsoman.com/",
+    "sources": [
+      "https://djsoman.com/hvac-duct-manufacturing/",
+      "http://djsoman.com/about-us/",
+      "https://djsoman.com/hvac-solutions/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Muscat factory (company est. 2011) producing nude and insulated ducts, pre-insulated ducts, VCDs, VAV units, sand-trap louvers, sound attenuators and kitchen hoods; describes itself as a pioneer fire-rated duct coating manufacturer in Oman."
+  },
+  {
+    "id": "mectron-al-hajiry-muscat",
+    "name_en": "Mectron International LLC (Al Hajiry Group) - Ductwork Plant",
+    "name_ar": null,
+    "country_code": "OM",
+    "country_en": "Oman",
+    "country_ar": "عُمان",
+    "city_en": "Muscat",
+    "city_ar": "مسقط",
+    "lat": 23.59,
+    "lon": 58.55,
+    "location_note": "Al Wadi Al Kabir industrial area, approximate",
+    "founded": 1994,
+    "products": [
+      "rectangular_gi_duct",
+      "fire_rated_duct",
+      "stainless_duct",
+      "aluminium_duct",
+      "dampers",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "aluminium",
+      "stainless_steel"
+    ],
+    "standards": [
+      "other"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.mectronoman.com/",
+    "sources": [
+      "http://www.mectronoman.com/DUCT-FAB.html",
+      "https://www.mectronoman.com/ABOUT-US.html"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Al Hajiry Group ductwork manufacturer (steel fabrication started 1994 at Al Wadi Al Kabir) making GI, aluminium, black MS and stainless ductwork, 2-hour fire-rated duct tested to BS 476 Part 24, VCDs and fire dampers."
+  },
+  {
+    "id": "almoayyed-air-ducts-factory-asker",
+    "name_en": "Almoayyed Air Ducts Factory (Almoayyed Contracting Group)",
+    "name_ar": null,
+    "country_code": "BH",
+    "country_en": "Bahrain",
+    "country_ar": "البحرين",
+    "city_en": "Asker",
+    "city_ar": "عسكر",
+    "lat": 26.05,
+    "lon": 50.61,
+    "location_note": "Asker industrial area, approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct"
+    ],
+    "materials": [
+      "galvanized_steel"
+    ],
+    "standards": [],
+    "capacity_note": "manufacturing capacity of approximately 1000 SQM of ducting per day (600 SQM plant)",
+    "employees_note": null,
+    "website": "https://www.almoayyedcg.com/",
+    "sources": [
+      "https://www.almoayyedcg.com/divisions/integrated-facilities-management-duct-factory/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Automated sheet-metal duct plant in Asker with a Firmac (UK) coil line with automatic flange stitching and a German CNC plasma machine; custom galvanized HVAC ducts for Bahrain and GCC."
+  },
+  {
+    "id": "grille-tech-bahrain-ras-zuwayed",
+    "name_en": "Grille Tech",
+    "name_ar": null,
+    "country_code": "BH",
+    "country_en": "Bahrain",
+    "country_ar": "البحرين",
+    "city_en": "Ras Zuwayed",
+    "city_ar": "رأس زويد",
+    "lat": 26.02,
+    "lon": 50.52,
+    "location_note": "Ras Zuwayed industrial area (Block 952), approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "aluminium_duct",
+      "stainless_duct",
+      "grilles_diffusers",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "aluminium",
+      "stainless_steel"
+    ],
+    "standards": [
+      "SMACNA",
+      "DW/144"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://grilletechbahrain.com/",
+    "sources": [
+      "https://grilletechbahrain.com/hvac-ducting/",
+      "https://grilletechbahrain.com/contact/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Bahraini HVAC manufacturer producing galvanized, pre-insulated, MS, aluminium and stainless ductwork to SMACNA/DW144 plus grilles, diffusers and louvers."
+  },
+  {
+    "id": "airtech-wll-hidd",
+    "name_en": "AirTech W.L.L.",
+    "name_ar": null,
+    "country_code": "BH",
+    "country_en": "Bahrain",
+    "country_ar": "البحرين",
+    "city_en": "Hidd",
+    "city_ar": "الحد",
+    "lat": 26.24,
+    "lon": 50.66,
+    "location_note": "Bahrain Industrial Investment Park, Hidd, approximate",
+    "founded": null,
+    "products": [
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": "7,000 square meter facility",
+    "employees_note": null,
+    "website": "https://www.airtech.com.bh/",
+    "sources": [
+      "https://www.airtech.com.bh/",
+      "https://www.airtech.com.bh/hvac-manufacturing-fabrication/hvac-production-facilities/",
+      "https://www.airtech.com.bh/hvac-airtech-bahrain-contact/location/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "HVAC duct manufacturer and air-distribution products fabricator in a 7,000 m2 facility at Bahrain Industrial Investment Park, Hidd (Building 400, Road 1507, Block 115)."
+  },
+  {
+    "id": "awal-products-apco-manama",
+    "name_en": "Awal Products Company W.L.L. (APCO, Shaheen Group)",
+    "name_ar": null,
+    "country_code": "BH",
+    "country_en": "Bahrain",
+    "country_ar": "البحرين",
+    "city_en": "Manama",
+    "city_ar": "المنامة",
+    "lat": 26.2,
+    "lon": 50.6,
+    "location_note": "Mina Salman Industrial City, approximate",
+    "founded": null,
+    "products": [
+      "other"
+    ],
+    "materials": [],
+    "standards": [
+      "SMACNA",
+      "other"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.shaheengroup.com/divisions/awal-products/",
+    "sources": [
+      "https://www.shaheengroup.com/divisions/awal-products/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Shaheen Group subsidiary with an automated duct factory (shear cutting, press rolling and bending) following DW and SMACNA standards at its Mina Salman headquarters, duct shop and warehouse."
+  },
+  {
+    "id": "duct-master-6th-october",
+    "name_en": "Duct Master",
+    "name_ar": null,
+    "country_code": "EG",
+    "country_en": "Egypt",
+    "country_ar": "مصر",
+    "city_en": "6th of October City",
+    "city_ar": "مدينة السادس من أكتوبر",
+    "lat": 29.953,
+    "lon": 30.915,
+    "location_note": "6th of October City industrial zones (Giza), approximate",
+    "founded": 2010,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "stainless_duct",
+      "grilles_diffusers",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "stainless_steel"
+    ],
+    "standards": [
+      "SMACNA"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://duct-master.com/",
+    "sources": [
+      "https://duct-master.com/",
+      "https://duct-master.com/about/",
+      "https://duct-master.com/certifications/",
+      "https://yellowpages.com.eg/en/profile/Duct-Master/232820"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Established 2010 in the 6th of October City industrial area (Giza) to fabricate SMACNA-based HVAC ductwork in galvanized, black and stainless steel, round and spiral duct, plus air outlets."
+  },
+  {
+    "id": "duct-technology-cairo",
+    "name_en": "Duct Technology",
+    "name_ar": null,
+    "country_code": "EG",
+    "country_en": "Egypt",
+    "country_ar": "مصر",
+    "city_en": "Cairo",
+    "city_ar": "القاهرة",
+    "lat": 30.15,
+    "lon": 31.4,
+    "location_note": "El Salam City, approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "aluminium_duct",
+      "stainless_duct",
+      "grilles_diffusers",
+      "dampers",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "aluminium",
+      "stainless_steel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://ducttechnology.com/",
+    "sources": [
+      "https://ducttechnology.com/",
+      "https://www.ducttechnology.com/contact",
+      "https://engexportdirectory.org/duct-technology-factory/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Sheet-metal and HVAC duct factory with showroom at Teraat El Tawarek 1, Amlak 9, El Salam City, Cairo; galvanized, aluminium, stainless and black-steel ductwork, grilles and volume dampers."
+  },
+  {
+    "id": "egy-air-abu-rawash",
+    "name_en": "Egy Air for Air Conditioning",
+    "name_ar": null,
+    "country_code": "EG",
+    "country_en": "Egypt",
+    "country_ar": "مصر",
+    "city_en": "Abu Rawash (Giza)",
+    "city_ar": "أبو رواش (الجيزة)",
+    "lat": 30.06,
+    "lon": 31.04,
+    "location_note": "Abu Rawash industrial zone on the Cairo-Alexandria Desert Road, approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "dampers",
+      "grilles_diffusers",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [],
+    "standards": [
+      "DW/144",
+      "SMACNA",
+      "ASHRAE"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://egy-air.com/",
+    "sources": [
+      "https://egy-air.com/",
+      "https://egy-air.com/duct-work/",
+      "https://egy-air.com/contact-us/",
+      "https://egy-air.com/project/black-steel/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Manufacturer and installer of air ducts, black-steel ducting, fire dampers, grilles and diffusers at Km 26 Cairo-Alexandria Desert Road, Abu Rawash industrial zone; designs to DW 144, SMACNA and ASHRAE."
+  },
+  {
+    "id": "al-ahram-duct-factory-cairo",
+    "name_en": "Al-Ahram Duct Factory (Cairo plant)",
+    "name_ar": null,
+    "country_code": "EG",
+    "country_en": "Egypt",
+    "country_ar": "مصر",
+    "city_en": "Cairo",
+    "city_ar": "القاهرة",
+    "lat": 30.0444,
+    "lon": 31.2357,
+    "location_note": "city centroid",
+    "founded": 2012,
+    "products": [
+      "flexible_duct",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [
+      "fiberglass"
+    ],
+    "standards": [],
+    "capacity_note": "more than 6,000 tons of ducting and accessories annually (Riyadh and Cairo factories combined)",
+    "employees_note": "team of over 250 skilled professionals (company-wide)",
+    "website": "https://alahram.com.sa/en",
+    "sources": [
+      "https://alahram.com.sa/en",
+      "https://alahram.com.sa/en/about-us"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Cairo factory of the Saudi-headquartered Al-Ahram Duct Factory (est. 2012), which states it operates plants in both Riyadh and Cairo; exact Cairo district not published."
+  },
+  {
+    "id": "meca-engineering-industries-abu-rawash",
+    "name_en": "MECA Engineering Industries & Duct Works",
+    "name_ar": "مكا للصناعات الهندسية",
+    "country_code": "EG",
+    "country_en": "Egypt",
+    "country_ar": "مصر",
+    "city_en": "Abu Rawash (Giza)",
+    "city_ar": "أبو رواش (الجيزة)",
+    "lat": 30.06,
+    "lon": 31.04,
+    "location_note": "Abu Rawash industrial zone on the Cairo-Alexandria Desert Road, approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "duct_accessories"
+    ],
+    "materials": [
+      "galvanized_steel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": null,
+    "sources": [
+      "https://yellowpages.com.eg/ar/search/%D9%85%D8%AC%D8%A7%D8%B1%D9%89-%D9%87%D9%88%D8%A7%D8%A1-%D8%A7%D9%84%D8%B5%D8%A7%D8%AC-%D8%A7%D9%84%D9%85%D8%AC%D9%84%D9%81%D9%86"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Directory listing (Egypt Yellow Pages) describes a company with 15+ years manufacturing galvanized air ducts and sheet-metal work for central AC at Km 26 Cairo-Alexandria Desert Road, Abu Rawash."
+  },
+  {
+    "id": "duct-house-6th-october",
+    "name_en": "Duct House",
+    "name_ar": "داكت هاوس",
+    "country_code": "EG",
+    "country_en": "Egypt",
+    "country_ar": "مصر",
+    "city_en": "6th of October City",
+    "city_ar": "مدينة السادس من أكتوبر",
+    "lat": 29.953,
+    "lon": 30.915,
+    "location_note": "6th of October City industrial zones (Giza), approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": null,
+    "sources": [
+      "https://yellowpages.com.eg/en/profile/Duct-House/582150"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Egypt Yellow Pages profile: factory at Plot 48, 3rd Industrial Zone, 6th of October City, manufacturing central-AC ducts from galvanized and black sheet metal."
+  },
+  {
+    "id": "cdf-central-ac-air-ducts-factory-qalyub",
+    "name_en": "Central Air Conditioning Air Ducts Factory (CDF)",
+    "name_ar": "مصنع مجارى الهواء للتكييف المركزى - CDF",
+    "country_code": "EG",
+    "country_en": "Egypt",
+    "country_ar": "مصر",
+    "city_en": "Qalyub",
+    "city_ar": "قليوب",
+    "lat": 30.18,
+    "lon": 31.21,
+    "location_note": "city centroid (6 Mohamed Helal Street)",
+    "founded": null,
+    "products": [
+      "other"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": null,
+    "sources": [
+      "https://yellowpages.com.eg/ar/profile/%D9%85%D8%B5%D9%86%D8%B9-%D9%85%D8%AC%D8%A7%D8%B1%D9%89-%D8%A7%D9%84%D9%87%D9%88%D8%A7%D8%A1-%D9%84%D9%84%D8%AA%D9%83%D9%8A%D9%8A%D9%81-%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%89-_-CDF/648359"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Egypt Yellow Pages profile of a central-AC air-duct factory in Qalyub, Qalyubia; product detail not published."
+  },
+  {
+    "id": "nasamat-alattar-erbil",
+    "name_en": "Nasamat Alattar (Alattar Cooling) - Duct Production",
+    "name_ar": null,
+    "country_code": "IQ",
+    "country_en": "Iraq",
+    "country_ar": "العراق",
+    "city_en": "Erbil",
+    "city_ar": "أربيل",
+    "lat": 36.23,
+    "lon": 43.98,
+    "location_note": "Ankawa area, approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://nasamatalattar.com/",
+    "sources": [
+      "https://nasamatalattar.com/",
+      "https://nasamatalattar.com/about-us"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Erbil (Kurdistan Region) HVAC contractor with automated galvanized duct production and foam-insulated ductwork manufacturing, including flanges and accessories."
+  },
+  {
+    "id": "actref-industrial-cooling-iraq",
+    "name_en": "ACTREF Industrial Cooling - Air Duct Manufacturing",
+    "name_ar": "اكتريف للتبريد المركزي",
+    "country_code": "IQ",
+    "country_en": "Iraq",
+    "country_ar": "العراق",
+    "city_en": null,
+    "city_ar": null,
+    "lat": 33.2232,
+    "lon": 43.6793,
+    "location_note": "country centroid - company states it serves all of Iraq; workshop city not published",
+    "founded": null,
+    "products": [
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://actref.com/",
+    "sources": [
+      "https://actref.com/air-ducts/",
+      "https://actref.com/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Iraqi central-cooling company that machine-manufactures and installs galvanized-sheet air ducts alongside chiller and packaged-unit services."
+  },
+  {
+    "id": "adf-duct-factory-mec-lebanon",
+    "name_en": "ADF Duct Factory (M.E.C. Mechanical Engineering Contracting)",
+    "name_ar": null,
+    "country_code": "LB",
+    "country_en": "Lebanon",
+    "country_ar": "لبنان",
+    "city_en": null,
+    "city_ar": null,
+    "lat": 33.8547,
+    "lon": 35.8623,
+    "location_note": "country centroid - factory city not published on the source page",
+    "founded": 2010,
+    "products": [
+      "stainless_duct",
+      "aluminium_duct",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "aluminium",
+      "stainless_steel"
+    ],
+    "standards": [
+      "SMACNA"
+    ],
+    "capacity_note": "installed capacity of 2,000 sq.ft. of HVAC ductwork per day",
+    "employees_note": null,
+    "website": "https://www.mec-lb.net/",
+    "sources": [
+      "https://www.mec-lb.net/services.php"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Formed by Lebanese contractor M.E.C. in November 2010 as an independent duct factory offering galvanized, aluminium, stainless, mild-steel and pre-insulated ductwork to SMACNA."
+  },
+  {
+    "id": "al-safa-international-tripoli",
+    "name_en": "Al Safa International for Refrigeration & Air Conditioning",
+    "name_ar": "شركة الصفاء الدولي للتبريد والتكييف",
+    "country_code": "LY",
+    "country_en": "Libya",
+    "country_ar": "ليبيا",
+    "city_en": "Tripoli",
+    "city_ar": "طرابلس",
+    "lat": 32.8872,
+    "lon": 13.1913,
+    "location_note": "city centroid",
+    "founded": null,
+    "products": [
+      "pre_insulated_pir_duct",
+      "dampers",
+      "grilles_diffusers",
+      "flexible_duct",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [
+      "pir_panel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://alsafa-i.com/",
+    "sources": [
+      "https://alsafa-i.com/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Tripoli HVAC engineering company manufacturing central-AC ducts and fittings (elbows, tees, reducers, dampers, flanges), PIR sandwich-foam duct panels, diffusers, grilles and flexible connections."
+  },
+  {
+    "id": "libya-hvac-benghazi",
+    "name_en": "LIBYA HVAC",
+    "name_ar": null,
+    "country_code": "LY",
+    "country_en": "Libya",
+    "country_ar": "ليبيا",
+    "city_en": "Benghazi",
+    "city_ar": "بنغازي",
+    "lat": 32.1167,
+    "lon": 20.0667,
+    "location_note": "city centroid",
+    "founded": null,
+    "products": [
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://libyahvac.ly/",
+    "sources": [
+      "https://libyahvac.ly/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Benghazi-founded HVAC company (25+ years) specialising in duct manufacturing and HVAC accessories for commercial, industrial and residential projects."
+  },
+  {
+    "id": "gauge-libya",
+    "name_en": "Gauge Libya - Duct Fabrication",
+    "name_ar": null,
+    "country_code": "LY",
+    "country_en": "Libya",
+    "country_ar": "ليبيا",
+    "city_en": null,
+    "city_ar": null,
+    "lat": 26.3351,
+    "lon": 17.2283,
+    "location_note": "country centroid - factory city not published on the source page",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "flexible_duct",
+      "duct_accessories",
+      "ahu_fcu",
+      "other"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.gauge.ly/",
+    "sources": [
+      "https://www.gauge.ly/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Libyan HVAC engineering firm whose factory fabricates rectangular ductwork, spiral circular ducts, fittings, supports, flexible ducts, hoods and AHUs on automatic and semi-automatic lines."
+  },
+  {
+    "id": "cogeve-casablanca",
+    "name_en": "COGEVE S.A.R.L.",
+    "name_ar": null,
+    "country_code": "MA",
+    "country_en": "Morocco",
+    "country_ar": "المغرب",
+    "city_en": "Casablanca",
+    "city_ar": "الدار البيضاء",
+    "lat": 33.5731,
+    "lon": -7.5898,
+    "location_note": "city centroid (72 rue Brahim Nakhai)",
+    "founded": 2002,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "http://www.cogeve.com/",
+    "sources": [
+      "http://www.cogeve.com/",
+      "http://www.cogeve.com/gaines-accessoires-rectangulaires.php",
+      "http://www.cogeve.com/conduits-circulaires-et-accessoires.php",
+      "http://www.cogeve.com/contact.php"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Casablanca manufacturer, distributor and installer (since 2002) of rectangular and circular ventilation/air-conditioning ducts and accessories, also offering Piralu pre-insulated panel."
+  },
+  {
+    "id": "ac-maroc-tangier",
+    "name_en": "AC MAROC",
+    "name_ar": null,
+    "country_code": "MA",
+    "country_en": "Morocco",
+    "country_ar": "المغرب",
+    "city_en": "Tangier",
+    "city_ar": "طنجة",
+    "lat": 35.72,
+    "lon": -5.9,
+    "location_note": "Gzenaya industrial zone (lot 191), approximate",
+    "founded": null,
+    "products": [
+      "spiral_round_duct",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://acmaroc.ma/",
+    "sources": [
+      "https://acmaroc.ma/",
+      "https://acmaroc.ma/contact.html"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Tangier manufacturer and distributor of ventilation, smoke-extraction and filtration components, including galvanized spiral ducts, from Zone industrielle Gzenaya."
+  },
+  {
+    "id": "icat-international-casablanca",
+    "name_en": "ICAT International",
+    "name_ar": null,
+    "country_code": "MA",
+    "country_en": "Morocco",
+    "country_ar": "المغرب",
+    "city_en": "Casablanca",
+    "city_ar": "الدار البيضاء",
+    "lat": 33.5731,
+    "lon": -7.5898,
+    "location_note": "city centroid",
+    "founded": 1977,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [],
+    "standards": [
+      "SMACNA",
+      "other"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://icat.ma/",
+    "sources": [
+      "https://icat.ma/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "medium",
+    "notes": "Casablanca-based manufacturer and distributor of ventilation and air-treatment equipment since 1977, listing circular and rectangular ducts and fittings; cites EN, SMACNA and NM standards."
+  },
+  {
+    "id": "nergyal-oran",
+    "name_en": "NERGYAL SPA",
+    "name_ar": null,
+    "country_code": "DZ",
+    "country_en": "Algeria",
+    "country_ar": "الجزائر",
+    "city_en": "Oran",
+    "city_ar": "وهران",
+    "lat": 35.73,
+    "lon": -0.5,
+    "location_note": "Hassi Ameur industrial zone (Hassi Bounif), approximate",
+    "founded": null,
+    "products": [
+      "spiral_round_duct",
+      "duct_accessories",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "aluminium",
+      "stainless_steel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://nergyal.dz/",
+    "sources": [
+      "https://nergyal.dz/",
+      "https://pagesjaunes-dz.com/Companies/detail/97c37be7afe5bdce870519d22e10b2fb/nergyal"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Algerian manufacturer of air-distribution ductwork (spiral ducts 80-1250 mm, accessories) in galvanized, black steel, aluminium and stainless steel at Z.I. Hassi Ameur, Oran."
+  },
+  {
+    "id": "socomaf-industries-algiers",
+    "name_en": "Socomaf Industries",
+    "name_ar": null,
+    "country_code": "DZ",
+    "country_en": "Algeria",
+    "country_ar": "الجزائر",
+    "city_en": "Algiers",
+    "city_ar": "الجزائر العاصمة",
+    "lat": 36.79,
+    "lon": 3.25,
+    "location_note": "Bordj El Bahri workshop, approximate",
+    "founded": 2002,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "duct_accessories"
+    ],
+    "materials": [
+      "galvanized_steel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://socomaf-industries.com/",
+    "sources": [
+      "https://socomaf-industries.com/expertises/fabrication-gaines",
+      "https://socomaf-industries.com/expertises/ventilation"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Algiers ventilation contractor fabricating all circular and rectangular ducts, fittings and custom parts in galvanized or black steel in its integrated Bordj El Bahri workshop since 2002."
+  },
+  {
+    "id": "sodinco-algiers",
+    "name_en": "SODINCO",
+    "name_ar": null,
+    "country_code": "DZ",
+    "country_en": "Algeria",
+    "country_ar": "الجزائر",
+    "city_en": "Algiers",
+    "city_ar": "الجزائر العاصمة",
+    "lat": 36.7538,
+    "lon": 3.0588,
+    "location_note": "city centroid",
+    "founded": 1999,
+    "products": [
+      "spiral_round_duct",
+      "rectangular_gi_duct",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "http://sodinco.dz/",
+    "sources": [
+      "http://sodinco.dz/produits/gaines-et-accessoires/",
+      "http://sodinco.dz/produits/gaines-et-accessoires/moyen-de-production/",
+      "http://sodinco.dz/qui-nous-sommes/qui-est-sodinco/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Algiers HVAC solutions company (since 1999) with a production unit for galvanized-sheet products, making standardised spiral tubes and made-to-drawing rectangular ducts plus cable trays."
+  },
+  {
+    "id": "climr-industrie-rades",
+    "name_en": "ClimR Industrie",
+    "name_ar": null,
+    "country_code": "TN",
+    "country_en": "Tunisia",
+    "country_ar": "تونس",
+    "city_en": "Radès (Ben Arous)",
+    "city_ar": "رادس (بن عروس)",
+    "lat": 36.7681,
+    "lon": 10.2753,
+    "location_note": "Z.I. Radès Saline, approximate",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "stainless_duct",
+      "aluminium_duct",
+      "duct_accessories"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "stainless_steel",
+      "aluminium"
+    ],
+    "standards": [
+      "other"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://climr.net/",
+    "sources": [
+      "https://climr.net/"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Manufacturer of made-to-measure rectangular and circular ducts, elbows, tees and reducers in galvanized steel, stainless 304/316L and aluminium with CNC laser cutting; cites EN 1505/EN 1506 dimensional standards."
+  },
+  {
+    "id": "agt-aerau-gaine-thermique-sfax",
+    "name_en": "AGT - Aérau-Gaine Thermique",
+    "name_ar": null,
+    "country_code": "TN",
+    "country_en": "Tunisia",
+    "country_ar": "تونس",
+    "city_en": "Sfax",
+    "city_ar": "صفاقس",
+    "lat": 34.7406,
+    "lon": 10.7603,
+    "location_note": "city centroid (Ceinture 11, Gremda - Taniour)",
+    "founded": null,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "stainless_duct",
+      "aluminium_duct",
+      "duct_accessories"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "stainless_steel",
+      "aluminium"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "http://www.agt.tn/",
+    "sources": [
+      "http://www.agt.tn/",
+      "http://www.agt.tn/category/2-Gaines_Spiral%C3%A9es",
+      "http://www.agt.tn/contact"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Sfax manufacturer of rectangular and spiral aeraulic ducts and flexible sleeves in galvanized sheet, stainless steel and aluminium for ventilation and air treatment."
+  },
+  {
+    "id": "stivi-industries-bizerte",
+    "name_en": "STIVI Industries (Société Tunisienne d'Isolation et Ventilation Industrielle)",
+    "name_ar": null,
+    "country_code": "TN",
+    "country_en": "Tunisia",
+    "country_ar": "تونس",
+    "city_en": "Bizerte",
+    "city_ar": "بنزرت",
+    "lat": 37.2378,
+    "lon": 9.9161,
+    "location_note": "Zone Industrielle Menzel Jemil, approximate",
+    "founded": 2005,
+    "products": [
+      "spiral_round_duct",
+      "rectangular_gi_duct",
+      "dampers",
+      "flexible_duct",
+      "sound_attenuators",
+      "duct_accessories"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "aluminium"
+    ],
+    "standards": [
+      "ISO_9001"
+    ],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.stivi-ventilation.com/",
+    "sources": [
+      "https://stivi-ventilation.com/web/",
+      "https://stivi-ventilation.com/web/CONDUITRECTANGULAIRE.html",
+      "https://stivi-ventilation.com/web/contact.html"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Created 2005 from a family firm founded 1975; manufactures ventilation ducts, spiral ducts (dia. 80-1600 mm), circular and rectangular dampers, aluminium flexibles and acoustic silencers; ISO 9001:2008 certified December 2008."
+  },
+  {
+    "id": "clima-gaine-monastir",
+    "name_en": "Clima Gaine",
+    "name_ar": null,
+    "country_code": "TN",
+    "country_en": "Tunisia",
+    "country_ar": "تونس",
+    "city_en": "Monastir",
+    "city_ar": "المنستير",
+    "lat": 35.7519,
+    "lon": 10.7108,
+    "location_note": "ZI Sahline, approximate",
+    "founded": 1985,
+    "products": [
+      "rectangular_gi_duct",
+      "spiral_round_duct",
+      "other"
+    ],
+    "materials": [
+      "galvanized_steel",
+      "stainless_steel",
+      "aluminium"
+    ],
+    "standards": [],
+    "capacity_note": null,
+    "employees_note": null,
+    "website": "https://www.climagaine.tn/",
+    "sources": [
+      "https://www.climagaine.tn/presentation/",
+      "https://annuairepro-tunisie.com/clima-gaine-monastir-tunisie.html"
+    ],
+    "verified_on": "2026-09-21",
+    "confidence": "high",
+    "notes": "Family firm founded 1 March 1985 at ZI Sahline, Monastir, with 37 years manufacturing circular and rectangular ducts and sheet-metal parts in black, galvanized and stainless steel and aluminium."
+  }
+]
